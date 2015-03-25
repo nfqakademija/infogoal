@@ -1,0 +1,3 @@
+info_goal_kicker:
+    resource: "@InfoGoalKickerBundle/Resources/config/routing.yml"
+    prefix:   /

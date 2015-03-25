@@ -1,0 +1,8 @@
+info_goal_kicker_homepage:
+    path:     /
+    defaults: { _controller: InfoGoalKickerBundle:Table:index }
+
+profile_index:
+    path:     /profile
+    defaults: { _controller: InfoGoalKickerBundle:Profile:index }
+
