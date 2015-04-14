@@ -1,0 +1,20 @@
+InfoGoal\KickerBundle\Entity\TableOption:
+    type: entity
+    table: null
+    repositoryClass: InfoGoal\KickerBundle\Entity\TableOptionRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        optionKey:
+            type: string
+            length: '255'
+            column: option_key
+        optionValue:
+            type: string
+            length: '255'
+            column: option_value
+    lifecycleCallbacks: {  }
