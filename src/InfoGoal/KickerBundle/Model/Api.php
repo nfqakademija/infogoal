@@ -30,11 +30,11 @@ class Api
     /**
      * @return Response
      */
-    public function readApi()
+    public function readApi($options)
     {
         $data = $this->getJsonData();
         $analyzer = new DataAnalyzer($data);
-        return $analyzer->analyze();
+        return $analyzer->analyze($options);
     }
 
     /**
@@ -46,12 +46,17 @@ class Api
         $client = new Client($config);
 
         $query = array(
-            'rows' => 50,
-            //'from-id' => last record id which was read
+            'rows' => 100,
+            'from-id' => 181601 // get this ID from database
         );
 
         $response = $client->get('?' . http_build_query($query), ['auth' => [$this->loginName, $this->loginPass]]);
 
-        return $response->json();
+        $data = $response->json();
+
+        if(!isset($data['records']))
+            $data['records'] = [];
+
+        return $data['records'];
     }
 } 

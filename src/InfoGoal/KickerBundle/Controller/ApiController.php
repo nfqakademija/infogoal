@@ -8,14 +8,17 @@
 
 namespace InfoGoal\KickerBundle\Controller;
 
+use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use InfoGoal\KickerBundle\Model\Api;
 
 
-class ApiController {
+class ApiController extends Controller {
 
     public function indexAction()
     {
         $api = new Api();
-        return $api->readApi();
+        $em = $this->getDoctrine()->getManager();
+        $options = $em->getRepository('InfoGoalKickerBundle:TableOption')->findAll();
+        return $api->readApi($options);
     }
 } 

@@ -8,6 +8,8 @@
 
 namespace InfoGoal\KickerBundle\Model;
 
+use InfoGoal\KickerBundle\Entity\TableOption;
+use InfoGoal\KickerBundle\Entity\TableOptionRepository;
 use Symfony\Component\HttpFoundation\Response;
 
 class DataAnalyzer
@@ -17,25 +19,52 @@ class DataAnalyzer
      */
     private $data = [];
 
+    /**
+     * @var array
+     */
+    private $options;
+
     public function __construct($data)
     {
         $this->data = $data;
     }
 
     /**
+     * @param array $options
      * @return Response
      */
-    public function analyze()
+    public function analyze($options)
     {
-        // data analyze
-        return new Response(print_r($this->data, true));
+        $this->setOptions($options);
+
+        // data from database
+        $tableOptions = $this->options;
+
+        $gameIsStarted = $tableOptions['table_state'] == 1 ? true : false;
+        $gameTimeOut = $tableOptions['last_event_time'] > strtotime('-5 minutes', strtotime('now')) ? true : false;
+        $unreadEvents = sizeof($this->data) > 0;
+
+        if ($unreadEvents) {
+
+        } else {
+
+        }
+
+        return new Response(print_r($this->options, true));
     }
 
     /**
-     * @param $data
+     * @param array $options
+     */
+    public function setOptions($options)
+    {
+        $this->options = $options;
+    }
+
+    /**
+     * @param array $data
      */
     public function saveData($data)
     {
-        // save/update data to database
     }
 } 
