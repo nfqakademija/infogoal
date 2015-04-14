@@ -6,3 +6,7 @@ profile_index:
     path:     /profile
     defaults: { _controller: InfoGoalKickerBundle:Profile:index }
 
+api_index:
+    path:     /api
+    defaults: { _controller: InfoGoalKickerBundle:Api:index}
+
