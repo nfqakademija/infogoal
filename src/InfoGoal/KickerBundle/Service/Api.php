@@ -28,33 +28,48 @@ class Api
     private $loginPass = "labas";
 
     /**
+     * @var DataAnalyzer
+     */
+    private $dataAnalyzer;
+
+    public function __construct(DataAnalyzer $dataAnalyzer)
+    {
+        $this->dataAnalyzer = $dataAnalyzer;
+    }
+
+    /**
      * @return Response
      */
     public function readApi($options)
     {
-        $data = $this->getJsonData();
-        $analyzer = new DataAnalyzer();
-        return $analyzer->analyze($data, $options);
+        $fromID = 0;
+        if(isset($options['last_read_event_id'])){
+            $fromID = $options['last_read_event_id'];
+        }
+        $data = $this->getJsonData($fromID);
+
+        return $this->dataAnalyzer->analyze($data, $options);
     }
 
     /**
      * @return array
      */
-    public function getJsonData()
+    public function getJsonData($fromID)
     {
-        $config = array('base_url' => $this->baseUrl);
-        $client = new Client($config);
+        $client = new Client([
+            'base_url' => $this->baseUrl
+        ]);
 
         $query = array(
             'rows' => 100,
-            'from-id' => 181601 // get this ID from database
+            'from-id' => $fromID
         );
 
         $response = $client->get('?' . http_build_query($query), ['auth' => [$this->loginName, $this->loginPass]]);
 
         $data = $response->json();
 
-        if(!isset($data['records']))
+        if (!isset($data['records']))
             $data['records'] = [];
 
         return $data['records'];

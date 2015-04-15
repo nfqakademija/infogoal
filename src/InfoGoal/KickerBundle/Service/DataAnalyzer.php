@@ -21,9 +21,19 @@ class DataAnalyzer
     private $data = [];
 
     /**
+     * @var EntityManager
+     */
+    private $em;
+
+    /**
      * @var array
      */
     private $options;
+
+    public function __construct(EntityManager $em)
+    {
+        $this->em = $em;
+    }
 
     /**
      * @param array $options
@@ -31,22 +41,19 @@ class DataAnalyzer
      */
     public function analyze($data, $options)
     {
+        if (!isset($options['table_state'])) {
+            $options['table_state'] = 1;
+        }
+
+        if (!isset($options['last_event_time'])) {
+            $options['last_event_time'] = strtotime('now');
+        }
+
         $this->data = $data;
         $this->options = $options;
 
-        // data from database
-        $tableOptions = $this->options;
-
-        if (!isset($tableOptions['table_state'])) {
-            $tableOptions['table_state'] = 1;
-        }
-
-        if (!isset($tableOptions['last_event_time'])) {
-            $tableOptions['last_event_time'] = strtotime('now');
-        }
-
-        $gameIsStarted = $tableOptions['table_state'] == 1 ? true : false;
-        $gameTimeOut = $tableOptions['last_event_time'] > strtotime('-5 minutes', strtotime('now')) ? true : false;
+        $gameIsStarted = $options['table_state'] == 1 ? true : false;
+        $gameTimeOut = $options['last_event_time'] > strtotime('-5 minutes', strtotime('now')) ? true : false;
         $unreadEvents = sizeof($this->data) > 0;
 
         if ($unreadEvents) {
