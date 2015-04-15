@@ -1,4 +1,8 @@
 services:
-#    info_goal_kicker.example:
-#        class: InfoGoal\KickerBundle\Example
-#        arguments: [@service_id, "plain_value", %parameter%]
+    kicker.api:
+        class: InfoGoal\KickerBundle\Service\Api
+
+    #kicker.analyzer:
+    #     class: InfoGoal\KickerBundle\Service\DataAnalyzer
+    #     calls:
+    #         - [setEntityManager, [@doctrine.orm.entity_manager]]

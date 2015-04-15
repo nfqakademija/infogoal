@@ -6,7 +6,7 @@
  * Time: 09:47
  */
 
-namespace InfoGoal\KickerBundle\Model;
+namespace InfoGoal\KickerBundle\Service;
 
 use GuzzleHttp\Client;
 
@@ -33,8 +33,8 @@ class Api
     public function readApi($options)
     {
         $data = $this->getJsonData();
-        $analyzer = new DataAnalyzer($data);
-        return $analyzer->analyze($options);
+        $analyzer = new DataAnalyzer();
+        return $analyzer->analyze($data, $options);
     }
 
     /**

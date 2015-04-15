@@ -1,6 +1,6 @@
 InfoGoal\KickerBundle\Entity\Game:
     type: entity
-    table: null
+    table: games
     repositoryClass: InfoGoal\KickerBundle\Entity\GameRepository
     id:
         id:

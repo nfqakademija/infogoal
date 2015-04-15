@@ -6,8 +6,9 @@
  * Time: 11:18
  */
 
-namespace InfoGoal\KickerBundle\Model;
+namespace InfoGoal\KickerBundle\Service;
 
+use Doctrine\ORM\EntityManager;
 use InfoGoal\KickerBundle\Entity\TableOption;
 use InfoGoal\KickerBundle\Entity\TableOptionRepository;
 use Symfony\Component\HttpFoundation\Response;
@@ -24,21 +25,25 @@ class DataAnalyzer
      */
     private $options;
 
-    public function __construct($data)
-    {
-        $this->data = $data;
-    }
-
     /**
      * @param array $options
      * @return Response
      */
-    public function analyze($options)
+    public function analyze($data, $options)
     {
-        $this->setOptions($options);
+        $this->data = $data;
+        $this->options = $options;
 
         // data from database
         $tableOptions = $this->options;
+
+        if (!isset($tableOptions['table_state'])) {
+            $tableOptions['table_state'] = 1;
+        }
+
+        if (!isset($tableOptions['last_event_time'])) {
+            $tableOptions['last_event_time'] = strtotime('now');
+        }
 
         $gameIsStarted = $tableOptions['table_state'] == 1 ? true : false;
         $gameTimeOut = $tableOptions['last_event_time'] > strtotime('-5 minutes', strtotime('now')) ? true : false;
@@ -53,18 +58,8 @@ class DataAnalyzer
         return new Response(print_r($this->options, true));
     }
 
-    /**
-     * @param array $options
-     */
-    public function setOptions($options)
+    public function saveData()
     {
-        $this->options = $options;
-    }
 
-    /**
-     * @param array $data
-     */
-    public function saveData($data)
-    {
     }
 } 
