@@ -16,7 +16,7 @@
         <!-- the nav content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav navbar-right">
-                <li class="active"><a href="index.html">Stalas</a></li>
+                <li {% if app.request.attributes.get('_route') == 'info_goal_kicker_homepage' %}class="active"{% endif %}><a href="{{ url('info_goal_kicker_homepage') }}">Stalas</a></li>
                 <li><a href="users.html">Žaidėjai</a></li>
                 <li><a href="timeline.html">Žaidimų istorija</a></li>
                 <li><a href="badges.html">Ženkleliai</a></li>
