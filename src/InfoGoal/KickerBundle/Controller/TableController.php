@@ -11,5 +11,10 @@ class TableController extends Controller
         return $this->render('InfoGoalKickerBundle:Table:index.html.twig', array(
                 // ...
             ));    }
+    public function reservationAction()
+    {
+        return $this->render('InfoGoalKickerBundle:Table:reservation.html.twig', array(
 
+        ));
+    }
 }

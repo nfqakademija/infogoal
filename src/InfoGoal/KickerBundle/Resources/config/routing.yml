@@ -5,4 +5,6 @@ info_goal_kicker_homepage:
 profile_index:
     path:     /profile
     defaults: { _controller: InfoGoalKickerBundle:Profile:index }
-
+reserved_index:
+    path:     /reserved
+    defaults: { _controller: InfoGoalKickerBundle:Table:reservation }
