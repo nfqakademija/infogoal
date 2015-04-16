@@ -1,0 +1,132 @@
+#field-game {
+    vertical-align: middle;
+    margin: 0 auto;
+    display: block;
+}
+
+#team-0, #team-1 {
+    position: absolute;
+    top: 18%;
+}
+
+.row {
+    float: none;
+    margin: 0 auto;
+}
+
+#team-0 {
+    left: 20%;
+}
+
+#team-1 {
+    right: 20%;
+}
+
+.progress {
+    display: block;
+    border-radius: 25px;
+}
+
+.img-thumbnail {
+    border-radius: 0;
+    padding: 3px;
+}
+
+#team-0 .row:first-child, #team-1 .row:first-child {
+    margin-bottom: 150px;
+}
+
+.player-name {
+    font-size: 24px;
+}
+
+.level-icon {
+    width: 35px;
+    height: 35px;
+    border-radius: 90px;
+    background-color: white;
+    color: #009933;
+    font-weight: bold;
+    font-size: 16px;
+    text-align: center;
+    display: table;
+    position: absolute;
+    top: -5px;
+    right: 8px;
+}
+
+.level-number {
+    display: table-cell;
+    vertical-align: middle;
+}
+
+.result div {
+    border: 2px solid white;
+    width: 65%;
+    padding: 10px 15px;
+    font-size: 28px;
+    margin: 0 auto;
+
+}
+
+.result {
+    margin: auto;
+    position: absolute;
+    top: 45%;
+    left: 0;
+    right: 0;
+}
+
+@media (max-width: 768px) {
+    .player-name {
+        font-size: 14px;
+    }
+    #team-0 .row:first-child, #team-1 .row:first-child {
+        margin-bottom: 70px;
+    }
+    #team-0 {
+        left: 4%;
+    }
+
+    #team-1 {
+        right: 4%;
+    }
+    .result div {
+        width: 25%;
+        font-size: 16px;
+        margin: 0 auto;
+    }
+    .result {
+        top: 40%;
+    }
+    #team-0, #team-1 {
+        top: 20px;
+    }
+}
+
+@media (max-width: 992px) and (min-width: 768px) {
+    .player-name {
+        color: red;
+    }
+    #team-0 {
+        left: 4%;
+    }
+
+    #team-1 {
+        right: 4%;
+    }
+    .result div {
+        width: 18%;
+        font-size: 22px;
+        margin: 0 auto;
+    }
+    .result {
+        top: 45%;
+    }
+    #team-0 .row:first-child, #team-1 .row:first-child {
+        margin-bottom: 35%;
+    }
+    #team-0, #team-1 {
+        top: 22%;
+    }
+}

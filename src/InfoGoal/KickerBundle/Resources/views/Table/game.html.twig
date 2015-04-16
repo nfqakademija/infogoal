@@ -1,0 +1,93 @@
+{% extends "::base.html.twig" %}
+
+{% block title %}InfoGoalKickerBundle:Table:index{% endblock %}
+{% block stylesheets %}
+    {{ parent() }}
+    <link href="{{ asset('css/general.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/table-game.css') }}" rel="stylesheet">
+{% endblock %}
+
+{% block body %}
+
+    <main class="container"></main>
+    <div id="table" class=" col-lg-12 col-md-12 col-sm-12 col-xs-12 ">
+        <img id="field-game" src="assets/soccer-field.png" alt="Soccer field" class="img-responsive">
+        <div id="table-game">
+
+            <div id="team-0" >
+                <div class="player-0 row">
+                    <div class="col-md-4 col-xs-8">
+                        <img src="assets/uifaces/128.jpg" alt="player-0" class="img-thumbnail">
+                        <div class="level-icon"><div class="level-number">6</div></div>
+                    </div>
+                    <div class="col-md-8 text-left hidden-xs">
+                        <p class="player-name">Jonas Jonaitis</p>
+                        <div class="progress">
+                            <div class="progress-bar progress-bar-warning progress-bar-striped" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 40%">
+                                <span>40/150</span>
+                            </div>
+                        </div>
+                        <p class="player-game-info">Žaista: 23   Laimėta: 16</p>
+                    </div>
+                </div><!--end player-0 -->
+
+                <div class="player-1 row">
+                    <div class="col-md-4 col-xs-8">
+                        <img src="assets/uifaces/128.jpg" alt="player-0" class="img-thumbnail">
+                        <div class="level-icon"><div class="level-number">64</div></div>
+                    </div>
+                    <div class="col-md-8 text-left hidden-xs">
+                        <p class="player-name">Jonas Jonaitis</p>
+                        <div class="progress">
+                            <div class="progress-bar progress-bar-warning progress-bar-striped" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 16%">
+                                <span>26/150</span>
+                            </div>
+                        </div>
+                        <p class="player-game-info">Žaista: 23   Laimėta: 16</p>
+                    </div>
+                </div><!--end player-1 -->
+            </div><!--end team-0 -->
+
+            <div id="team-1" >
+                <div class="player-0 row">
+                    <div class="col-md-4 col-xs-8 pull-right">
+                        <img src="assets/uifaces/128.jpg" alt="player-0" class="img-thumbnail">
+                        <div class="level-icon"><div class="level-number">3</div></div>
+                    </div>
+                    <div class="col-md-8 text-left hidden-xs">
+                        <p class="player-name">Jonas Jonaitis</p>
+                        <div class="progress">
+                            <div class="progress-bar progress-bar-warning progress-bar-striped" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 90%">
+                                <span>130/150</span>
+                            </div>
+                        </div>
+                        <p class="player-game-info">Žaista: 23   Laimėta: 16</p>
+                    </div>
+                </div><!--end player-0 -->
+                <div class="player-1 row">
+                    <div class="col-md-4 col-xs-8 pull-right">
+                        <img src="assets/uifaces/128.jpg" alt="player-0" class="img-thumbnail">
+                        <div class="level-icon"><div class="level-number">10</div></div>
+                    </div>
+                    <div class="col-md-8 text-left hidden-xs">
+                        <p class="player-name">Jonas Jonaitis</p>
+                        <div class="progress">
+                            <div class="progress-bar progress-bar-warning progress-bar-striped" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 60%">
+                                <span>75/150</span>
+                            </div>
+                        </div>
+                        <p class="player-game-info">Žaista: 23   Laimėta: 16</p>
+                    </div>
+                </div><!--end player-1 -->
+            </div><!--end team-1 -->
+            <div class="result col-lg-2 col-md-2">
+                <div>
+                    08 : 06
+                </div>
+            </div>
+        </div><!-- end table-game -->
+
+    </div><!-- end table -->
+    </main><!-- end container -->
+
+{% endblock %}
