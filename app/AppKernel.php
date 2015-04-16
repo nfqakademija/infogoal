@@ -33,4 +33,26 @@ class AppKernel extends Kernel
     {
         $loader->load($this->getRootDir().'/config/config_'.$this->getEnvironment().'.yml');
     }
+
+    /**
+     * Cache directory overridden.
+     * This is out of /var/www to prevent slow cache syncing on every page reload.
+     *
+     * @return string
+     */
+    public function getCacheDir()
+    {
+        return $this->rootDir.'/../../no_sync/cache/'.$this->environment;
+    }
+
+    /**
+     * Logs directory overridden.
+     * This is out of /var/www to prevent slow logs syncing on every page reload.
+     *
+     * @return string
+     */
+    public function getLogDir()
+    {
+        return $this->rootDir.'/../../no_sync/logs';
+    }
 }
