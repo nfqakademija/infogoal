@@ -42,7 +42,7 @@ class Api
      */
     public function readApi($options)
     {
-        $fromID = 0;
+        $fromID = 1;
         if(isset($options['last_read_event_id'])){
             $fromID = $options['last_read_event_id'];
         }
