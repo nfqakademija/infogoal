@@ -42,7 +42,11 @@ class AppKernel extends Kernel
      */
     public function getCacheDir()
     {
-        return $this->rootDir.'/../../no_sync/cache/'.$this->environment;
+        if (in_array($this->environment, array('dev', 'test'))) {
+            return '/dev/shm/infogoal/cache';
+        }
+
+        return parent::getCacheDir();
     }
 
     /**
@@ -53,6 +57,10 @@ class AppKernel extends Kernel
      */
     public function getLogDir()
     {
-        return $this->rootDir.'/../../no_sync/logs';
+        if (in_array($this->environment, array('dev', 'test'))) {
+            return '/dev/shm/infogoal/logs';
+        }
+
+        return parent::getLogDir();
     }
 }

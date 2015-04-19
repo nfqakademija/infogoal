@@ -222,11 +222,3 @@ package { 'phantomjs':
   ensure   => present,
   provider => 'npm',
 }
-
-# symfony cache and logs dirs moved for performance on windows
-file { ["/var/no_sync", "/var/no_sync/cache", "/var/no_sync/logs"]:
-  ensure => "directory",
-  owner  => "root",
-  group  => "root",
-  mode   => 777,
-}
