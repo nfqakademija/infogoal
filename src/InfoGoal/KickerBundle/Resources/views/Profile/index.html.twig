@@ -1,7 +1,23 @@
 {% extends "::base.html.twig" %}
 
 {% block title %}InfoGoalKickerBundle:Profile:index{% endblock %}
+{% block stylesheets %}
+    {{ parent() }}
+    <link href="{{ asset('/bundles/infogoalkicker/css/general.css') }}" rel="stylesheet">
+    <link href="{{ asset('/bundles/infogoalkicker/css/profile.css') }}" rel="stylesheet">
+    <link href="{{ asset('/bundles/infogoalkicker/css/player.css') }}" rel="stylesheet">
+{% endblock %}
 
 {% block body %}
-<h1>Welcome to the Profile:index page</h1>
+
+    <main class="container">
+        <div class="player block col-md-7">
+            {% include '@InfoGoalKicker/Profile/player.html.twig' %}
+
+
+            <div class="clearfix"></div>
+        </div><!--end player block-->
+    </main><!-- end container -->
+
+
 {% endblock %}
