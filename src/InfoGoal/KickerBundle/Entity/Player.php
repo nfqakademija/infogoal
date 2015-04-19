@@ -17,32 +17,41 @@ class Player
     /**
      * @var integer
      */
-    private $cardId;
+    private $cardId = NULL;
 
     /**
      * @var string
      */
-    private $name;
+    private $name = NULL;
 
     /**
      * @var integer
      */
-    private $xp;
+    private $xp = 0;
 
     /**
      * @var integer
      */
-    private $level;
+    private $levelXp = 1000;
 
     /**
      * @var integer
      */
-    private $won;
+    private $level = 1;
+    /**
+     * @var integer
+     */
+    private $played = 0;
+
+    /**
+     * @var integer
+     */
+    private $won = 0;
 
     /**
      * @var \DateTime
      */
-    private $lastGame;
+    private $lastGame = NULL;
 
 
     /**
@@ -191,5 +200,51 @@ class Player
     public function getLastGame()
     {
         return $this->lastGame;
+    }
+
+    /**
+     * Set levelXp
+     *
+     * @param integer $levelXp
+     * @return Player
+     */
+    public function setLevelXp($levelXp)
+    {
+        $this->levelXp = $levelXp;
+
+        return $this;
+    }
+
+    /**
+     * Get levelXp
+     *
+     * @return integer 
+     */
+    public function getLevelXp()
+    {
+        return $this->levelXp;
+    }
+
+    /**
+     * Set played
+     *
+     * @param integer $played
+     * @return Player
+     */
+    public function setPlayed($played)
+    {
+        $this->played = $played;
+
+        return $this;
+    }
+
+    /**
+     * Get played
+     *
+     * @return integer 
+     */
+    public function getPlayed()
+    {
+        return $this->played;
     }
 }
