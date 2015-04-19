@@ -1,0 +1,70 @@
+#team-0 {
+    left: 12%;
+}
+
+#team-1 {
+    right: 12%;
+}
+
+.progress {
+    display: block;
+    border-radius: 25px;
+}
+
+.img-thumbnail {
+    border-radius: 0;
+    padding: 3px;
+}
+
+#team-0 .row:first-child, #team-1 .row:first-child {
+    margin-bottom: 150px;
+}
+
+.player-name {
+    font-size: 24px;
+}
+
+.level-icon {
+    width: 35px;
+    height: 35px;
+    border-radius: 90px;
+    background-color: white;
+    color: #009933;
+    font-weight: bold;
+    font-size: 16px;
+    text-align: center;
+    display: table;
+    position: absolute;
+    top: -5px;
+    right: 8px;
+}
+
+.level-number {
+    display: table-cell;
+    vertical-align: middle;
+}
+
+
+.progress {
+    position: relative;
+    margin-bottom: 6px;
+}
+
+.progress span {
+    position: absolute;
+    display: block;
+    width: 100%;
+    color: black;
+}
+
+#team-0 .player-info {
+    text-align: left;
+}
+
+#team-1 .player-info {
+    text-align: right;
+}
+
+#team-1 .player-icon {
+    float: right;
+}
