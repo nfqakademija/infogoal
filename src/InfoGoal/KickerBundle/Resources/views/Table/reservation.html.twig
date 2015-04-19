@@ -3,18 +3,17 @@
 {% block title %}InfoGoalKickerBundle:Table:index{% endblock %}
 {% block stylesheets %}
     {{ parent() }}
-    <link rel="stylesheet" href="{{ asset('css/table-free.css') }}" />
+    <link rel="stylesheet" href="{{ asset('/bundles/infogoalkicker/css/table-free.css') }}" />
 {% endblock %}
 
 {% block body %}
 
     <main class="container"></main>
         <div id="table" class=" col-lg-12 col-md-12 col-sm-12 col-xs-12 ">
-            <img id="field-free" src="assets/soccer-field.png" alt="Soccer field" class="img-responsive">
+            <img id="field-free" src="{{ asset('/bundles/infogoalkicker/assets/soccer-field.png') }}" alt="Soccer field" class="img-responsive">
             <div class="table-free">
                 <p>Stalas rezervuotas!</p>
             </div>
         </div><!-- end table -->
     </main><!-- end container -->
-
 {% endblock %}
