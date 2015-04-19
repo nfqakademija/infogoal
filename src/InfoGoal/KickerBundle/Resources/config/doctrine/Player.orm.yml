@@ -1,0 +1,26 @@
+InfoGoal\KickerBundle\Entity\Player:
+    type: entity
+    table: null
+    repositoryClass: InfoGoal\KickerBundle\Entity\PlayerRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        cardId:
+            type: integer
+            length: 10
+        name:
+            type: string
+            length: '50'
+        xp:
+            type: integer
+        level:
+            type: integer
+        won:
+            type: integer
+        lastGame:
+            type: datetime
+    lifecycleCallbacks: {  }
