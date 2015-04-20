@@ -1,11 +1,3 @@
-#team-0 {
-    left: 12%;
-}
-
-#team-1 {
-    right: 12%;
-}
-
 .progress {
     display: block;
     border-radius: 25px;
@@ -14,10 +6,6 @@
 .img-thumbnail {
     border-radius: 0;
     padding: 3px;
-}
-
-#team-0 .row:first-child, #team-1 .row:first-child {
-    margin-bottom: 150px;
 }
 
 .player-name {
@@ -43,7 +31,6 @@
     display: table-cell;
     vertical-align: middle;
 }
-
 
 .progress {
     position: relative;
