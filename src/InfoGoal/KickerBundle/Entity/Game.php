@@ -209,9 +209,9 @@ class Game
      * @param integer $goal1
      * @return Game
      */
-    public function setGoal1($goal1)
+    public function setGoal1()
     {
-        $this->goal1 = $goal1;
+        $this->goal1++;
 
         return $this;
     }
@@ -232,9 +232,9 @@ class Game
      * @param integer $goal2
      * @return Game
      */
-    public function setGoal2($goal2)
+    public function setGoal2()
     {
-        $this->goal2 = $goal2;
+        $this->goal2++;
 
         return $this;
     }

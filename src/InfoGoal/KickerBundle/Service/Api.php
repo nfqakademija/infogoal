@@ -43,9 +43,13 @@ class Api
     public function readApi($options)
     {
         $fromID = 1;
-        if(isset($options['last_read_event_id'])){
-            $fromID = $options['last_read_event_id'];
+        foreach ($options as $option) {
+            if($option->getOptionKey() == "last_event_id"){
+                $fromID = $option->getOptionValue();
+                break;
+            }
         }
+
         $data = $this->getJsonData($fromID);
 
         return $this->dataAnalyzer->analyze($data, $options);
