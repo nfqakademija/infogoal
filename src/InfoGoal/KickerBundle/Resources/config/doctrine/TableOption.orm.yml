@@ -1,6 +1,6 @@
 InfoGoal\KickerBundle\Entity\TableOption:
     type: entity
-    table: null
+    table: table_options
     repositoryClass: InfoGoal\KickerBundle\Entity\TableOptionRepository
     id:
         id:

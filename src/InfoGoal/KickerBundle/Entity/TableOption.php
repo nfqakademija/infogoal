@@ -28,7 +28,7 @@ class TableOption
     /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
     public function getId()
     {
@@ -51,7 +51,7 @@ class TableOption
     /**
      * Get optionKey
      *
-     * @return string 
+     * @return string
      */
     public function getOptionKey()
     {
@@ -74,7 +74,7 @@ class TableOption
     /**
      * Get optionValue
      *
-     * @return string 
+     * @return string
      */
     public function getOptionValue()
     {
