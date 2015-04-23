@@ -6,7 +6,7 @@
  * Time: 11:18
  */
 
-namespace InfoGoal\KickerBundle\Service;
+namespace InfoGoal\ApiBundle\Service;
 
 use Doctrine\ORM\EntityManager;
 use InfoGoal\KickerBundle\Entity\TableOption;

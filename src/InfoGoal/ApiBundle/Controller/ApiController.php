@@ -1,15 +1,9 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: Ernestas
- * Date: 2015-04-14
- * Time: 09:45
- */
 
-namespace InfoGoal\KickerBundle\Controller;
+namespace InfoGoal\ApiBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use InfoGoal\KickerBundle\Service\Api;
+use InfoGoal\ApiBundle\Service\Api;
 
 
 class ApiController extends Controller

@@ -1,9 +1,1 @@
 services:
-
-    kicker.analyzer:
-        class: InfoGoal\KickerBundle\Service\DataAnalyzer
-        arguments: [@doctrine.orm.entity_manager]
-
-    kicker.api:
-        class: InfoGoal\KickerBundle\Service\Api
-        arguments: [@kicker.analyzer]

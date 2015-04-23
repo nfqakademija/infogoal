@@ -6,7 +6,7 @@
  * Time: 09:47
  */
 
-namespace InfoGoal\KickerBundle\Service;
+namespace InfoGoal\ApiBundle\Service;
 
 use GuzzleHttp\Client;
 
