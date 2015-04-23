@@ -131,14 +131,14 @@ class DataAnalyzer
      * @param array $event
      * @param boolean $gameStateBeforeEvent
      */
-    public function switchEvent($event, $gameStateBeforeEvent)
+    public function switchEvent($event, $gameStartedBeforeEvent)
     {
         switch ($event['type']) {
             case "AutoGoal":
                 $this->eventAutoGoal($event['data'], $event['timeSec']);
                 break;
             case "CardSwipe":
-                $this->eventCardSwipe();
+                $this->eventCardSwipe($event['data'], $event['timeSec'], $gameStartedBeforeEvent);
                 break;
         }
     }
@@ -156,15 +156,36 @@ class DataAnalyzer
 
         $this->em->flush();
 
-        $isGuest = true; // for a while let it be all players guests
         if ($teamGoalsCount == 10) {
             $this->markGameEnd($eventTime);
         }
     }
 
-    public function eventCardSwipe()
+    public function eventCardSwipe($eventData, $eventTime, $gameStartedBeforeEvent)
     {
+        $cardSwipe = json_decode($eventData);
+        if ($gameStartedBeforeEvent) {
+            $this->markGameEnd($this->options['last_event_time']);
+            $this->markGameStart($eventTime);
+        }
 
+        $player = (string)$cardSwipe->team . $cardSwipe->player;
+        switch ($player) {
+            case "00":
+                $this->activeGame->setPlayer1($cardSwipe->card_id);
+                break;
+            case "01":
+                $this->activeGame->setPlayer2($cardSwipe->card_id);
+                break;
+            case "10":
+                $this->activeGame->setPlayer3($cardSwipe->card_id);
+                break;
+            case "11":
+                $this->activeGame->setPlayer4($cardSwipe->card_id);
+                break;
+        }
+
+        $this->em->flush();
     }
 
     public function saveOptions()
