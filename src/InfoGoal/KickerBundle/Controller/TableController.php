@@ -8,8 +8,8 @@ class TableController extends Controller
 {
     public function indexAction()
     {
-        return $this->render('InfoGoalKickerBundle:Table:index.html.twig', array(
-                // ...
-            ));    }
+        return $this->render('InfoGoalKickerBundle:Table:index.html.twig', array(// ...
+        ));
+    }
 
 }

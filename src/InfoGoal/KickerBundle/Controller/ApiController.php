@@ -12,7 +12,8 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use InfoGoal\KickerBundle\Service\Api;
 
 
-class ApiController extends Controller {
+class ApiController extends Controller
+{
 
     public function indexAction()
     {

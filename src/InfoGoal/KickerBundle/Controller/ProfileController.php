@@ -8,8 +8,8 @@ class ProfileController extends Controller
 {
     public function indexAction()
     {
-        return $this->render('InfoGoalKickerBundle:Profile:index.html.twig', array(
-                // ...
-            ));    }
+        return $this->render('InfoGoalKickerBundle:Profile:index.html.twig', array(// ...
+        ));
+    }
 
 }

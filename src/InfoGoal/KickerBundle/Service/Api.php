@@ -44,7 +44,7 @@ class Api
     {
         $fromID = 1;
         foreach ($options as $option) {
-            if($option->getOptionKey() == "last_event_id"){
+            if ($option->getOptionKey() == "last_event_id") {
                 $fromID = $option->getOptionValue();
                 break;
             }

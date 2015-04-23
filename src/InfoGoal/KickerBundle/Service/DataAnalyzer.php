@@ -104,7 +104,7 @@ class DataAnalyzer
 
         $this->saveOptions();
 
-        return new Response(print_r($this->options, true));
+        return new Response(print_r($this->events, true));
     }
 
     public function analyzeEvents()
@@ -151,8 +151,9 @@ class DataAnalyzer
             $teamGoalsCount = $this->activeGame->getGoal1();
         } else {
             $this->activeGame->setGoal2();
-            $teamGoalsCount = $this->activeGame->getGoal1();
+            $teamGoalsCount = $this->activeGame->getGoal2();
         }
+
         $this->em->flush();
 
         $isGuest = true; // for a while let it be all players guests

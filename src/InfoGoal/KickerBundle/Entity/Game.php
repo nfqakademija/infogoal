@@ -47,18 +47,17 @@ class Game
     /**
      * @var integer
      */
-    private $goal1;
+    private $goal1 = 0;
 
     /**
      * @var integer
      */
-    private $goal2;
-
+    private $goal2 = 0;
 
     /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
     public function getId()
     {
@@ -81,7 +80,7 @@ class Game
     /**
      * Get dateStart
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getDateStart()
     {
@@ -104,7 +103,7 @@ class Game
     /**
      * Get dateEnd
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getDateEnd()
     {
@@ -127,7 +126,7 @@ class Game
     /**
      * Get player1
      *
-     * @return integer 
+     * @return integer
      */
     public function getPlayer1()
     {
@@ -150,7 +149,7 @@ class Game
     /**
      * Get player2
      *
-     * @return integer 
+     * @return integer
      */
     public function getPlayer2()
     {
@@ -173,7 +172,7 @@ class Game
     /**
      * Get player3
      *
-     * @return integer 
+     * @return integer
      */
     public function getPlayer3()
     {
@@ -196,7 +195,7 @@ class Game
     /**
      * Get player4
      *
-     * @return integer 
+     * @return integer
      */
     public function getPlayer4()
     {
@@ -206,7 +205,6 @@ class Game
     /**
      * Set goal1
      *
-     * @param integer $goal1
      * @return Game
      */
     public function setGoal1()
@@ -219,7 +217,7 @@ class Game
     /**
      * Get goal1
      *
-     * @return integer 
+     * @return integer
      */
     public function getGoal1()
     {
@@ -229,7 +227,6 @@ class Game
     /**
      * Set goal2
      *
-     * @param integer $goal2
      * @return Game
      */
     public function setGoal2()
@@ -242,7 +239,7 @@ class Game
     /**
      * Get goal2
      *
-     * @return integer 
+     * @return integer
      */
     public function getGoal2()
     {
