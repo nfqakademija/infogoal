@@ -10,6 +10,15 @@
 
 .player-name {
     font-size: 24px;
+    color: white;
+}
+
+.player-name a {
+    color: #ffffff;
+}
+
+a:hover{
+    text-decoration: none;
 }
 
 .level-icon {

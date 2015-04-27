@@ -1,0 +1,16 @@
+body {
+    background-color: rgba(242, 242, 242, 1);
+}
+
+.profile-badges-container {
+    background-color: white;
+    padding: 0 0 0 20px;
+    color: black;
+}
+
+.my-badge {
+    border: 1px solid black;
+    width: 100px;
+    height: 100px;
+    margin: 0 15px 15px 0;
+}

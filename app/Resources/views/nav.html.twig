@@ -8,7 +8,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="#">
+            <a class="navbar-brand" href="{{ url('info_goal_kicker_homepage') }}">
                 <img alt="Infogoal" src="{{ asset('/bundles/infogoalkicker/assets/logo.png') }}" class="logo">
             </a>
         </div><!-- end navbar-header -->
@@ -17,9 +17,9 @@
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav navbar-right">
                 <li {% if app.request.attributes.get('_route') == 'info_goal_kicker_homepage' %}class="active"{% endif %}><a href="{{ url('info_goal_kicker_homepage') }}">Stalas</a></li>
-                <li><a href="users.html">Žaidėjai</a></li>
-                <li><a href="timeline.html">Žaidimų istorija</a></li>
-                <li><a href="badges.html">Ženkleliai</a></li>
+                <li {% if app.request.attributes.get('_route') == 'info_goal_kicker_users_index' %}class="active"{% endif %}><a href="{{ url('info_goal_kicker_users_index') }}">Žaidėjai</a></li>
+                <li {% if app.request.attributes.get('_route') == 'info_goal_kicker_timeline_index' %}class="active"{% endif %}><a href="{{ url('info_goal_kicker_timeline_index') }}">Žaidimų istorija</a></li>
+                <li {% if app.request.attributes.get('_route') == 'info_goal_kicker_badges_index' %}class="active"{% endif %}><a href="{{ url('info_goal_kicker_badges_index') }}">Ženkleliai</a></li>
                 <li><a href="tuts.html">Pamokos</a></li>
                 {% if  app.request.attributes.get('_route') != 'info_goal_kicker_homepage' %}
                     <li class="li-button"><button type="button" class="table-rez-btn display-block">Rezervuoti</button>

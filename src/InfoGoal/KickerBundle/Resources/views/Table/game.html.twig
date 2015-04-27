@@ -1,16 +1,14 @@
 {% extends "::base.html.twig" %}
 
-{% block title %}InfoGoalKickerBundle:Table:index{% endblock %}
+{% block title %}Table:game{% endblock %}
 {% block stylesheets %}
     {{ parent() }}
-    <link href="{{ asset('/bundles/infogoalkicker/css/general.css') }}" rel="stylesheet">
-    <link href="{{ asset('/bundles/infogoalkicker/css/table-game.css') }}" rel="stylesheet">
-    <link href="{{ asset('/bundles/infogoalkicker/css/player.css') }}" rel="stylesheet">
+    <link href="{{ asset('/bundles/infogoalkicker/css/Table/table-game.css') }}" rel="stylesheet">
+    <link href="{{ asset('/bundles/infogoalkicker/css/Profile/player.css') }}" rel="stylesheet">
 {% endblock %}
 
 {% block body %}
 
-    <main class="container"></main>
     <div id="table" class=" col-lg-12 col-md-12 col-sm-12 col-xs-12 ">
         <img id="field-game" src="{{ asset('/bundles/infogoalkicker/assets/soccer-field.png') }}" alt="Soccer field" class="img-responsive">
         <div id="table-game">
@@ -41,6 +39,6 @@
         </div><!-- end table-game -->
 
     </div><!-- end table -->
-    </main><!-- end container -->
+
 
 {% endblock %}
