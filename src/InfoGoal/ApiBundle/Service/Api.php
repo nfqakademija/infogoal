@@ -32,12 +32,16 @@ class Api
      */
     private $dataAnalyzer;
 
+    /**
+     * @param DataAnalyzer $dataAnalyzer
+     */
     public function __construct(DataAnalyzer $dataAnalyzer)
     {
         $this->dataAnalyzer = $dataAnalyzer;
     }
 
     /**
+     * @param array $options
      * @return Response
      */
     public function readApi($options)
@@ -56,16 +60,18 @@ class Api
     }
 
     /**
+     * @param int $fromID
+     * @param int $rows
      * @return array
      */
-    public function getJsonData($fromID)
+    public function getJsonData($fromID, $rows = 100)
     {
         $client = new Client([
             'base_url' => $this->baseUrl
         ]);
 
         $query = array(
-            'rows' => 100,
+            'rows' => $rows,
             'from-id' => $fromID
         );
 

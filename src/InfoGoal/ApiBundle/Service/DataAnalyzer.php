@@ -42,6 +42,9 @@ class DataAnalyzer
      */
     private $activeGame;
 
+    /**
+     * @param EntityManager $em
+     */
     public function __construct(EntityManager $em)
     {
         $this->em = $em;
@@ -129,7 +132,7 @@ class DataAnalyzer
 
     /**
      * @param array $event
-     * @param boolean $gameStateBeforeEvent
+     * @param boolean $gameStartedBeforeEvent
      */
     public function switchEvent($event, $gameStartedBeforeEvent)
     {
@@ -245,5 +248,29 @@ class DataAnalyzer
     public function markTableState($state)
     {
         $this->options['table_state'] = $state;
+    }
+
+    /**
+     * @param Game $game
+     */
+    public function setActiveGame(Game $game)
+    {
+        $this->activeGame = $game;
+    }
+
+    /**
+     * @return bool
+     */
+    public function getGameIsStarted()
+    {
+        return $this->gameIsStarted;
+    }
+
+    /**
+     * @return Game
+     */
+    public function getActiveGame()
+    {
+        return $this->activeGame;
     }
 } 
