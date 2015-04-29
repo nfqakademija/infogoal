@@ -5,8 +5,8 @@
         <title>{% block title %}Welcome!{% endblock %}</title>
         {% block stylesheets %}
             {% stylesheets filter='compass' output='bundles/infogoalkicker/css/*.css'
-                '@InfoGoalKickerBundle/Resources/public/css/bootstrap.min.css'
-                '@InfoGoalKickerBundle/Resources/public/css/general.scss'
+                '@InfoGoalKickerBundle/Resources/public/scss/bootstrap.min.css'
+                '@InfoGoalKickerBundle/Resources/public/scss/general.scss'
             %}
             <link rel="stylesheet" href="{{ asset_url }}" />
             {% endstylesheets %}

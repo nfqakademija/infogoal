@@ -4,8 +4,8 @@
 {% block stylesheets %}
     {{ parent() }}
     {% stylesheets filter='compass' output='bundles/infogoalkicker/css/*.css'
-        '@InfoGoalKickerBundle/Resources/public/css/Table/table-game.scss'
-        '@InfoGoalKickerBundle/Resources/public/css/Profile/player.scss'
+        '@InfoGoalKickerBundle/Resources/public/scss/Table/table-game.scss'
+        '@InfoGoalKickerBundle/Resources/public/scss/Profile/player.scss'
     %}
     <link href="{{ asset_url }}" rel="stylesheet">
     {% endstylesheets %}
