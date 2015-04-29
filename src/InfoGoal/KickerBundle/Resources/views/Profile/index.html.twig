@@ -3,8 +3,12 @@
 {% block title %}Profile{% endblock %}
 {% block stylesheets %}
     {{ parent() }}
-    <link href="{{ asset('/bundles/infogoalkicker/css/Profile/profile.css') }}" rel="stylesheet">
-    <link href="{{ asset('/bundles/infogoalkicker/css/Profile/player.css') }}" rel="stylesheet">
+    {% stylesheets filter='compass' output='bundles/infogoalkicker/css/*.css'
+    '@InfoGoalKickerBundle/Resources/public/css/Profile/profile.scss'
+    '@InfoGoalKickerBundle/Resources/public/css/Profile/player.scss'
+    %}
+    <link rel="stylesheet" href="{{ asset_url }}" />
+    {% endstylesheets %}
 {% endblock %}
 
 {% block body %}

@@ -3,7 +3,11 @@
 {% block title %}Table:free{% endblock %}
 {% block stylesheets %}
     {{ parent() }}
-    <link rel="stylesheet" href="{{ asset('/bundles/infogoalkicker/css/Table/table-free.css') }}" />
+    {% stylesheets filter='compass' output='bundles/infogoalkicker/css/*.css'
+        '@InfoGoalKickerBundle/Resources/public/css/Table/table-free.scss'
+    %}
+    <link rel="stylesheet" href="{{ asset_url }}" />
+    {% endstylesheets %}
 {% endblock %}
 
 {% block body %}

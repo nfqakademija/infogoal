@@ -4,8 +4,13 @@
         <meta charset="UTF-8" />
         <title>{% block title %}Welcome!{% endblock %}</title>
         {% block stylesheets %}
-            <link rel="stylesheet" href="{{ asset('/bundles/infogoalkicker/css/bootstrap.min.css') }}" />
-            <link rel="stylesheet" href="{{ asset('/bundles/infogoalkicker/css/general.css') }}" />
+            {% stylesheets filter='compass' output='bundles/infogoalkicker/css/*.css'
+                '@InfoGoalKickerBundle/Resources/public/css/bootstrap.min.css'
+                '@InfoGoalKickerBundle/Resources/public/css/general.scss'
+            %}
+            <link rel="stylesheet" href="{{ asset_url }}" />
+            {% endstylesheets %}
+
         {% endblock %}
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
     </head>
