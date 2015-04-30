@@ -1,28 +1,26 @@
-#field-free, .table-free img {
+#field-free {
     vertical-align: middle;
     margin: 0 auto;
     display: block;
-}
-
-.table-free {
+  .table-free {
     position: absolute;
-    top: 140px;
+    top: 120px;
     left: 0;
     right: 0;
-}
 
-.table-free p {
-    font-size: 36px;
-    font-weight: bold;
-    margin-bottom: 250px;
-}
-
-@media (max-width: 768px) {
-    .table-free {
-        top: 45px;
+    @media (max-width: 768px) {
+      top: 45px;
     }
-    .table-free p {
+
+    p {
+      font-size: 36px;
+      font-weight: bold;
+      margin-bottom: 250px;
+      @media (max-width: 768px) {
         font-size: 18px;
         margin-bottom: 150px;
+      }
     }
+  }
 }
+
