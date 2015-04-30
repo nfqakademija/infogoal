@@ -8,8 +8,8 @@ class TableController extends Controller
 {
         public function indexAction()
     {
-        $isFree = false;
-        if($isFree == true){
+        $status = $this->getDoctrine()->getRepository('InfoGoalKickerBundle:TableOption')->findOneBy(array("optionKey" => "table_status"));
+        if($status){
             return $this->render('InfoGoalKickerBundle:Table:index.html.twig', array( ));
         } else {
             return $this->render('InfoGoalKickerBundle:Table:game.html.twig', array( ));
