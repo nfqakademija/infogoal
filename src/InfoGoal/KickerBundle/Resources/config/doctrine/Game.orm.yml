@@ -1,6 +1,6 @@
 InfoGoal\KickerBundle\Entity\Game:
     type: entity
-    table: null
+    table: games
     repositoryClass: InfoGoal\KickerBundle\Entity\GameRepository
     id:
         id:
@@ -15,22 +15,29 @@ InfoGoal\KickerBundle\Entity\Game:
         dateEnd:
             type: datetime
             column: date_end
+            nullable: TRUE
         player1:
             type: integer
             column: player_1
+            nullable: TRUE
         player2:
             type: integer
             column: player_2
+            nullable: TRUE
         player3:
             type: integer
             column: player_3
+            nullable: TRUE
         player4:
             type: integer
             column: player_4
+            nullable: TRUE
         goal1:
             type: smallint
             column: goal_1
+            nullable: TRUE
         goal2:
             type: smallint
             column: goal_2
+            nullable: TRUE
     lifecycleCallbacks: {  }
