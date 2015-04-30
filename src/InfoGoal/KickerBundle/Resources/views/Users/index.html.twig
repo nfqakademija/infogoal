@@ -1,0 +1,20 @@
+{% extends "::base.html.twig" %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    {% stylesheets filter='compass' output='bundles/infogoalkicker/css/*.css'
+        '@InfoGoalKickerBundle/Resources/public/scss/Users/users.scss'
+        '@InfoGoalKickerBundle/Resources/public/scss/Users/user.scss'
+    %}
+    <link href="{{ asset_url }}" rel="stylesheet"/>
+    {% endstylesheets %}
+{% endblock %}
+
+{% block title %}Users{% endblock %}
+
+{% block body %}
+    <main class="container">
+         {% include '@InfoGoalKicker/Users/user.html.twig' %}
+
+    </main><!-- end container -->
+{% endblock %}
