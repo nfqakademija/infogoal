@@ -41,10 +41,15 @@ class DataAnalyzer
      * @var Game
      */
     private $activeGame;
+    /**
+     * @var ExpCalculator
+     */
+    private $calculator;
 
-    public function __construct(EntityManager $em)
+    public function __construct(EntityManager $em, ExpCalculator $calculator)
     {
         $this->em = $em;
+        $this->calculator = $calculator;
     }
 
     public function setOptions($options)
@@ -218,6 +223,8 @@ class DataAnalyzer
         $date->setTimestamp($time);
         $this->activeGame->setDateEnd($date);
         $this->em->flush();
+
+//        $this->calculator->Calculate()
     }
 
     /**
