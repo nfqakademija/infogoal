@@ -1,16 +1,22 @@
+$badge-dim: 100px;
+$color-light-grey: rgba(242, 242, 242, 1);
+$badge-margin-dim: 15px;
+$color-black: #000000;
+$color-white: #ffffff;
+
 body {
-    background-color: rgba(242, 242, 242, 1);
+  background-color: $color-light-grey;
 }
 
 .profile-badges-container {
-    background-color: white;
-    padding: 0 0 0 20px;
-    color: black;
+  background-color: $color-white;
+  padding: 0 0 0 20px;
+  color: $color-black;
 }
 
 .my-badge {
-    border: 1px solid black;
-    width: 100px;
-    height: 100px;
-    margin: 0 15px 15px 0;
+  border: 1px solid $color-black;
+  width: $badge-dim;
+  height: $badge-dim;
+  margin: 0 $badge-margin-dim $badge-margin-dim 0;
 }
