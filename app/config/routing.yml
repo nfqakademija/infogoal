@@ -1,3 +1,7 @@
+info_goal_api:
+    resource: "@InfoGoalApiBundle/Resources/config/routing.yml"
+    prefix:   /
+
 info_goal_kicker:
     resource: "@InfoGoalKickerBundle/Resources/config/routing.yml"
     prefix:   /

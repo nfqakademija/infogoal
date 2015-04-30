@@ -1,0 +1,3 @@
+api_index:
+    path:     /api
+    defaults: { _controller: InfoGoalApiBundle:Api:index}

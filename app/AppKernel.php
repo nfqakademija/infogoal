@@ -17,6 +17,7 @@ class AppKernel extends Kernel
             new Doctrine\Bundle\DoctrineBundle\DoctrineBundle(),
             new Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle(),
             new InfoGoal\KickerBundle\InfoGoalKickerBundle(),
+            new InfoGoal\ApiBundle\InfoGoalApiBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {
@@ -32,5 +33,35 @@ class AppKernel extends Kernel
     public function registerContainerConfiguration(LoaderInterface $loader)
     {
         $loader->load($this->getRootDir().'/config/config_'.$this->getEnvironment().'.yml');
+    }
+
+    /**
+     * Cache directory overridden.
+     * This is out of /var/www to prevent slow cache syncing on every page reload.
+     *
+     * @return string
+     */
+    public function getCacheDir()
+    {
+        if (in_array($this->environment, array('dev', 'test'))) {
+            return '/dev/shm/infogoal/cache';
+        }
+
+        return parent::getCacheDir();
+    }
+
+    /**
+     * Logs directory overridden.
+     * This is out of /var/www to prevent slow logs syncing on every page reload.
+     *
+     * @return string
+     */
+    public function getLogDir()
+    {
+        if (in_array($this->environment, array('dev', 'test'))) {
+            return '/dev/shm/infogoal/logs';
+        }
+
+        return parent::getLogDir();
     }
 }
