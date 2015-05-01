@@ -42,9 +42,15 @@ class DataAnalyzer
      */
     private $activeGame;
 
-    public function __construct(EntityManager $em)
+    /**
+     * @var ExpCalculator
+     */
+    private $calculator;
+
+    public function __construct(EntityManager $em, ExpCalculator $calculator)
     {
         $this->em = $em;
+        $this->calculator = $calculator;
     }
 
     public function setOptions($options)
@@ -146,13 +152,24 @@ class DataAnalyzer
     public function eventAutoGoal($eventData, $eventTime)
     {
         $goal = json_decode($eventData);
+
+        $cardIds = [];
+
         if ($goal->team == 0) {
             $this->activeGame->setGoal1();
             $teamGoalsCount = $this->activeGame->getGoal1();
+
+            array_push($cardIds, $this->activeGame->getPlayer1(), $this->activeGame->getPlayer2());
+
         } else {
             $this->activeGame->setGoal2();
             $teamGoalsCount = $this->activeGame->getGoal2();
+
+            array_push($cardIds, $this->activeGame->getPlayer3(), $this->activeGame->getPlayer4());
+
         }
+
+        $this->calculator->CalculateGoal($cardIds);
 
         $this->em->flush();
 
@@ -172,7 +189,7 @@ class DataAnalyzer
         $player = (string)$cardSwipe->team . $cardSwipe->player;
         switch ($player) {
             case "00":
-                $this->activeGame->setPlayer1($cardSwipe->card_id);
+                $this->activeGame->getPlayer1($cardSwipe->card_id);
                 break;
             case "01":
                 $this->activeGame->setPlayer2($cardSwipe->card_id);
@@ -218,6 +235,9 @@ class DataAnalyzer
         $date->setTimestamp($time);
         $this->activeGame->setDateEnd($date);
         $this->em->flush();
+
+        $this->calculator->CalculateGame($this->activeGame);
+
     }
 
     /**
