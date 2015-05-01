@@ -6,73 +6,61 @@ body {
     margin-bottom: 70px;
 }
 
-.logo {
-    width: 55px;
-    padding-top: 7px;
-}
+.navbar, .navbar-default {
 
-.navbar-nav {
-  li {
-    a {
-      line-height: 70px;
-      height: 70px;
-      padding: 0 20px;
-    }
-  }
-}
-
-.navbar-brand {
-  line-height: 70px;
-  height: 70px;
-  padding: 0 20px;
-}
-
-.navbar-default {
-  .navbar-nav {
-    li {
-      a {
-        color: $color-green;
-      }
-    }
-  }
-}
-
-.navbar-toggle {
-    vertical-align: middle;
-    margin-top: 18px;
-}
-
-.navbar-fixed-top {
-  .navbar-collapse {
-    max-height: 400px;
-    text-align: center;
-  }
-}
-
-.navbar-default{
     background-color: $color-white;
     border-bottom: 2px solid $color-light-green;
     margin-bottom: 50px;
-}
 
-.navbar-right {
-  li:hover {
-    background-color: #eee;
-  }
-}
+    .navbar-toggle {
+        vertical-align: middle;
+        margin-top: 18px;
+    }
 
-.navbar-default {
-  .navbar-nav > .active > a {
-    background-color: $color-light-green;
-    color: $color-white;
-  }
-}
+    .navbar-brand {
+        line-height: 70px;
+        height: 70px;
+        padding: 0 20px;
 
-.navbar-default {
-  .navbar-nav > .active > a:hover {
-    background-color: $color-light-green;
-    color: $color-white;
-  }
+        .logo {
+            width: 55px;
+          padding-top: 7px;
+        }
+    }
+
+    .navbar-collapse {
+        max-height: 400px;
+        text-align: center;
+
+        .navbar-nav {
+            li {
+                a {
+                    line-height: 70px;
+                    height: 70px;
+                    padding: 0 20px;
+                    color: $color-green;
+
+                    @media (max-width: 992px) {
+                      padding: 0 15px;
+                    }
+                }
+                &:hover {
+                    background-color: #eee;
+                }
+              }
+            }
+
+            .navbar-nav > .active > a {
+                background-color: $color-light-green;
+                color: $color-white;
+
+              &:hover {
+                  background-color: $color-light-green;
+                  color: $color-white;
+              }
+          }
+    }
+
 }
 
 .li-button {
@@ -95,11 +83,13 @@ body {
     padding: 10px 20px;
     text-transform: uppercase;
     margin-left: 30px;
+    margin-right: 15px;
     margin-top: 15px;
 }
 
 .table-rez-btn#index {
   margin-left: 0;
+  margin-right: 0;
 }
 
 .block {
