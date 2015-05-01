@@ -2,10 +2,12 @@
 namespace InfoGoal\ApiBundle\Service;
 
 use InfoGoal\KickerBundle\Player;
+use InfoGoal\KickerBundle\Game;
 
 
 class ExpCalculator {
     private $em;
+
 
 
     function __construct($em)
@@ -13,35 +15,40 @@ class ExpCalculator {
        $this->em = $em;
     }
 
-    public function CalculateGoal($id)
+    public function CalculateGoal($cardIds)
     {
-        $this->$player = $this->em->getRepository('InfoGoalKickerBundle:Player')->find($id);
+        foreach($cardIds as $cardId) {
+            $player = $this->em->getRepository('InfoGoalKickerBundle:Player')->find($cardId);
 
-        $player->setXp($player->getXp() + 50);
+            $player->setXp($player->getXp() + 50);
 
-        levelUp($player);
+            levelUp($player);
+        }
     }
 
-    public function CalculateGame($id, $time, $win){
+    public function CalculateGame($game)
+    {
 
-        $exp = $time * 5 + 50;
+        $exp = ($game->getDateEnd() - $game->getDateStart()) * 5 + 50;
+        echo $exp;
+        return;
+        $cardIds = [];
+        array_push($cardIds, $game->getPlayer1(), $game->getPlayer2(), $game->getPlayer3(), $game->getPlayer4());
 
-        if ($win)
-            $this->$exp = + 50;
+//        if($game->)
 
-        $this->em = $this->getDoctrine()->getManager();
+        foreach ($cardIds as $cardId) {
+            $player = $this->em->getRepository('InfoGoalKickerBundle:Player')->find($cardId);
 
-        $player = $this->em->getRepository('InfoGoalKickerBundle:Player')->find($id);
+            $player->setXp($player->getXp() + $exp);
 
-        $player->setXp($player->getXp() + $exp);
+            levelUp($player);
+        }
 
-        levelUp($player);
-
-        $this->em->persist($player);
-        $this->em->flush();
+            $this->em->persist($player);
+            $this->em->flush();
 
     }
-
     public function levelUp($player){
         if ($player->getXp() >= $player->getLevelXp() )
         {
