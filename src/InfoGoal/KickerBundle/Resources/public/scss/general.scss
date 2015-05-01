@@ -112,9 +112,9 @@ body {
     background-color: $color-two;
     color: $color-white;
     margin-top: 150px;
-    /*@include box-shadow($color-fourth 2px 2px 3px 0px);*/
-    /*-webkit-box-shadow: 2px 2px 3px 0px rgba(50, 50, 50, 0.55);*/
-    /*-moz-box-shadow:    2px 2px 3px 0px rgba(50, 50, 50, 0.55);*/
-    /*box-shadow:         2px 2px 3px 0px rgba(50, 50, 50, 0.55);*/
+//    @include box-shadow($color-fourth 2px 2px 3px 0px);
+    -webkit-box-shadow: 2px 2px 3px 0px rgba(50, 50, 50, 0.55);
+    -moz-box-shadow:    2px 2px 3px 0px rgba(50, 50, 50, 0.55);
+    box-shadow:         2px 2px 3px 0px rgba(50, 50, 50, 0.55);
     padding: 20px 10px;
 }
