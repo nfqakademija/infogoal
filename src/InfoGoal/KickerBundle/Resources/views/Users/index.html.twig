@@ -17,18 +17,34 @@
 
         <div class="block">
             <div class="row">
-                <div class="col-lg-2">
-                    <p>Lygis</p>
-                    <span class="glyphicon glyphicon-triangle-bottom" aria-hidden="true"></span>
-                </div>
-                <div class="col-lg-2">
-                    <p>Vardas</p>
+                <div class="col-sm-2  vcenter">
+                    <p class="pull-left">Lygis</p>
+                    <span class="glyphicon glyphicon-triangle-bottom"></span>
+                </div><!--
+                    solution for extra space http://stackoverflow.com/questions/20547819/vertical-align-with-bootstrap-3
+            --><div class="col-sm-4  vcenter">
+                    <p class="pull-left">Vardas</p>
+                    <span class="glyphicon glyphicon-triangle-bottom"></span>
+                </div><!--
+            --><div class="col-sm-2  vcenter">
+                    <p class="pull-left">Žaista</p>
+                    <span class="glyphicon glyphicon-triangle-bottom"></span>
+                </div><!--
+            --><div class="col-sm-2  vcenter">
+                    <p class="pull-left">Laimėta</p>
+                    <span class="glyphicon glyphicon-triangle-bottom"></span>
+                </div><!--
+            --><div class="col-sm-2  vcenter">
+                    <p class="pull-left">Paskutinis <br />žaidimas</p>
                     <span class="glyphicon glyphicon-triangle-bottom"></span>
                 </div>
             </div>
         </div>
 
-         {% include '@InfoGoalKicker/Users/user.html.twig' %}
+        {% include '@InfoGoalKicker/Users/user.html.twig' %}
+        {% include '@InfoGoalKicker/Users/user.html.twig' %}
+        {% include '@InfoGoalKicker/Users/user.html.twig' %}
+
 
     </main><!-- end container -->
 {% endblock %}

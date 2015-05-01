@@ -1,27 +1,4 @@
-$level-icon-dim: 35px;
-$right: right;
-$left: left;
-$color-white: #ffffff;
-$color-green: #009933;
-$color-black: #000000;
-
-.progress {
-  display: block;
-  border-radius: 25px;
-  position: relative;
-  margin-bottom: 6px;
-  span {
-    position: absolute;
-    display: block;
-    width: 100%;
-    color: $color-black;
-  }
-}
-
-.img-thumbnail {
-  border-radius: 0;
-  padding: 3px;
-}
+@import "../vars";
 
 .player-name {
   font-size: 24px;
