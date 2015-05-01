@@ -9,5 +9,5 @@ services:
         arguments: [@kicker.analyzer]
 
     kicker.calculator:
-        class: InfoGoal\ApiBundle\Servicez\ExpCalculator
+        class: InfoGoal\ApiBundle\Service\ExpCalculator
         arguments: [@doctrine.orm.entity_manager]

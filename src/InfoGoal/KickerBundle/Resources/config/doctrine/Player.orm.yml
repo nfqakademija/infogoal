@@ -1,6 +1,6 @@
 InfoGoal\KickerBundle\Entity\Player:
     type: entity
-    table: null
+    table: players
     repositoryClass: InfoGoal\KickerBundle\Entity\PlayerRepository
     id:
         id:
@@ -35,4 +35,9 @@ InfoGoal\KickerBundle\Entity\Player:
         lastGame:
             column: lastGame
             type: datetime
+            nullable: TRUE
+        photo:
+            column: photo
+            type: string
+            length: 100
     lifecycleCallbacks: {  }

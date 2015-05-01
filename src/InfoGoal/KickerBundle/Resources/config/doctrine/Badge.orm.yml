@@ -1,6 +1,6 @@
 InfoGoal\KickerBundle\Entity\Badge:
     type: entity
-    table: null
+    table: badges
     repositoryClass: InfoGoal\KickerBundle\Entity\BadgeRepository
     id:
         id:

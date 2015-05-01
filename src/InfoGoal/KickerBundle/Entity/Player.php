@@ -53,6 +53,26 @@ class Player
      */
     private $lastGame = NULL;
 
+    /**
+     * @var String
+     */
+    private $photo;
+
+    /**
+     * @return String
+     */
+    public function getPhoto()
+    {
+        return $this->photo;
+    }
+
+    /**
+     * @param String $photo
+     */
+    public function setPhoto($photo)
+    {
+        $this->photo = $photo;
+    }
 
     /**
      * Get id

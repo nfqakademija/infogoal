@@ -1,7 +1,24 @@
 {% extends "::base.html.twig" %}
 
-{% block title %}InfoGoalKickerBundle:Table:index{% endblock %}
+{% block stylesheets %}
+    {{ parent() }}
+    {% stylesheets filter='compass' output='bundles/infogoalkicker/css/*.css'
+        '@InfoGoalKickerBundle/Resources/public/scss/Table/table-free.scss'
+    %}
+    <link href="{{ asset_url }}" rel="stylesheet">
+    {% endstylesheets %}
+{% endblock %}
+
+{% block title %}Table{% endblock %}
 
 {% block body %}
-    <h1>Welcome to the Table:index page</h1>
+    <main class="container"></main>
+        <div id="table" class=" col-lg-12 col-md-12 col-sm-12 col-xs-12 ">
+            <img id="field-free" src="{{ asset('/bundles/infogoalkicker/assets/soccer-field2.png') }}" alt="Soccer field" class="img-responsive">
+            <div class="table-free">
+                <p>Stalas laisvas!</p>
+                <button id="index" class="table-rez-btn" onclick="location.href='{{ url('reserved_index') }}'">Rezervuoti</button>
+            </div>
+        </div><!-- end table -->
+    </main><!-- end container -->
 {% endblock %}
