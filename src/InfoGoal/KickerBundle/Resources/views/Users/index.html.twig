@@ -3,9 +3,8 @@
 {% block stylesheets %}
     {{ parent() }}
     {% stylesheets filter='compass' output='bundles/infogoalkicker/css/*.css'
-        '@InfoGoalKickerBundle/Resources/public/scss/Users/users.scss'
-        '@InfoGoalKickerBundle/Resources/public/scss/Users/user.scss'
-    %}
+    '@InfoGoalKickerBundle/Resources/public/scss/Users/users.scss'
+    '@InfoGoalKickerBundle/Resources/public/scss/Users/user.scss' %}
     <link href="{{ asset_url }}" rel="stylesheet"/>
     {% endstylesheets %}
 {% endblock %}
@@ -15,31 +14,71 @@
 {% block body %}
     <main class="container">
 
-        <div class="block">
-            <div class="row">
-                <div class="col-sm-2  vcenter">
-                    <p class="pull-left">Lygis</p>
-                    <span class="glyphicon glyphicon-triangle-bottom"></span>
-                </div><!--
-                    solution for extra space http://stackoverflow.com/questions/20547819/vertical-align-with-bootstrap-3
-            --><div class="col-sm-4  vcenter">
-                    <p class="pull-left">Vardas</p>
-                    <span class="glyphicon glyphicon-triangle-bottom"></span>
-                </div><!--
-            --><div class="col-sm-2  vcenter">
-                    <p class="pull-left">Žaista</p>
-                    <span class="glyphicon glyphicon-triangle-bottom"></span>
-                </div><!--
-            --><div class="col-sm-2  vcenter">
-                    <p class="pull-left">Laimėta</p>
-                    <span class="glyphicon glyphicon-triangle-bottom"></span>
-                </div><!--
-            --><div class="col-sm-2  vcenter">
-                    <p class="pull-left">Paskutinis <br />žaidimas</p>
-                    <span class="glyphicon glyphicon-triangle-bottom"></span>
+        <div class="row">
+            <div class="col-xs-6 col-sm-offset-3">
+                <div class="input-group stylish-input-group">
+                    <input type="text" class="form-control" placeholder="Paieška">
+                        <span class="input-group-addon">
+                            <button type="submit">
+                                <span class="glyphicon glyphicon-search"></span>
+                            </button>
+                        </span>
+                </div>
+            </div>
+
+            <div class="btn-group dropdown visible-xs col-xs-6">
+                <div class="pull-right"><!--
+            --><button type="button" class="btn btn-default" disabled>Rikiuoti pagal</button><!--
+            --><button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                    <span class="caret"></span>
+                </button>
+                    <ul class="dropdown-menu">
+                        <li><a role="menuitem" tabindex="-1" href="#">Vardą</a></li>
+                        <li><a role="menuitem" tabindex="-1" href="#">Lygį</a></li>
+                        <li><a role="menuitem" tabindex="-1" href="#">Žaidimų skaičių</a></li>
+                        <li><a role="menuitem" tabindex="-1" href="#">Pergalių skaičių</a></li>
+                        <li><a role="menuitem" tabindex="-1" href="#">Paskutinį žaidimą</a></li>
+                    </ul>
                 </div>
             </div>
         </div>
+        <div class="row hidden-xs">
+        <div id="sort-menu" class="btn-group" role="group">
+
+                <button type="button" class="btn btn-default col-sm-4">
+                    <div>
+                        <p>Vardas</p>
+                        <span class="caret"></span>
+                    </div>
+                </button><!--
+                solution for extra space http://stackoverflow.com/questions/20547819/vertical-align-with-bootstrap-3
+            --><button type="button" class="btn btn-default col-sm-2">
+                    <div>
+                        <p>Lygis</p>
+                        <span class="caret"></span>
+                    </div>
+                </button><!--
+            --><button type="button" class="btn btn-default col-sm-2">
+                    <div>
+                        <p>Žaista</p>
+                        <span class="caret"></span>
+                    </div>
+                </button><!--
+            --><button type="button" class="btn btn-default col-sm-2">
+                    <div>
+                        <p>Laimėta</p>
+                        <span class="caret"></span>
+                    </div>
+                </button><!--
+            --><button type="button" class="btn btn-default col-sm-2">
+                    <div>
+                        <p >Pask. žaidimas</p>
+                        <span class="caret"></span>
+                    </div>
+                </button>
+            </div>
+        </div>
+
 
         {% include '@InfoGoalKicker/Users/user.html.twig' %}
         {% include '@InfoGoalKicker/Users/user.html.twig' %}
