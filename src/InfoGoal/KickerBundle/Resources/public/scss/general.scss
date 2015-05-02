@@ -47,10 +47,6 @@ body {
                     height: 70px;
                     padding: 0 20px;
                     color: $color-green;
-
-                    @media (max-width: 992px) {
-                      padding: 0 15px;
-                    }
                 }
                 &:hover {
                     background-color: #eee;
@@ -84,7 +80,7 @@ body {
 }
 
 #table {
-    margin: 150px auto 0;
+    margin: 0 auto;
     color: $color-white;
     text-align: center;
     position: relative;
@@ -109,8 +105,6 @@ body {
 .block {
     background-color: $color-light-green;
     color: $color-white;
-    margin-top: 150px;
-//    @include box-shadow($color-fourth 2px 2px 3px 0px);
     -webkit-box-shadow: 2px 2px 3px 0px rgba(50, 50, 50, 0.55);
     -moz-box-shadow:    2px 2px 3px 0px rgba(50, 50, 50, 0.55);
     box-shadow:         2px 2px 3px 0px rgba(50, 50, 50, 0.55);
