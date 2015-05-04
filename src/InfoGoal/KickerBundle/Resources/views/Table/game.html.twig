@@ -19,25 +19,25 @@
 
             <div id="team-0" >
                 <div class="player-0 row">
-                  {% include '@InfoGoalKicker/Table/player.html.twig' %}
+                  {{ include('@InfoGoalKicker/Table/player.html.twig', { 'player': game.player1 }) }}
                 </div><!--end player-0 -->
 
                 <div class="player-1 row">
-                    {% include '@InfoGoalKicker/Table/player.html.twig' %}
+                    {{ include('@InfoGoalKicker/Table/player.html.twig', { 'player': game.player2 }) }}
                 </div><!--end player-1 -->
             </div><!--end team-0 -->
 
             <div id="team-1" >
                 <div class="player-0 row">
-                    {% include '@InfoGoalKicker/Table/player.html.twig' %}
+                    {{ include('@InfoGoalKicker/Table/player.html.twig', { 'player': game.player3 }) }}
                 </div><!--end player-0 -->
                 <div class="player-1 row">
-                    {% include '@InfoGoalKicker/Table/player.html.twig' %}
+                    {{ include('@InfoGoalKicker/Table/player.html.twig', { 'player': game.player4 }) }}
                 </div><!--end player-1 -->
             </div><!--end team-1 -->
             <div class="result col-lg-2 col-xs-4">
                 <div>
-                    08 : 06
+                    {{ game.goal1 }} : {{ game.goal2 }}
                 </div>
             </div>
         </div><!-- end table-game -->
