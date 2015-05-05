@@ -92,7 +92,7 @@ class DataAnalyzer
         }
 
         // is the game time out?
-        $gameTimeOut = $this->options['last_event_time'] < strtotime('-5 minutes', strtotime('now')) ? true : false;
+        $gameTimeOut = $this->options['last_event_time'] < strtotime('-1 minutes', strtotime('now')) ? true : false;
 
         // are there any new events?
         $unreadEvents = sizeof($this->events) > 0;
@@ -116,7 +116,7 @@ class DataAnalyzer
             // save state before current event
             $gameIsStarted = $this->gameIsStarted;
             if ($gameIsStarted) {
-                if ($this->options['last_event_time'] < strtotime('-5 minutes', $event['timeSec'])) {
+                if ($this->options['last_event_time'] < strtotime('-1 minutes', $event['timeSec'])) {
                     $this->markGameEnd($this->options['last_event_time']);
                     $this->markGameStart($event['timeSec']);
                 }
