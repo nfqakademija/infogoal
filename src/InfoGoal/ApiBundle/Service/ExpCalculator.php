@@ -1,59 +1,93 @@
 <?php
 namespace InfoGoal\ApiBundle\Service;
 
-use InfoGoal\KickerBundle\Player;
-use InfoGoal\KickerBundle\Game;
+use InfoGoal\KickerBundle\Entity\Player;
+use InfoGoal\KickerBundle\Entity\Game;
+use Symfony\Component\Validator\Constraints\Null;
 
 
-class ExpCalculator {
+class ExpCalculator
+{
     private $em;
-
 
 
     function __construct($em)
     {
-       $this->em = $em;
+        $this->em = $em;
     }
 
     public function CalculateGoal($cardIds)
     {
-        foreach($cardIds as $cardId) {
-            $player = $this->em->getRepository('InfoGoalKickerBundle:Player')->find($cardId);
+        foreach ($cardIds as $cardId) {
+            if ($cardId != null) {
+                $player = $this->em->getRepository('InfoGoalKickerBundle:Player')->find($cardId);
+                if ($player != null) {
+                    $player->setXp($player->getXp() + 10);
 
-            $player->setXp($player->getXp() + 50);
+                    levelUp($player);
 
-            levelUp($player);
+                    $this->em->flush();
+                }
+            }
         }
     }
 
     public function CalculateGame($game)
     {
-
-        $exp = ($game->getDateEnd() - $game->getDateStart()) * 5 + 50;
-        echo $exp;
-        return;
+        $timeEnd = $game->getDateEnd()->getTimestamp();
+        $timeStart = $game->getDateStart()->getTimestamp();
+        $exp = ceil(($timeEnd - $timeStart)/60) * 5 + 50;
+        echo  "exp".$exp;
         $cardIds = [];
-        array_push($cardIds, $game->getPlayer1(), $game->getPlayer2(), $game->getPlayer3(), $game->getPlayer4());
+        if ($game->getGoal1() > $game->getGoal2()) {
+            array_push($cardIds, $game->getPlayer1(), $game->getPlayer2(), $game->getPlayer3(), $game->getPlayer4());
+        }
+        else{
+            array_push($cardIds, $game->getPlayer4(), $game->getPlayer3(), $game->getPlayer2(), $game->getPlayer1());
+        }
+        for ($i = 0; $i < 2; $i++){
+            if($cardIds[$i] != null) {
+                $player = $this->em->getRepository('InfoGoalKickerBundle:Player')->find($cardIds[$i]);
+                if ($player != null) {
+                    $player->setXp($player->getXp() + $exp + 50);
 
-//        if($game->)
+                    $player->setPlayed($player->getPlayed() + 1);
 
-        foreach ($cardIds as $cardId) {
-            $player = $this->em->getRepository('InfoGoalKickerBundle:Player')->find($cardId);
+                    $player->setWon($player->getWon() + 1);
 
-            $player->setXp($player->getXp() + $exp);
+                $player->setLastGame($game->getDateEnd);
+            }
 
-            levelUp($player);
+                $this->levelUp($player);
+            }
         }
 
-            $this->em->persist($player);
-            $this->em->flush();
+        for ($i = 2; $i < 4; $i++) {
+            if ($cardIds[$i] != null) {
+                $player = $this->em->getRepository('InfoGoalKickerBundle:Player')->find($cardIds[$i]);
+                if ($player != null) {
+                    $player->setXp($player->getXp() + $exp);
+
+                    $player->setPlayed($player->getPlayed() + 1);
+
+                    $player->setLastGame($game->getDateEnd);
+                }
+
+                $this->levelUp($player);
+            }
+        }
+
+        $this->em->flush();
 
     }
-    public function levelUp($player){
-        if ($player->getXp() >= $player->getLevelXp() )
-        {
-            $player->setLevel($player->getLevel() + 1);
-            $player->setLevelXp($player->getLevelXp()*1.5);
+
+    private function levelUp($player)
+    {
+        if($player != null) {
+            if ($player->getXp() >= $player->getLevelXp()) {
+                $player->setLevel($player->getLevel() + 1);
+                $player->setLevelXp($player->getLevelXp() * 1.5);
+            }
         }
     }
 } 
