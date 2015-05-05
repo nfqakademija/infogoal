@@ -1,12 +1,17 @@
 <div class="col-md-5 col-sm-4 col-xs-8 player-icon">
-    <img src="{{ asset('/bundles/infogoalkicker/assets/uifaces/128.jpg') }}" alt="player" class="img-thumbnail">
+    {% if player.photo is not defined %}
+        <img src="{{ asset('bundles/infogoalkicker/assets/uifaces/default.png') }}" alt="player" class="img-thumbnail">
+    {% else %}
+        <img src="{{ asset('bundles/infogoalkicker/assets/uifaces/' ~ player.photo ~ '.jpg') }}" alt="player" class="img-thumbnail">
+    {% endif %}
     <div class="level-icon"><div class="level-number">{{ player.level }}</div></div>
 </div>
 <div class="col-md-7 col-sm-8 hidden-xs player-info">
-    <p class="player-name"><a href="{{ url('profile_index') }}">{{ player.name }}</a></p>
+    <p class="player-name"><a href="{{ path('profile_page', {'id': player.id}) }}">{{ player.name }}</a></p>
     <p class="player-game-info">Žaista: {{ player.played }}   Laimėta: {{ player.won }}</p>
     <div class="progress">
-        <div class="progress-bar progress-bar-warning progress-bar-striped" role="progressbar" aria-valuenow="{{ player.xp }}" aria-valuemin="0" aria-valuemax="{{ player.levelXp }}" style="width:{{ player.xp*100/player.levelXp }}% ">
+        <div class="progress-bar progress-bar-warning progress-bar-striped" role="progressbar" aria-valuenow="{{ player.xp }}" aria-valuemin="0" aria-valuemax="{{ player.levelXp }}"
+             style="width:{{ player.xp*100/player.levelXp }}% ">
             <span>{{ player.xp }}/{{ player.levelXp }}</span>
         </div>
 

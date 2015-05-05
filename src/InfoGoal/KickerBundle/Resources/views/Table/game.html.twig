@@ -30,7 +30,7 @@
                 </div><!--end player-0 -->
 
                 <div class="player-1 row">
-                    {% if game.player2 is not defined %}
+                    {% if game.player2 is null %}
                         {{ include('@InfoGoalKicker/Table/playerDefault.html.twig') }}
 
                     {% else %}
@@ -42,11 +42,11 @@
 
             <div id="team-1" >
                 <div class="player-0 row">
-                    {% if game.player3 is not defined %}
+                    {% if game.player3 is null %}
                         {{ include('@InfoGoalKicker/Table/playerDefault.html.twig') }}
 
                     {% else %}
-                        {{ include('@InfoGoalKicker/Table/player.html.twig', { 'player': game.player2 }) }}
+                        {{ include('@InfoGoalKicker/Table/player.html.twig', { 'player': game.player3 }) }}
                     {% endif %}
                 </div><!--end player-0 -->
                 <div class="player-1 row">
@@ -54,7 +54,7 @@
                         {{ include('@InfoGoalKicker/Table/playerDefault.html.twig') }}
 
                     {% else %}
-                        {{ include('@InfoGoalKicker/Table/player.html.twig', { 'player': game.player2 }) }}
+                        {{ include('@InfoGoalKicker/Table/player.html.twig', { 'player': game.player4 }) }}
                     {% endif %}
                 </div><!--end player-1 -->
             </div><!--end team-1 -->

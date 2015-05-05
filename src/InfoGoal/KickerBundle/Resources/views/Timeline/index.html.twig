@@ -19,12 +19,12 @@
         <div class="row">
             <div class="timeline-centered">
 
-                {% include '@InfoGoalKicker/Timeline/game.html.twig' %}
-                {% include '@InfoGoalKicker/Timeline/game.html.twig' %}
-                {% include '@InfoGoalKicker/Timeline/game.html.twig' %}
-                {% include '@InfoGoalKicker/Timeline/game.html.twig' %}
+                {% for   %}
 
 
+                {% if game %}
+                    {{ include('@InfoGoalKicker/Timeline/game.html.twig', { 'game': game }) }}
+                {% endif %}
             </div>
         </div>
 
