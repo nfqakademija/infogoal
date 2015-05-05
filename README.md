@@ -1,5 +1,7 @@
 # InfoGoal
 
+[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/nfqakademija/infogoal/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/nfqakademija/infogoal/?branch=master)
+
 ## Setup
 1. Download and install [virtualbox](<https://www.virtualbox.org/wiki/Downloads) (4.3+)
 2. Download and install [vagrant](https://www.vagrantup.com/downloads.html) (1.6.5+)

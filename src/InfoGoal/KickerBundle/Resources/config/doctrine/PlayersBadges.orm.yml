@@ -1,0 +1,20 @@
+InfoGoal\KickerBundle\Entity\PlayersBadges:
+    type: entity
+    table: null
+    repositoryClass: InfoGoal\KickerBundle\Entity\PlayersBadgesRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        playerId:
+            type: integer
+        badgeId:
+            type: integer
+        date:
+            type: datetime
+    lifecycleCallbacks: {  }
+
+

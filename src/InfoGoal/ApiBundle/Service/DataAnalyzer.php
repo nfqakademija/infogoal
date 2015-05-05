@@ -189,7 +189,7 @@ class DataAnalyzer
         $player = (string)$cardSwipe->team . $cardSwipe->player;
         switch ($player) {
             case "00":
-                $this->activeGame->getPlayer1($cardSwipe->card_id);
+                $this->activeGame->setPlayer1($cardSwipe->card_id);
                 break;
             case "01":
                 $this->activeGame->setPlayer2($cardSwipe->card_id);
