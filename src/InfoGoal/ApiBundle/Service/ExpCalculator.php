@@ -24,7 +24,7 @@ class ExpCalculator
                 if ($player != null) {
                     $player->setXp($player->getXp() + 10);
 
-                    levelUp($player);
+                    $this->levelUp($player);
 
                     $this->em->flush();
                 }
