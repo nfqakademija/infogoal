@@ -114,8 +114,7 @@ class DataAnalyzer
     {
         foreach ($this->events as $event) {
             // save state before current event
-            $gameIsStarted = $this->gameIsStarted;
-            if ($gameIsStarted) {
+            if ($this->gameIsStarted) {
                 if ($this->options['last_event_time'] < strtotime('-1 minutes', $event['timeSec'])) {
                     $this->markGameEnd($this->options['last_event_time']);
                     $this->markGameStart($event['timeSec']);
@@ -123,7 +122,7 @@ class DataAnalyzer
             } else {
                 $this->markGameStart($event['timeSec']);
             }
-            $this->switchEvent($event, $gameIsStarted);
+            $this->switchEvent($event);
 
             $this->options['last_event_time'] = $event['timeSec'];
             $this->options['last_event_id'] = $event['id'];
@@ -134,14 +133,14 @@ class DataAnalyzer
      * @param array $event
      * @param boolean $gameStartedBeforeEvent
      */
-    public function switchEvent($event, $gameStartedBeforeEvent)
+    public function switchEvent($event)
     {
         switch ($event['type']) {
             case "AutoGoal":
                 $this->eventAutoGoal($event['data'], $event['timeSec']);
                 break;
             case "CardSwipe":
-                $this->eventCardSwipe($event['data'], $event['timeSec'], $gameStartedBeforeEvent);
+                $this->eventCardSwipe($event['data'], $event['timeSec']);
                 break;
         }
     }
@@ -164,31 +163,50 @@ class DataAnalyzer
         }
     }
 
-    public function eventCardSwipe($eventData, $eventTime, $gameStartedBeforeEvent)
+    public function eventCardSwipe($eventData, $eventTime)
     {
         $cardSwipe = json_decode($eventData);
-        if ($gameStartedBeforeEvent) {
-            $this->markGameEnd($this->options['last_event_time']);
-            $this->markGameStart($eventTime);
-        }
 
         $player = (string)$cardSwipe->team . $cardSwipe->player;
+        $allPlayingPlayers = $this->activeGame->getAllPlayers();
         switch ($player) {
             case "00":
+                $positionPlayer = $this->activeGame->getPlayer1();
+                if (!is_null($positionPlayer) || in_array($cardSwipe->card_id, $allPlayingPlayers)) {
+                    $this->finishOldStartNew($eventTime);
+                }
                 $this->activeGame->setPlayer1($cardSwipe->card_id);
                 break;
             case "01":
+                $positionPlayer = $this->activeGame->getPlayer2();
+                if (!is_null($positionPlayer) || in_array($cardSwipe->card_id, $allPlayingPlayers)) {
+                    $this->finishOldStartNew($eventTime);
+                }
                 $this->activeGame->setPlayer2($cardSwipe->card_id);
                 break;
             case "10":
+                $positionPlayer = $this->activeGame->getPlayer3();
+                if (!is_null($positionPlayer) || in_array($cardSwipe->card_id, $allPlayingPlayers)) {
+                    $this->finishOldStartNew($eventTime);
+                }
                 $this->activeGame->setPlayer3($cardSwipe->card_id);
                 break;
             case "11":
+                $positionPlayer = $this->activeGame->getPlayer4();
+                if (!is_null($positionPlayer) || in_array($cardSwipe->card_id, $allPlayingPlayers)) {
+                    $this->finishOldStartNew($eventTime);
+                }
                 $this->activeGame->setPlayer4($cardSwipe->card_id);
                 break;
         }
 
         $this->em->flush();
+    }
+
+    public function finishOldStartNew($eventTime)
+    {
+        $this->markGameEnd($this->options['last_event_time']);
+        $this->markGameStart($eventTime);
     }
 
     public function saveOptions()

@@ -245,4 +245,25 @@ class Game
     {
         return $this->goal2;
     }
+
+    /**
+     * @return array
+     */
+    public function getAllPlayers()
+    {
+        $players = [];
+        if (!is_null($this->player1)) {
+            array_push($players, $this->player1);
+        }
+        if (!is_null($this->player2)) {
+            array_push($players, $this->player2);
+        }
+        if (!is_null($this->player3)) {
+            array_push($players, $this->player3);
+        }
+        if (!is_null($this->player4)) {
+            array_push($players, $this->player4);
+        }
+        return $players;
+    }
 }
