@@ -19,24 +19,43 @@
 
             <div id="team-0" >
                 <div class="player-0 row">
-                    {% if game.player1 == NULL %}
+                    {% if game.player1 is null %}
+                        {{ include('@InfoGoalKicker/Table/playerDefault.html.twig') }}
+
+                    {% else %}
                         {{ include('@InfoGoalKicker/Table/player.html.twig', { 'player': game.player1 }) }}
                     {% endif %}
-                    {{ include('@InfoGoalKicker/Table/playerDefault.html.twig') }}
+
 
                 </div><!--end player-0 -->
 
                 <div class="player-1 row">
-                    {{ include('@InfoGoalKicker/Table/player.html.twig', { 'player': game.player2 }) }}
+                    {% if game.player2 is not defined %}
+                        {{ include('@InfoGoalKicker/Table/playerDefault.html.twig') }}
+
+                    {% else %}
+                        {{ include('@InfoGoalKicker/Table/player.html.twig', { 'player': game.player2 }) }}
+                    {% endif %}
+
                 </div><!--end player-1 -->
             </div><!--end team-0 -->
 
             <div id="team-1" >
                 <div class="player-0 row">
-                    {{ include('@InfoGoalKicker/Table/player.html.twig', { 'player': game.player3 }) }}
+                    {% if game.player3 is not defined %}
+                        {{ include('@InfoGoalKicker/Table/playerDefault.html.twig') }}
+
+                    {% else %}
+                        {{ include('@InfoGoalKicker/Table/player.html.twig', { 'player': game.player2 }) }}
+                    {% endif %}
                 </div><!--end player-0 -->
                 <div class="player-1 row">
-                    {{ include('@InfoGoalKicker/Table/player.html.twig', { 'player': game.player4 }) }}
+                    {% if game.player4 is null %}
+                        {{ include('@InfoGoalKicker/Table/playerDefault.html.twig') }}
+
+                    {% else %}
+                        {{ include('@InfoGoalKicker/Table/player.html.twig', { 'player': game.player2 }) }}
+                    {% endif %}
                 </div><!--end player-1 -->
             </div><!--end team-1 -->
             <div class="result col-lg-2 col-xs-4">
