@@ -8,8 +8,7 @@
   }
 }
 
-
-a:hover{
+a:hover {
   text-decoration: none;
 }
 
@@ -24,8 +23,12 @@ a:hover{
   text-align: center;
   display: table;
   position: absolute;
-  top: -5px;
-  right: 8px;
+  top: -8px;
+  right: 24px;
+  @media (max-width: 992px) {
+    top: -9px;
+    right: 5px;
+  }
 }
 
 .level-number {
@@ -33,8 +36,7 @@ a:hover{
   vertical-align: middle;
 }
 
-
-#team-0{
+#team-0 {
   .player-info {
     text-align: $left;
   }

@@ -1,12 +1,12 @@
-<div class="col-md-5 col-sm-4 col-xs-8 player-icon">
-    {% if player.photo is not defined %}
-        <img src="{{ asset('bundles/infogoalkicker/assets/uifaces/default.png') }}" alt="player" class="img-thumbnail">
-    {% else %}
+<div class="col-md-6 col-sm-4 col-xs-8 player-icon">
+    {% if player.photo is not empty %}
         <img src="{{ asset('bundles/infogoalkicker/assets/uifaces/' ~ player.photo ~ '.jpg') }}" alt="player" class="img-thumbnail">
+    {% else %}
+        <img src="{{ asset('bundles/infogoalkicker/assets/uifaces/default.png') }}" alt="player" class="img-thumbnail">
     {% endif %}
     <div class="level-icon"><div class="level-number">{{ player.level }}</div></div>
 </div>
-<div class="col-md-7 col-sm-8 hidden-xs player-info">
+<div class="col-md-6 col-sm-6 hidden-xs player-info">
     <p class="player-name"><a href="{{ path('profile_page', {'id': player.id}) }}">{{ player.name }}</a></p>
     <p class="player-game-info">Žaista: {{ player.played }}   Laimėta: {{ player.won }}</p>
     <div class="progress">
