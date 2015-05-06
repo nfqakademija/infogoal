@@ -12,6 +12,7 @@ use Doctrine\ORM\EntityManager;
 use InfoGoal\KickerBundle\Entity\TableOption;
 use Symfony\Component\HttpFoundation\Response;
 use InfoGoal\KickerBundle\Entity\Game;
+use InfoGoal\KickerBundle\Entity\Player;
 use DateTime;
 
 class DataAnalyzer
@@ -95,7 +96,7 @@ class DataAnalyzer
         }
 
         // is the game time out?
-        $gameTimeOut = $this->options['last_event_time'] < strtotime('-5 minutes', strtotime('now')) ? true : false;
+        $gameTimeOut = $this->options['last_event_time'] < strtotime('-1 minutes', strtotime('now')) ? true : false;
 
         // are there any new events?
         $unreadEvents = sizeof($this->events) > 0;
@@ -117,16 +118,15 @@ class DataAnalyzer
     {
         foreach ($this->events as $event) {
             // save state before current event
-            $gameIsStarted = $this->gameIsStarted;
-            if ($gameIsStarted) {
-                if ($this->options['last_event_time'] < strtotime('-5 minutes', $event['timeSec'])) {
+            if ($this->gameIsStarted) {
+                if ($this->options['last_event_time'] < strtotime('-1 minutes', $event['timeSec'])) {
                     $this->markGameEnd($this->options['last_event_time']);
                     $this->markGameStart($event['timeSec']);
                 }
             } else {
                 $this->markGameStart($event['timeSec']);
             }
-            $this->switchEvent($event, $gameIsStarted);
+            $this->switchEvent($event);
 
             $this->options['last_event_time'] = $event['timeSec'];
             $this->options['last_event_id'] = $event['id'];
@@ -137,14 +137,14 @@ class DataAnalyzer
      * @param array $event
      * @param boolean $gameStateBeforeEvent
      */
-    public function switchEvent($event, $gameStartedBeforeEvent)
+    public function switchEvent($event)
     {
         switch ($event['type']) {
             case "AutoGoal":
                 $this->eventAutoGoal($event['data'], $event['timeSec']);
                 break;
             case "CardSwipe":
-                $this->eventCardSwipe($event['data'], $event['timeSec'], $gameStartedBeforeEvent);
+                $this->eventCardSwipe($event['data'], $event['timeSec']);
                 break;
         }
     }
@@ -178,31 +178,57 @@ class DataAnalyzer
         }
     }
 
-    public function eventCardSwipe($eventData, $eventTime, $gameStartedBeforeEvent)
+    public function eventCardSwipe($eventData, $eventTime)
     {
         $cardSwipe = json_decode($eventData);
-        if ($gameStartedBeforeEvent) {
-            $this->markGameEnd($this->options['last_event_time']);
-            $this->markGameStart($eventTime);
+        $playingPlayersIds = $this->activeGame->getAllPlayersIds();
+        $whichPlayer = (string)$cardSwipe->team . $cardSwipe->player;
+
+        $player = $this->em->getRepository('InfoGoalKickerBundle:Player')->findOneByCardId($cardSwipe->card_id);
+        if (!$player) {
+            $player = new Player();
+            $player->setCardId($cardSwipe->card_id);
+            $player->setName("Guest" . time());
+            $player->setPhoto("");
+            $this->em->persist($player);
         }
 
-        $player = (string)$cardSwipe->team . $cardSwipe->player;
-        switch ($player) {
+        switch ($whichPlayer) {
             case "00":
-                $this->activeGame->getPlayer1($cardSwipe->card_id);
+                $positionPlayer = $this->activeGame->getPlayer1();
+                if (!is_null($positionPlayer) || in_array($player->getId(), $playingPlayersIds)) {
+                    $this->finishOldStartNew($eventTime);
+                }
+                $this->activeGame->setPlayer1($player);
                 break;
             case "01":
-                $this->activeGame->setPlayer2($cardSwipe->card_id);
+                $positionPlayer = $this->activeGame->getPlayer2();
+                if (!is_null($positionPlayer) || in_array($player->getId(), $playingPlayersIds)) {
+                    $this->finishOldStartNew($eventTime);
+                }
+                $this->activeGame->setPlayer2($player);
                 break;
             case "10":
-                $this->activeGame->setPlayer3($cardSwipe->card_id);
+                $positionPlayer = $this->activeGame->getPlayer3();
+                if (!is_null($positionPlayer) || in_array($player->getId(), $playingPlayersIds)) {
+                    $this->finishOldStartNew($eventTime);
+                }
+                $this->activeGame->setPlayer3($player);
                 break;
             case "11":
-                $this->activeGame->setPlayer4($cardSwipe->card_id);
+                $positionPlayer = $this->activeGame->getPlayer4();
+                if (!is_null($positionPlayer) || in_array($player->getId(), $playingPlayersIds)) {
+                    $this->finishOldStartNew($eventTime);
+                }
+                $this->activeGame->setPlayer4($player);
                 break;
         }
+    }
 
-        $this->em->flush();
+    public function finishOldStartNew($eventTime)
+    {
+        $this->markGameEnd($this->options['last_event_time']);
+        $this->markGameStart($eventTime);
     }
 
     public function saveOptions()
@@ -218,9 +244,9 @@ class DataAnalyzer
 
             $option->setOptionKey($optionKey);
             $option->setOptionValue($optionValue);
-
-            $this->em->flush();
         }
+
+        $this->em->flush();
     }
 
     /**
@@ -265,5 +291,29 @@ class DataAnalyzer
     public function markTableState($state)
     {
         $this->options['table_state'] = $state;
+    }
+
+    /**
+     * @param Game $game
+     */
+    public function setActiveGame(Game $game)
+    {
+        $this->activeGame = $game;
+    }
+
+    /**
+     * @return bool
+     */
+    public function getGameIsStarted()
+    {
+        return $this->gameIsStarted;
+    }
+
+    /**
+     * @return Game
+     */
+    public function getActiveGame()
+    {
+        return $this->activeGame;
     }
 } 

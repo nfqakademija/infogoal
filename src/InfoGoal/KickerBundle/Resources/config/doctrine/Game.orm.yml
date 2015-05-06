@@ -2,6 +2,31 @@ InfoGoal\KickerBundle\Entity\Game:
     type: entity
     table: games
     repositoryClass: InfoGoal\KickerBundle\Entity\GameRepository
+    manyToOne:
+            player1:
+                targetEntity: Player
+                inversedBy: games1
+                joinColumn:
+                    name: player_1
+                    referencedColumnName: id
+            player2:
+                targetEntity: Player
+                inversedBy: games2
+                joinColumn:
+                    name: player_2
+                    referencedColumnName: id
+            player3:
+                targetEntity: Player
+                inversedBy: games3
+                joinColumn:
+                    name: player_3
+                    referencedColumnName: id
+            player4:
+                targetEntity: Player
+                inversedBy: games4
+                joinColumn:
+                    name: player_4
+                    referencedColumnName: id
     id:
         id:
             type: integer
@@ -15,22 +40,6 @@ InfoGoal\KickerBundle\Entity\Game:
         dateEnd:
             type: datetime
             column: date_end
-            nullable: TRUE
-        player1:
-            type: integer
-            column: player_1
-            nullable: TRUE
-        player2:
-            type: integer
-            column: player_2
-            nullable: TRUE
-        player3:
-            type: integer
-            column: player_3
-            nullable: TRUE
-        player4:
-            type: integer
-            column: player_4
             nullable: TRUE
         goal1:
             type: smallint
