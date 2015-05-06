@@ -12,6 +12,7 @@ use Doctrine\ORM\EntityManager;
 use InfoGoal\KickerBundle\Entity\TableOption;
 use Symfony\Component\HttpFoundation\Response;
 use InfoGoal\KickerBundle\Entity\Game;
+use InfoGoal\KickerBundle\Entity\Player;
 use DateTime;
 
 class DataAnalyzer
@@ -156,8 +157,6 @@ class DataAnalyzer
             $teamGoalsCount = $this->activeGame->getGoal2();
         }
 
-        $this->em->flush();
-
         if ($teamGoalsCount == 10) {
             $this->markGameEnd($eventTime);
         }
@@ -166,41 +165,48 @@ class DataAnalyzer
     public function eventCardSwipe($eventData, $eventTime)
     {
         $cardSwipe = json_decode($eventData);
+        $playingPlayersIds = $this->activeGame->getAllPlayersIds();
+        $whichPlayer = (string)$cardSwipe->team . $cardSwipe->player;
 
-        $player = (string)$cardSwipe->team . $cardSwipe->player;
-        $allPlayingPlayers = $this->activeGame->getAllPlayers();
-        switch ($player) {
+        $player = $this->em->getRepository('InfoGoalKickerBundle:Player')->findOneByCardId($cardSwipe->card_id);
+        if (!$player) {
+            $player = new Player();
+            $player->setCardId($cardSwipe->card_id);
+            $player->setName("Guest" . time());
+            $player->setPhoto("");
+            $this->em->persist($player);
+        }
+
+        switch ($whichPlayer) {
             case "00":
                 $positionPlayer = $this->activeGame->getPlayer1();
-                if (!is_null($positionPlayer) || in_array($cardSwipe->card_id, $allPlayingPlayers)) {
+                if (!is_null($positionPlayer) || in_array($player->getId(), $playingPlayersIds)) {
                     $this->finishOldStartNew($eventTime);
                 }
-                $this->activeGame->setPlayer1($cardSwipe->card_id);
+                $this->activeGame->setPlayer1($player);
                 break;
             case "01":
                 $positionPlayer = $this->activeGame->getPlayer2();
-                if (!is_null($positionPlayer) || in_array($cardSwipe->card_id, $allPlayingPlayers)) {
+                if (!is_null($positionPlayer) || in_array($player->getId(), $playingPlayersIds)) {
                     $this->finishOldStartNew($eventTime);
                 }
-                $this->activeGame->setPlayer2($cardSwipe->card_id);
+                $this->activeGame->setPlayer2($player);
                 break;
             case "10":
                 $positionPlayer = $this->activeGame->getPlayer3();
-                if (!is_null($positionPlayer) || in_array($cardSwipe->card_id, $allPlayingPlayers)) {
+                if (!is_null($positionPlayer) || in_array($player->getId(), $playingPlayersIds)) {
                     $this->finishOldStartNew($eventTime);
                 }
-                $this->activeGame->setPlayer3($cardSwipe->card_id);
+                $this->activeGame->setPlayer3($player);
                 break;
             case "11":
                 $positionPlayer = $this->activeGame->getPlayer4();
-                if (!is_null($positionPlayer) || in_array($cardSwipe->card_id, $allPlayingPlayers)) {
+                if (!is_null($positionPlayer) || in_array($player->getId(), $playingPlayersIds)) {
                     $this->finishOldStartNew($eventTime);
                 }
-                $this->activeGame->setPlayer4($cardSwipe->card_id);
+                $this->activeGame->setPlayer4($player);
                 break;
         }
-
-        $this->em->flush();
     }
 
     public function finishOldStartNew($eventTime)
@@ -222,9 +228,9 @@ class DataAnalyzer
 
             $option->setOptionKey($optionKey);
             $option->setOptionValue($optionValue);
-
-            $this->em->flush();
         }
+
+        $this->em->flush();
     }
 
     /**
