@@ -78,12 +78,9 @@
                 </button>
             </div>
         </div>
-
-
-        {% include '@InfoGoalKicker/Users/user.html.twig' %}
-        {% include '@InfoGoalKicker/Users/user.html.twig' %}
-        {% include '@InfoGoalKicker/Users/user.html.twig' %}
-
+        {% for user in users %}
+            {{ include('@InfoGoalKicker/Users/user.html.twig', { 'user': user }) }}
+        {% endfor %}
 
     </main><!-- end container -->
 {% endblock %}

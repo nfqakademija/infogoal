@@ -18,6 +18,10 @@ info_goal_kicker_users_index:
     path:     /users
     defaults: { _controller: InfoGoalKickerBundle:Users:index }
 
+info_goal_kicker_users:
+    path:     /users/{page}
+    defaults: { _controller: InfoGoalKickerBundle:Users:index }
+
 info_goal_kicker_timeline_index:
     path:     /timeline
     defaults: { _controller: InfoGoalKickerBundle:Timeline:index }

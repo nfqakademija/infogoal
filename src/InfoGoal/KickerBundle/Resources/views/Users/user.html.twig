@@ -1,12 +1,16 @@
 <div class="block">
     <div class="user row">
         <div class="col-xs-12 col-sm-4 vcenter" style="float: none;"><!--
-        --><img src="{{ asset('bundles/infogoalkicker/assets/uifaces/128.jpg') }}" alt="thumbnail" class="img-thumbnail col-xs-4 col-sm-4"><!--
-        --><p class="col-xs-8 col-sm-8 vcenter">Vardenis Pavardenis</p><!--
+        -->{% if user.photo is not empty %}
+            <img src="{{ asset('bundles/infogoalkicker/assets/uifaces/' ~ user.photo ~ '.jpg') }}" alt="player" class="img-thumbnail">
+            {% else %}
+            <img src="{{ asset('bundles/infogoalkicker/assets/uifaces/default.png') }}" alt="player" class="img-thumbnail">
+            {% endif %}<!--
+        --><p class="col-xs-8 col-sm-8 vcenter">{{ user.name }}</p><!--
     --></div><!--
-    --><div class="level col-xs-3 col-sm-2 vcenter">10</div><!--
-    --><div class="col-xs-3 col-sm-2 vcenter">442</div><!--
-    --><div class="col-xs-3 col-sm-2 vcenter">153</div><!--
-    --><div class="col-xs-3 col-sm-2 vcenter">3 min</div>
+    --><div class="level col-xs-3 col-sm-2 vcenter">{{ user.level }}</div><!--
+    --><div class="col-xs-3 col-sm-2 vcenter">{{ user.played }}</div><!--
+    --><div class="col-xs-3 col-sm-2 vcenter">{{ user.won }}</div><!--
+    --><div class="col-xs-3 col-sm-2 vcenter">36</div>
     </div>
 </div>
