@@ -1,0 +1,48 @@
+{% extends "::base.html.twig" %}
+
+{% block title %}Table:game{% endblock %}
+{% block stylesheets %}
+    {{ parent() }}
+    {% stylesheets filter='compass' output='bundles/infogoalkicker/css/*.css'
+        '@InfoGoalKickerBundle/Resources/public/scss/Table/table-game.scss'
+        '@InfoGoalKickerBundle/Resources/public/scss/Profile/player.scss'
+    %}
+    <link href="{{ asset_url }}" rel="stylesheet">
+    {% endstylesheets %}
+{% endblock %}
+
+{% block body %}
+
+    <div id="table" class=" col-lg-12 col-md-12 col-sm-12 col-xs-12 ">
+        <img id="field-game" src="{{ asset('/bundles/infogoalkicker/assets/soccer-field.png') }}" alt="Soccer field" class="img-responsive">
+        <div id="table-game">
+
+            <div id="team-0" >
+                <div class="player-0 row">
+                  {% include '@InfoGoalKicker/Table/player.html.twig' %}
+                </div><!--end player-0 -->
+
+                <div class="player-1 row">
+                    {% include '@InfoGoalKicker/Table/player.html.twig' %}
+                </div><!--end player-1 -->
+            </div><!--end team-0 -->
+
+            <div id="team-1" >
+                <div class="player-0 row">
+                    {% include '@InfoGoalKicker/Table/player.html.twig' %}
+                </div><!--end player-0 -->
+                <div class="player-1 row">
+                    {% include '@InfoGoalKicker/Table/player.html.twig' %}
+                </div><!--end player-1 -->
+            </div><!--end team-1 -->
+            <div class="result col-lg-2 col-xs-4">
+                <div>
+                    08 : 06
+                </div>
+            </div>
+        </div><!-- end table-game -->
+
+    </div><!-- end table -->
+
+
+{% endblock %}

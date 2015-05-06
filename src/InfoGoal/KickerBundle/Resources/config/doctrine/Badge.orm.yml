@@ -1,0 +1,21 @@
+InfoGoal\KickerBundle\Entity\Badge:
+    type: entity
+    table: badges
+    repositoryClass: InfoGoal\KickerBundle\Entity\BadgeRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        rulesToGetBadge:
+            type: string
+            length: 255
+        name:
+            type: string
+            length: '30'
+        imageUrl:
+            type: string
+            length: 255
+    lifecycleCallbacks: {  }

@@ -1,0 +1,73 @@
+$level-icon-dim: 35px;
+$right: right;
+$left: left;
+$color-white: #ffffff;
+$color-green: #009933;
+$color-black: #000000;
+
+.progress {
+  display: block;
+  border-radius: 25px;
+  position: relative;
+  margin-bottom: 6px;
+  span {
+    position: absolute;
+    display: block;
+    width: 100%;
+    color: $color-black;
+  }
+}
+
+.img-thumbnail {
+  border-radius: 0;
+  padding: 3px;
+}
+
+.player-name {
+  font-size: 24px;
+  color: $color-white;
+  a {
+    color: $color-white;
+  }
+}
+
+
+a:hover{
+  text-decoration: none;
+}
+
+.level-icon {
+  width: $level-icon-dim;
+  height: $level-icon-dim;
+  border-radius: 90px;
+  background-color: $color-white;
+  color: $color-green;
+  font-weight: bold;
+  font-size: 16px;
+  text-align: center;
+  display: table;
+  position: absolute;
+  top: -5px;
+  right: 8px;
+}
+
+.level-number {
+  display: table-cell;
+  vertical-align: middle;
+}
+
+
+#team-0{
+  .player-info {
+    text-align: $left;
+  }
+}
+
+#team-1 {
+  .player-info {
+    text-align: $right;
+  }
+  .player-icon {
+    float: $right;
+  }
+}
