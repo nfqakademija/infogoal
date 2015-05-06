@@ -9,15 +9,24 @@
 namespace InfoGoal\KickerBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\Validator\Constraints\Null;
 
 
 class TimelineController extends Controller {
 
-    public function indexAction()
+    public function indexAction($page = 1)
     {
-        $gameId = $this->getDoctrine()->getRepository('InfoGoalKickerBundle:TableOption')->findOneBy(array("optionKey" => "active_game_id"));
-        $game = $this->getDoctrine()->getRepository('InfoGoalKickerBundle:Game')->findOneBy(array("id" => $gameId->getOptionValue()));
-        return $this->render('InfoGoalKickerBundle:Timeline:index.html.twig', array( 'game' => $game ));
+        $limit = 10;
+        $offset = ($page - 1) * $limit;
+        $games = $this->getDoctrine()->getRepository('InfoGoalKickerBundle:Game')
+            ->createQueryBuilder('u')
+            ->where('u.dateEnd IS NOT NULL')
+            ->orderBy('u.dateEnd', 'DESC')
+            ->setMaxResults($limit)
+            ->setFirstResult($offset)
+            ->getQuery()
+            ->getResult();
+        return $this->render('InfoGoalKickerBundle:Timeline:index.html.twig', array( 'games' => $games ));
     }
 
 }

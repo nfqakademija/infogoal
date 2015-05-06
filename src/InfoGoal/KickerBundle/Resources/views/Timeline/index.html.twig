@@ -19,12 +19,12 @@
         <div class="row">
             <div class="timeline-centered">
 
-                {% for   %}
+                {% for game in games %}
+                    {% if game %}
+                        {{ include('@InfoGoalKicker/Timeline/game.html.twig', { 'game': game }) }}
+                    {% endif %}
 
-
-                {% if game %}
-                    {{ include('@InfoGoalKicker/Timeline/game.html.twig', { 'game': game }) }}
-                {% endif %}
+                {% endfor %}
             </div>
         </div>
 

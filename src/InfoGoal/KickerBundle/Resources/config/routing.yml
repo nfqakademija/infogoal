@@ -22,6 +22,10 @@ info_goal_kicker_timeline_index:
     path:     /timeline
     defaults: { _controller: InfoGoalKickerBundle:Timeline:index }
 
+info_goal_kicker_timeline:
+    path:     /timeline/{page}
+    defaults:  { _controller: InfoGoalKickerBundle:Timeline:index }
+
 info_goal_kicker_badges_index:
     path:     /badges
     defaults: { _controller: InfoGoalKickerBundle:Badges:index }
