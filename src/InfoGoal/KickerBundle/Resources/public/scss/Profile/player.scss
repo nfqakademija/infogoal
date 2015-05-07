@@ -23,12 +23,8 @@ a:hover {
   text-align: center;
   display: table;
   position: absolute;
-  top: -8px;
-  right: 24px;
-  @media (max-width: 992px) {
-    top: -9px;
-    right: 5px;
-  }
+  top: -9px;
+  right: 3px;
 }
 
 .level-number {

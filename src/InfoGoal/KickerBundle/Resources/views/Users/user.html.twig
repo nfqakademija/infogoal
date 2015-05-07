@@ -6,7 +6,7 @@
             {% else %}
             <img src="{{ asset('bundles/infogoalkicker/assets/uifaces/default.png') }}" alt="player" class="img-thumbnail">
             {% endif %}<!--
-        --><p class="col-xs-8 col-sm-8 vcenter">{{ user.name }}</p><!--
+        --><p class="col-xs-8 col-sm-8 vcenter"><a href="{{ path('profile_page', {'id': user.id}) }}">{{ user.name }}</a></p><!--
     --></div><!--
     --><div class="level col-xs-3 col-sm-2 vcenter">{{ user.level }}</div><!--
     --><div class="col-xs-3 col-sm-2 vcenter">{{ user.played }}</div><!--
