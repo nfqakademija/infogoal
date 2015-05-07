@@ -25,22 +25,22 @@ class Game
     private $dateEnd;
 
     /**
-     * @var integer
+     * @var Player
      */
     private $player1;
 
     /**
-     * @var integer
+     * @var Player
      */
     private $player2;
 
     /**
-     * @var integer
+     * @var Player
      */
     private $player3;
 
     /**
-     * @var integer
+     * @var Player
      */
     private $player4;
 
@@ -113,7 +113,7 @@ class Game
     /**
      * Set player1
      *
-     * @param integer $player1
+     * @param Player $player1
      * @return Game
      */
     public function setPlayer1($player1)
@@ -126,7 +126,7 @@ class Game
     /**
      * Get player1
      *
-     * @return integer
+     * @return Player
      */
     public function getPlayer1()
     {
@@ -136,7 +136,7 @@ class Game
     /**
      * Set player2
      *
-     * @param integer $player2
+     * @param Player $player2
      * @return Game
      */
     public function setPlayer2($player2)
@@ -149,7 +149,7 @@ class Game
     /**
      * Get player2
      *
-     * @return integer
+     * @return Player
      */
     public function getPlayer2()
     {
@@ -159,7 +159,7 @@ class Game
     /**
      * Set player3
      *
-     * @param integer $player3
+     * @param Player $player3
      * @return Game
      */
     public function setPlayer3($player3)
@@ -172,7 +172,7 @@ class Game
     /**
      * Get player3
      *
-     * @return integer
+     * @return Player
      */
     public function getPlayer3()
     {
@@ -182,7 +182,7 @@ class Game
     /**
      * Set player4
      *
-     * @param integer $player4
+     * @param Player $player4
      * @return Game
      */
     public function setPlayer4($player4)
@@ -195,7 +195,7 @@ class Game
     /**
      * Get player4
      *
-     * @return integer
+     * @return Player
      */
     public function getPlayer4()
     {
@@ -244,5 +244,26 @@ class Game
     public function getGoal2()
     {
         return $this->goal2;
+    }
+
+    /**
+     * @return array
+     */
+    public function getAllPlayersIds()
+    {
+        $players = [];
+        if (!is_null($this->player1)) {
+            array_push($players, $this->player1->getId());
+        }
+        if (!is_null($this->player2)) {
+            array_push($players, $this->player2->getId());
+        }
+        if (!is_null($this->player3)) {
+            array_push($players, $this->player3->getId());
+        }
+        if (!is_null($this->player4)) {
+            array_push($players, $this->player4->getId());
+        }
+        return $players;
     }
 }
