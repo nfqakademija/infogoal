@@ -3,6 +3,7 @@
 namespace InfoGoal\KickerBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * Player
@@ -57,6 +58,91 @@ class Player
      * @var String
      */
     private $photo;
+
+    /**
+     * @var ArrayCollection
+     */
+    protected $games1;
+
+    /**
+     * @var ArrayCollection
+     */
+    protected $games2;
+
+    /**
+     * @return ArrayCollection
+     */
+    public function getGames1()
+    {
+        return $this->games1;
+    }
+
+    /**
+     * @param ArrayCollection $games1
+     */
+    public function setGames1($games1)
+    {
+        $this->games1 = $games1;
+    }
+
+    /**
+     * @return ArrayCollection
+     */
+    public function getGames2()
+    {
+        return $this->games2;
+    }
+
+    /**
+     * @param ArrayCollection $games2
+     */
+    public function setGames2($games2)
+    {
+        $this->games2 = $games2;
+    }
+
+    /**
+     * @return ArrayCollection
+     */
+    public function getGames3()
+    {
+        return $this->games3;
+    }
+
+    /**
+     * @param ArrayCollection $games3
+     */
+    public function setGames3($games3)
+    {
+        $this->games3 = $games3;
+    }
+
+    /**
+     * @return ArrayCollection
+     */
+    public function getGames4()
+    {
+        return $this->games4;
+    }
+
+    /**
+     * @param ArrayCollection $games4
+     */
+    public function setGames4($games4)
+    {
+        $this->games4 = $games4;
+    }
+
+    /**
+     * @var ArrayCollection
+     */
+    protected $games3;
+
+    /**
+     * @var ArrayCollection
+     */
+    protected $games4;
+
 
     /**
      * @return String

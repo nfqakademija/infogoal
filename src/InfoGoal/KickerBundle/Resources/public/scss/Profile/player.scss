@@ -1,27 +1,4 @@
-$level-icon-dim: 35px;
-$right: right;
-$left: left;
-$color-white: #ffffff;
-$color-green: #009933;
-$color-black: #000000;
-
-.progress {
-  display: block;
-  border-radius: 25px;
-  position: relative;
-  margin-bottom: 6px;
-  span {
-    position: absolute;
-    display: block;
-    width: 100%;
-    color: $color-black;
-  }
-}
-
-.img-thumbnail {
-  border-radius: 0;
-  padding: 3px;
-}
+@import "../vars";
 
 .player-name {
   font-size: 24px;
@@ -31,8 +8,7 @@ $color-black: #000000;
   }
 }
 
-
-a:hover{
+a:hover {
   text-decoration: none;
 }
 
@@ -47,8 +23,8 @@ a:hover{
   text-align: center;
   display: table;
   position: absolute;
-  top: -5px;
-  right: 8px;
+  top: -9px;
+  right: 3px;
 }
 
 .level-number {
@@ -56,8 +32,7 @@ a:hover{
   vertical-align: middle;
 }
 
-
-#team-0{
+#team-0 {
   .player-info {
     text-align: $left;
   }

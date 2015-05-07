@@ -2,6 +2,19 @@ InfoGoal\KickerBundle\Entity\Player:
     type: entity
     table: players
     repositoryClass: InfoGoal\KickerBundle\Entity\PlayerRepository
+    oneToMany:
+            games1:
+                targetEntity: Game
+                mappedBy: player1
+            games2:
+                targetEntity: Game
+                mappedBy: player2
+            games3:
+                targetEntity: Game
+                mappedBy: player3
+            games4:
+                targetEntity: Game
+                mappedBy: player4
     id:
         id:
             type: integer

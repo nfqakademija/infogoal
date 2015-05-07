@@ -1,4 +1,4 @@
-<div class="col-md-6 col-sm-4 col-xs-8 player-icon">
+<div class="col-xs-12 col-sm-5 col-md-5 player-icon">
     {% if player.photo is not empty %}
         <img src="{{ asset('bundles/infogoalkicker/assets/uifaces/' ~ player.photo ~ '.jpg') }}" alt="player" class="img-thumbnail">
     {% else %}
@@ -6,15 +6,9 @@
     {% endif %}
     <div class="level-icon"><div class="level-number">{{ player.level }}</div></div>
 </div>
-<div class="col-md-6 col-sm-6 hidden-xs player-info">
+<div class="col-sm-7 col-md-7 hidden-xs player-info">
     <p class="player-name"><a href="{{ path('profile_page', {'id': player.id}) }}">{{ player.name }}</a></p>
     <p class="player-game-info">Žaista: {{ player.played }}   Laimėta: {{ player.won }}</p>
-    <div class="progress">
-        <div class="progress-bar progress-bar-warning progress-bar-striped" role="progressbar" aria-valuenow="{{ player.xp }}" aria-valuemin="0" aria-valuemax="{{ player.levelXp }}"
-             style="width:{{ player.xp*100/player.levelXp }}% ">
-            <span>{{ player.xp }}/{{ player.levelXp }}</span>
-        </div>
 
-    </div>
 
 </div>

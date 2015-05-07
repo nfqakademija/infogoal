@@ -1,3 +1,105 @@
+@import "../vars";
+
 body {
-    background-color: white;
+  background-color: $color-light-grey;
+
+  main.container {
+    font-size: 13px;
+
+    .block {
+      padding: 10px 20px 10px;
+
+      &:not(:first-child) {
+        margin-top: 10px;
+
+        .row {
+          margin-top: 0;
+        }
+      }
+      .row {
+
+        div {
+
+          p {
+            margin-bottom: 0;
+          }
+        }
+        .caret {
+          margin-left: 7px;
+        }
+        .vcenter {
+          display: inline-block;
+          vertical-align: middle;
+          float: none;
+        }
+      }
+    }
+
+    #sort-menu {
+      display: block;
+      margin: 0 12px 0 15px;
+
+      .btn {
+        padding: 10px 16px;
+        text-align: left;
+        background-color: $color-light-green;
+        border: none;
+        color: $color-white;
+        -webkit-box-shadow: 2px 2px 3px 0px rgba(50, 50, 50, 0.55);
+        -moz-box-shadow:    2px 2px 3px 0px rgba(50, 50, 50, 0.55);
+        box-shadow:         2px 2px 3px 0px rgba(50, 50, 50, 0.55);
+      }
+    }
+
+    .dropdown {
+      .btn {
+        opacity: 1;
+      }
+      .dropdown-menu {
+        right: 15px;
+        border-radius: 0;
+      }
+    }
+
+    .btn + .dropdown-toggle,
+    .btn,
+    .form-control,
+    .input-group-addon {
+      border-radius: 0;
+    }
+
+    .stylish-input-group {
+      margin-bottom: 20px;
+      @media (max-width: 767px) {
+      margin-bottom: 10px;
+    }
+      .form-control{
+        box-shadow: 0 0 0;
+        color: #333;
+
+        &:focus {
+          border-color: #adadad;
+        }
+      }
+      .input-group-addon {
+         background-color: $color-white;
+        &:hover {
+          background-color: #e6e6e6;
+          border-color: #adadad;
+          cursor: pointer;
+
+        }
+      }
+      button{
+        border: 0;
+        background:transparent;
+        &:focus {
+          outline: none;
+        }
+      }
+    }
+
+
+  }
+
 }

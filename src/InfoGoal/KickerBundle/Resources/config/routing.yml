@@ -6,6 +6,10 @@ profile_index:
     path:     /profile
     defaults: { _controller: InfoGoalKickerBundle:Profile:index }
 
+profile_page:
+    path:     /profile/{id}
+    defaults: { _controller: InfoGoalKickerBundle:Profile:index }
+
 reserved_index:
     path:     /reserved
     defaults: { _controller: InfoGoalKickerBundle:Table:reservation }
@@ -14,9 +18,17 @@ info_goal_kicker_users_index:
     path:     /users
     defaults: { _controller: InfoGoalKickerBundle:Users:index }
 
+info_goal_kicker_users:
+    path:     /users/{page}
+    defaults: { _controller: InfoGoalKickerBundle:Users:index }
+
 info_goal_kicker_timeline_index:
     path:     /timeline
     defaults: { _controller: InfoGoalKickerBundle:Timeline:index }
+
+info_goal_kicker_timeline:
+    path:     /timeline/{page}
+    defaults:  { _controller: InfoGoalKickerBundle:Timeline:index }
 
 info_goal_kicker_badges_index:
     path:     /badges

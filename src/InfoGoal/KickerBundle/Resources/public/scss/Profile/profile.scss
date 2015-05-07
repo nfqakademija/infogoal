@@ -1,8 +1,4 @@
-$badge-dim: 100px;
-$color-light-grey: rgba(242, 242, 242, 1);
-$badge-margin-dim: 15px;
-$color-black: #000000;
-$color-white: #ffffff;
+@import "../vars";
 
 body {
   background-color: $color-light-grey;

@@ -2,26 +2,31 @@
 /**
  * Created by PhpStorm.
  * User: Aurelija
- * Date: 2015-04-27
- * Time: 19:45
+ * Date: 2015-05-03
+ * Time: 17:16
  */
 
 namespace InfoGoal\KickerBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\Validator\Constraints\Null;
 
-class UsersController extends Controller {
+
+class TimelineController extends Controller {
 
     public function indexAction($page = 1)
     {
         $limit = 10;
         $offset = ($page - 1) * $limit;
-        $users = $this->getDoctrine()->getRepository('InfoGoalKickerBundle:Player')
+        $games = $this->getDoctrine()->getRepository('InfoGoalKickerBundle:Game')
             ->createQueryBuilder('u')
+            ->where('u.dateEnd IS NOT NULL')
+            ->orderBy('u.dateEnd', 'DESC')
             ->setMaxResults($limit)
             ->setFirstResult($offset)
             ->getQuery()
             ->getResult();
-        return $this->render('InfoGoalKickerBundle:Users:index.html.twig', array( 'users' => $users ));
+        return $this->render('InfoGoalKickerBundle:Timeline:index.html.twig', array( 'games' => $games ));
     }
+
 }

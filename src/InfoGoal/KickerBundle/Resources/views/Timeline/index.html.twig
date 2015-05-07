@@ -1,0 +1,30 @@
+{% extends "::base.html.twig" %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    {% stylesheets filter='compass' output='bundles/infogoalkicker/css/*.css'
+    '@InfoGoalKickerBundle/Resources/public/scss/Timeline/timeline.scss'
+    '@InfoGoalKickerBundle/Resources/public/scss/Profile/player.scss'
+    '@InfoGoalKickerBundle/Resources/public/scss/Timeline/game.scss'
+    %}
+    <link href="{{ asset_url }}" rel="stylesheet"/>
+    {% endstylesheets %}
+{% endblock %}
+
+{% block title %}Users{% endblock %}
+
+{% block body %}
+    <main class="container">
+
+        <div class="row">
+            <div class="timeline-centered">
+
+                {% for game in games %}
+                    {{ include('@InfoGoalKicker/Timeline/game.html.twig', { 'game': game }) }}
+                {% endfor %}
+            </div>
+        </div>
+
+
+    </main><!-- end container -->
+{% endblock %}

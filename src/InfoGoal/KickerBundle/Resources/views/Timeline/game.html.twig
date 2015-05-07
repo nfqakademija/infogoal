@@ -1,0 +1,64 @@
+<article class="timeline-entry">
+
+    <div class="timeline-entry-inner">
+        <time class="timeline-time" datetime="2014-01-10T03:45"><span>03:45 AM</span> <span>Today</span></time>
+
+        <div class="timeline-icon bg-success"></div>
+
+        <div class="timeline-label game block">
+
+            <div id="team-0" >
+                <div class="player-0 row">
+                    {% if game.player1 is null %}
+                        {{ include('@InfoGoalKicker/Timeline/playerDefault.html.twig') }}
+
+                    {% else %}
+                        {{ include('@InfoGoalKicker/Timeline/player.html.twig', { 'player': game.player1 }) }}
+                    {% endif %}
+
+                </div><!--end player-0 -->
+
+                <div class="player-1 row">
+                    {% if game.player2 is null %}
+                        {{ include('@InfoGoalKicker/Timeline/playerDefault.html.twig') }}
+
+                    {% else %}
+                        {{ include('@InfoGoalKicker/Timeline/player.html.twig', { 'player': game.player2 }) }}
+                    {% endif %}
+
+                </div><!--end player-1 -->
+            </div><!--end team-0 -->
+
+            <div id="team-1" >
+                <div class="player-0 row">
+                    {% if game.player3 is null %}
+                        {{ include('@InfoGoalKicker/Timeline/playerDefault.html.twig') }}
+
+                    {% else %}
+                        {{ include('@InfoGoalKicker/Timeline/player.html.twig', { 'player': game.player3 }) }}
+                    {% endif %}
+
+                </div><!--end player-0 -->
+                <div class="player-1 row">
+                    {% if game.player4 is null %}
+                        {{ include('@InfoGoalKicker/Timeline/playerDefault.html.twig') }}
+
+                    {% else %}
+                        {{ include('@InfoGoalKicker/Timeline/player.html.twig', { 'player': game.player4 }) }}
+                    {% endif %}
+
+                </div><!--end player-1 -->
+            </div><!--end team-1 -->
+            <div class="result">
+                <div class="result-line"></div>
+                <div class="score">
+                    {{ game.goal1 }} : {{ game.goal2 }}
+                </div>
+
+            </div>
+
+            <div class="clearfix"></div>
+        </div><!-- end table-game -->
+    </div>
+
+</article>

@@ -17,6 +17,14 @@
     <body>
         {% include 'nav.html.twig' %}
         {% block body %}{% endblock %}
-        {% block javascripts %}{% endblock %}
+        {% block javascripts %}
+            {% javascripts
+                '@InfoGoalKickerBundle/Resources/public/js/jquery-2.1.3.min.js'
+                '@InfoGoalKickerBundle/Resources/public/js/bootstrap.min.js'
+
+            %}
+                <script src="{{ asset_url }}"></script>
+            {% endjavascripts %}
+        {% endblock %}
     </body>
 </html>
