@@ -8,6 +8,9 @@ use Symfony\Component\Validator\Constraints\Null;
 
 class ExpCalculator
 {
+    /**
+     * @var EntityManager
+     */
     private $em;
 
 
