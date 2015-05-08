@@ -1,0 +1,16 @@
+<div class="block badges-cnt">
+    {% for badge in badges %}
+        <div class="col-md-6">
+            <div class="row">
+                <div class="col-md-4 my-badge">
+                    <img src="{{ asset('bundles/infogoalkicker/assets/badges/' ~ badge.imageUrl ~ '.png') }}">
+                </div>
+                <div class="col-md-8 my-badge">
+                    <p class="badge-name">{{ badge.name }}</p>
+                    <p class="badge-description">{{ badge.rulesToGetBadge }}</p>
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+    <div class="clearfix"></div>
+</div>

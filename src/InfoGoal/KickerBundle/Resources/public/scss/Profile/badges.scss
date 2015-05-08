@@ -1,0 +1,17 @@
+@import "../vars";
+
+.badges-cnt {
+  background-color: $color-white;
+  padding: 20px 20px 20px 0;
+  color: $color-black;
+  margin: 20px 30px;
+
+}
+
+.my-badge {
+  img {
+    max-width: 90px;
+    margin: 10px 10px;
+
+  }
+}

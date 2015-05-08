@@ -6,6 +6,7 @@
     {% stylesheets filter='compass' output='bundles/infogoalkicker/css/*.css'
     '@InfoGoalKickerBundle/Resources/public/scss/Profile/profile.scss'
     '@InfoGoalKickerBundle/Resources/public/scss/Profile/player.scss'
+    '@InfoGoalKickerBundle/Resources/public/scss/Profile/badges.scss'
     %}
     <link rel="stylesheet" href="{{ asset_url }}" />
     {% endstylesheets %}
@@ -14,12 +15,21 @@
 {% block body %}
 
     <main class="container">
-        <div class="player block col-md-7">
+        <div class="player block col-md-6">
             {% include '@InfoGoalKicker/Profile/player.html.twig' %}
-
-
             <div class="clearfix"></div>
+
+            {% if badgesCount == 0 %}
+            <div class="row">
+                {% include '@InfoGoalKicker/Profile/badgesDefault.html.twig' %}
+            </div>
+            {% else %}
+                {{ include('@InfoGoalKicker/Profile/badges.html.twig', { 'badges': badges }) }}
+            {% endif %}
         </div><!--end player block-->
+
+
+
     </main><!-- end container -->
 
 
