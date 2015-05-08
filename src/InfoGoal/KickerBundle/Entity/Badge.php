@@ -29,6 +29,10 @@ class Badge
      */
     private $imageUrl;
 
+    /**
+     * @var ArrayCollection
+     */
+    protected $BP;
 
     /**
      * Get id

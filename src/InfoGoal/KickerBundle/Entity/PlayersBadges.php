@@ -29,6 +29,15 @@ class PlayersBadges
      */
     private $date;
 
+    /**
+     * @var ArrayCollection
+     */
+    protected $badges;
+
+    /**
+     * @var ArrayCollection
+     */
+    protected $players;
 
     /**
      * Get id
