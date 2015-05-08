@@ -1,0 +1,32 @@
+{% extends "::base.html.twig" %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    {% stylesheets filter='compass' output='bundles/infogoalkicker/css/*.css'
+    '@InfoGoalKickerBundle/Resources/public/scss/Users/users.scss'
+    '@InfoGoalKickerBundle/Resources/public/scss/Users/user.scss' %}
+    <link href="{{ asset_url }}" rel="stylesheet"/>
+    {% endstylesheets %}
+{% endblock %}
+
+{% block title %}Users{% endblock %}
+
+{% block body %}
+    <main class="container">
+
+        {% for badge in badges %}
+            <div class="col-md-6">
+                <div class="row">
+                    <div class="col-md-4 my-badge">
+                        <img src="{{ asset('bundles/infogoalkicker/assets/badges/' ~ badge.imageUrl ~ '.png') }}">
+                    </div>
+                    <div class="col-md-8 my-badge">
+                        <p class="badge-name">{{ badge.name }}</p>
+                        <p class="badge-description">{{ badge.rulesToGetBadge }}</p>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+
+    </main><!-- end container -->
+{% endblock %}
