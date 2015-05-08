@@ -6,6 +6,7 @@
   a {
     color: $color-white;
   }
+  word-wrap: break-word;
 }
 
 a:hover {
@@ -32,13 +33,13 @@ a:hover {
   vertical-align: middle;
 }
 
-#team-0 {
+.team-0 {
   .player-info {
     text-align: $left;
   }
 }
 
-#team-1 {
+.team-1 {
   .player-info {
     text-align: $right;
   }

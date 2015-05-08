@@ -7,8 +7,12 @@
     <div class="level-icon"><div class="level-number">{{ player.level }}</div></div>
 </div>
 <div class="col-sm-7 col-md-7 hidden-xs player-info">
-    <p class="player-name"><a href="{{ path('profile_page', {'id': player.id}) }}">{{ player.name }}</a></p>
+    <p class="player-name">
+        <a href="{{ path('profile_page', {'id': player.id}) }}">
+            {% autoescape %}
+            {{ player.name|replace({ (' '): '<br>' })|raw }}
+            {% endautoescape %}
+        </a>
+    </p>
     <p class="player-game-info">Žaista: {{ player.played }}   Laimėta: {{ player.won }}</p>
-
-
 </div>

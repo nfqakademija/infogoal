@@ -1,0 +1,95 @@
+@import "../vars";
+
+.player-name {
+  font-size: 24px;
+  color: $color-white;
+  height: 68px;
+  @media (max-width: 768px) {
+    font-size: 22px;
+    height: 61px;
+  }
+  @media (max-width: 992px) and (min-width: 768px) {
+    font-size: 22px;
+    height: 61px;
+  }
+  @media (min-width: 993px) {
+    font-size: 22px;
+    height: 61px;
+
+  }
+  a {
+    color: $color-white;
+  }
+  word-wrap: break-word;
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+.level-icon {
+  width: $level-icon-dim;
+  height: $level-icon-dim;
+  border-radius: 90px;
+  background-color: $color-white;
+  color: $color-green;
+  font-weight: bold;
+  font-size: 16px;
+  text-align: center;
+  display: table;
+  position: absolute;
+  top: -8px;
+  right: 4px;
+}
+
+.level-number {
+  display: table-cell;
+  vertical-align: middle;
+}
+
+.team-0 {
+  .player-info {
+    text-align: $left;
+  }
+  .progress {
+    @media (max-width: 991px) and (min-width: 768px) {
+      margin-top: 10px;
+      width: 250px;
+      right: 120px;
+    }
+    @media (max-width: 1199px) and (min-width: 992px) {
+      right: 124px;
+      margin-top: 14px;
+      width: 254px;
+    }
+    @media (min-width: 1200px) {
+      right: 0;
+      width: 200px;
+    }
+  }
+}
+
+.team-1 {
+  .player-info {
+    text-align: $right;
+  }
+  .progress {
+    @media (max-width: 991px) and (min-width: 768px) {
+      margin-top: 10px;
+      width: 250px;
+      left: 7px;
+    }
+    @media (max-width: 1199px) and (min-width: 992px) {
+      margin-top: 14px;
+      width: 254px;
+      left: 91px;
+    }
+    @media (min-width: 1200px) {
+      left: 77px;
+      width: 200px;
+    }
+  }
+  .player-icon {
+    float: $right;
+  }
+}

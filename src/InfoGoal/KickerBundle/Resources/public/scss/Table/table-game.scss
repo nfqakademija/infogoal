@@ -5,9 +5,9 @@
   position: relative;
 }
 
-#team-0, #team-1 {
+.team-0, .team-1 {
   position: absolute;
-  top: 18%;
+  width: 40%;
   .row {
     float: none;
     margin: 0 auto;
@@ -16,7 +16,7 @@
     }
   }
   @media (max-width: 768px) {
-    top: 16%;
+    top: 0;
   }
   @media (max-width: 992px) and (min-width: 768px) {
     .player-name {
@@ -29,47 +29,37 @@
   }
 }
 
-#team-0 {
-  @media (max-width: 768px) {
-    left: 4%;
-  }
+.team-0 {
+  left: 0;
   @media (max-width: 992px) and (min-width: 768px) {
     .col-sm-6 {
       float: left;
     }
-    left: 4%;
-  }
-  @media (min-width: 992px) {
-    left: 8%;
   }
 }
 
-#team-1 {
-  @media (max-width: 768px) {
-    right: 4%;
-  }
+.team-1 {
+  right: 0;
   @media (max-width: 992px) and (min-width: 768px) {
     .col-sm-6 {
       float: right;
     }
-    right: 4%;
-  }
-  @media (min-width: 992px) {
-    right: 8%;
   }
 }
 
 .result {
   margin: auto;
   position: absolute;
-  top: 37%;
   left: 0;
   right: 0;
   @media (max-width: 768px) {
-    top: 38%;
+    top: 32%;
   }
   @media (max-width: 992px) and (min-width: 768px) {
-    top: 41%;
+    top: 40%;
+  }
+  @media (min-width: 993px) {
+    top: 38%;
   }
 
   div {
@@ -79,7 +69,7 @@
     @media (max-width: 768px) {
       font-size: 32px;
     }
-    @media (max-width: 992px) and (min-width: 768px) {
+    @media (max-width: 992px) and (min-width: 767px) {
       font-size: 51px;
     }
   }

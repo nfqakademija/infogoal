@@ -4,68 +4,75 @@
 {% block stylesheets %}
     {{ parent() }}
     {% stylesheets filter='compass' output='bundles/infogoalkicker/css/*.css'
-        '@InfoGoalKickerBundle/Resources/public/scss/Table/table-game.scss'
-        '@InfoGoalKickerBundle/Resources/public/scss/Profile/player.scss'
+    '@InfoGoalKickerBundle/Resources/public/scss/Table/table-game.scss'
+    '@InfoGoalKickerBundle/Resources/public/scss/Table/player.scss'
     %}
     <link href="{{ asset_url }}" rel="stylesheet">
     {% endstylesheets %}
 {% endblock %}
 
 {% block body %}
+    <div class="container">
 
-    <div id="table" class=" col-lg-12 col-md-12 col-sm-12 col-xs-12 ">
-        <img id="field-game" src="{{ asset('/bundles/infogoalkicker/assets/soccer-field.png') }}" alt="Soccer field" class="img-responsive">
-        <div id="table-game">
+        <div id="table" class="col-xs-12">
+            <img id="field-game" src="{{ asset('/bundles/infogoalkicker/assets/soccer-field.png') }}" alt="Soccer field" class="img-responsive">
+            <div id="table-game">
 
-            <div id="team-0" >
-                <div class="player-0 row">
-                    {% if game.player1 is null %}
-                        {{ include('@InfoGoalKicker/Table/playerDefault.html.twig') }}
+                <div class="team-0" >
+                    <div class="player-0 row">
+                        {% if game.player1 is null %}
+                            {{ include('@InfoGoalKicker/Table/playerDefault.html.twig') }}
+                        {% else %}
+                            {{ include('@InfoGoalKicker/Table/player.html.twig', { 'player': game.player1 }) }}
+                        {% endif %}
+                    </div><!--end player-0 -->
 
-                    {% else %}
-                        {{ include('@InfoGoalKicker/Table/player.html.twig', { 'player': game.player1 }) }}
-                    {% endif %}
+                    <div class="player-1 row">
+                        {% if game.player2 is null %}
+                            {{ include('@InfoGoalKicker/Table/playerDefault.html.twig') }}
+                        {% else %}
+                            {{ include('@InfoGoalKicker/Table/player.html.twig', { 'player': game.player2 }) }}
+                        {% endif %}
+                    </div><!--end player-1 -->
+                </div><!--end team-0 -->
 
+                <div class="team-1" >
+                    <div class="player-0 row">
+                        {% if game.player3 is null %}
+                            {{ include('@InfoGoalKicker/Table/playerDefault.html.twig') }}
+                        {% else %}
+                            {{ include('@InfoGoalKicker/Table/player.html.twig', { 'player': game.player3 }) }}
+                        {% endif %}
+                    </div><!--end player-0 -->
+                    <div class="player-1 row">
+                        {% if game.player4 is null %}
+                            {{ include('@InfoGoalKicker/Table/playerDefault.html.twig') }}
 
-                </div><!--end player-0 -->
+                        {% else %}
+                            {{ include('@InfoGoalKicker/Table/player.html.twig', { 'player': game.player4 }) }}
+                        {% endif %}
+                    </div><!--end player-1 -->
+                </div><!--end team-1 -->
 
-                <div class="player-1 row">
-                    {% if game.player2 is null %}
-                        {{ include('@InfoGoalKicker/Table/playerDefault.html.twig') }}
-
-                    {% else %}
-                        {{ include('@InfoGoalKicker/Table/player.html.twig', { 'player': game.player2 }) }}
-                    {% endif %}
-
-                </div><!--end player-1 -->
-            </div><!--end team-0 -->
-
-            <div id="team-1" >
-                <div class="player-0 row">
-                    {% if game.player3 is null %}
-                        {{ include('@InfoGoalKicker/Table/playerDefault.html.twig') }}
-
-                    {% else %}
-                        {{ include('@InfoGoalKicker/Table/player.html.twig', { 'player': game.player3 }) }}
-                    {% endif %}
-                </div><!--end player-0 -->
-                <div class="player-1 row">
-                    {% if game.player4 is null %}
-                        {{ include('@InfoGoalKicker/Table/playerDefault.html.twig') }}
-
-                    {% else %}
-                        {{ include('@InfoGoalKicker/Table/player.html.twig', { 'player': game.player4 }) }}
-                    {% endif %}
-                </div><!--end player-1 -->
-            </div><!--end team-1 -->
-            <div class="result col-xs-4 col-md-3 col-lg-3">
-                <div>
-                    {{ game.goal1 }} : {{ game.goal2 }}
+                <div class="result col-xs-12">
+                    <div>
+                        {% if game.goal1 != 10 and game.goal2 != 10 %}
+                            0{{ game.goal1 }} : 0{{ game.goal2 }}
+                        {% elseif game.goal1 != 10 %}
+                            0{{ game.goal1 }} : {{ game.goal2 }}
+                        {% elseif game.goal2 != 10 %}
+                            {{ game.goal1 }} : 0{{ game.goal2 }}
+                        {% else %}
+                            {{ game.goal1 }} : {{ game.goal2 }}
+                        {% endif %}
+                    </div>
                 </div>
-            </div>
-        </div><!-- end table-game -->
 
-    </div><!-- end table -->
+            </div><!-- end table-game -->
+
+        </div><!-- end table -->
+
+    </div><!-- end container -->
 
 
 {% endblock %}
