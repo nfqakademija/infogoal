@@ -4,6 +4,7 @@ namespace InfoGoal\ApiBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use InfoGoal\ApiBundle\Service\Api;
+use InfoGoal\ApiBundle\Service\Achievements;
 
 
 class ApiController extends Controller
@@ -15,5 +16,6 @@ class ApiController extends Controller
         $em = $this->getDoctrine()->getManager();
         $options = $em->getRepository('InfoGoalKickerBundle:TableOption')->findAll();
         return $api->readApi($options);
+
     }
 } 

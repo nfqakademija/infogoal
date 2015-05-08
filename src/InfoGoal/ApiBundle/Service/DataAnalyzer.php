@@ -48,10 +48,16 @@ class DataAnalyzer
      */
     private $calculator;
 
-    public function __construct(EntityManager $em, ExpCalculator $calculator)
+    /**
+     * @var Achievements
+     */
+    private $achievements;
+
+    public function __construct(EntityManager $em, ExpCalculator $calculator, Achievements $achievements)
     {
         $this->em = $em;
         $this->calculator = $calculator;
+        $this->achievements = $achievements;
     }
 
     public function setOptions($options)
@@ -153,23 +159,25 @@ class DataAnalyzer
     {
         $goal = json_decode($eventData);
 
-        $cardIds = [];
+        $players = array();
 
         if ($goal->team == 0) {
             $this->activeGame->setGoal1();
             $teamGoalsCount = $this->activeGame->getGoal1();
 
-            array_push($cardIds, $this->activeGame->getPlayer1(), $this->activeGame->getPlayer2());
+            array_push($players, $this->activeGame->getPlayer1(),
+                $this->activeGame->getPlayer2());
 
         } else {
             $this->activeGame->setGoal2();
             $teamGoalsCount = $this->activeGame->getGoal2();
 
-            array_push($cardIds, $this->activeGame->getPlayer3(), $this->activeGame->getPlayer4());
+            array_push($players, $this->activeGame->getPlayer3(),
+                $this->activeGame->getPlayer4());
 
         }
 
-        $this->calculator->CalculateGoal($cardIds);
+        $this->calculator->CalculateGoal($players);
 
         $this->em->flush();
 

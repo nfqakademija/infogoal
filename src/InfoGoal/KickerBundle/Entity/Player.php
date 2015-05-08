@@ -70,8 +70,10 @@ class Player
     protected $games2;
 
     /**
-     * @return ArrayCollection
+     * @var ArrayCollection
      */
+    protected $PB;
+
     public function getGames1()
     {
         return $this->games1;
