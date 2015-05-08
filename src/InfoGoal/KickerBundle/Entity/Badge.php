@@ -29,6 +29,12 @@ class Badge
      */
     private $imageUrl;
 
+
+    /**
+     * @var string
+     */
+    private $howToGetBadge;
+
     /**
      * @var ArrayCollection
      */
@@ -112,4 +118,21 @@ class Badge
     {
         return $this->imageUrl;
     }
+
+    /**
+     * @return string
+     */
+    public function getHowToGetBadge()
+    {
+        return $this->howToGetBadge;
+    }
+
+    /**
+     * @param string $howToGetBadge
+     */
+    public function setHowToGetBadge($howToGetBadge)
+    {
+        $this->howToGetBadge = $howToGetBadge;
+    }
+
 }
