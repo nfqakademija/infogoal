@@ -70,10 +70,6 @@ class Player
     protected $games2;
 
     /**
-     * @return ArrayCollection
-     */
-
-    /**
      * @var ArrayCollection
      */
     protected $PB;

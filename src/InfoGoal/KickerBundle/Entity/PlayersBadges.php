@@ -96,6 +96,38 @@ class PlayersBadges
     }
 
     /**
+     * @return ArrayCollection
+     */
+    public function getPlayers()
+    {
+        return $this->players;
+    }
+
+    /**
+     * @param ArrayCollection $players
+     */
+    public function setPlayers($players)
+    {
+        $this->players = $players;
+    }
+
+    /**
+     * @return ArrayCollection
+     */
+    public function getBadges()
+    {
+        return $this->badges;
+    }
+
+    /**
+     * @param ArrayCollection $badges
+     */
+    public function setBadges($badges)
+    {
+        $this->badges = $badges;
+    }
+
+    /**
      * Set date
      *
      * @param \DateTime $date

@@ -9,12 +9,21 @@ InfoGoal\KickerBundle\Entity\PlayersBadges:
             generator:
                 strategy: AUTO
     fields:
-        playerId:
-            type: integer
-        badgeId:
-            type: integer
         date:
             type: datetime
+    manyToOne:
+        badges:
+            targetEntity: Badge
+            inversedBy: BP
+            joinColumn:
+                name: badgeId
+                referencedColumnName: id
+        players:
+            targetEntity: Player
+            inversedBy: PB
+            joinColumn:
+                name: playerId
+                referenceColumnName: id
     lifecycleCallbacks: {  }
 
 
