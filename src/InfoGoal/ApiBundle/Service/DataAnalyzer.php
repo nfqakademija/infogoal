@@ -48,10 +48,16 @@ class DataAnalyzer
      */
     private $calculator;
 
-    public function __construct(EntityManager $em, ExpCalculator $calculator)
+    /**
+     * @var Achievements
+     */
+    private $achievements;
+
+    public function __construct(EntityManager $em, ExpCalculator $calculator, Achievements $achievements)
     {
         $this->em = $em;
         $this->calculator = $calculator;
+        $this->achievements = $achievements;
     }
 
     public function setOptions($options)
