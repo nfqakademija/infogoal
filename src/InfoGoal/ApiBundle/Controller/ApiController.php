@@ -12,19 +12,10 @@ class ApiController extends Controller
 
     public function indexAction()
     {
-//        $api = $this->get('kicker.api');
+        $api = $this->get('kicker.api');
         $em = $this->getDoctrine()->getManager();
-//        $options = $em->getRepository('InfoGoalKickerBundle:TableOption')->findAll();
-//        return $api->readApi($options);
-        $badge = new Achievements($em);
-
-        $player = $em->getRepository('InfoGoalKickerBundle:Player')->find(7);
-
-        $badge->checkBadges($player);
-
-        return $this->render('InfoGoalKickerBundle:Profile:index.html.twig', array(
-            'player' => $player
-        ));
+        $options = $em->getRepository('InfoGoalKickerBundle:TableOption')->findAll();
+        return $api->readApi($options);
 
     }
 } 
