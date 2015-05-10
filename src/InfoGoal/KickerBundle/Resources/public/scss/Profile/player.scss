@@ -1,20 +1,37 @@
 @import "../vars";
 
+.row {
+  margin-left: 0;
+  margin-right: 0;
+}
+
 .player {
   padding-bottom: 20px;
-}
 
-.player-name {
-  font-size: 24px;
-  color: $color-white;
-  a {
-    color: $color-white;
+  .progress {
+    margin-top: 20px;
   }
-  word-wrap: break-word;
-}
 
-a:hover {
-  text-decoration: none;
+  .player-img {
+    padding-right: 20px;
+  }
+
+  .player-name {
+    @media (max-width: 768px) {
+      font-size: 20px;
+      height: 51px;
+    }
+    @media (max-width: 991px) and (min-width: 768px) {
+      font-size: 22px;
+    }
+    @media (min-width: 992px) {
+      font-size: 24px;
+    }
+
+    color: $color-white;
+
+    word-wrap: break-word;
+  }
 }
 
 .level-icon {
@@ -35,19 +52,4 @@ a:hover {
 .level-number {
   display: table-cell;
   vertical-align: middle;
-}
-
-.team-0 {
-  .player-info {
-    text-align: $left;
-  }
-}
-
-.team-1 {
-  .player-info {
-    text-align: $right;
-  }
-  .player-icon {
-    float: $right;
-  }
 }

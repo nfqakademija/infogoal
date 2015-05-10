@@ -128,3 +128,11 @@ body {
   border-radius: 0;
   padding: 3px;
 }
+
+a:hover {
+  text-decoration: none;
+}
+
+a {
+  color: $color-white;
+}

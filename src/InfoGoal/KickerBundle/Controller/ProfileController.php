@@ -12,11 +12,6 @@ class ProfileController extends Controller
         $player = $this->getDoctrine()->getRepository('InfoGoalKickerBundle:Player')->findOneBy(array("id" => $id));
         $badges = $this->getDoctrine()->getRepository('InfoGoalKickerBundle:Badge')->findBy(array(), null, $limit);
         $playersBadges = $player->getPB();
-
-//        foreach ($playersBadges as $playerBadge) {
-//            var_dump($playerBadge->getBadges()->getName());
-//        }
-
         $badgesCount = count($playersBadges);
 
         return $this->render('InfoGoalKickerBundle:Profile:index.html.twig', array(

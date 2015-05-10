@@ -1,21 +1,13 @@
 {% for badge in badges %}
-    {% if loop.index%3 == 1 %}
-        <div class="row">
-    {% endif %}
-    <div class="col-sm-4 my-badge">
-        <div class="badge-img">
-            <img src="{{ asset('bundles/infogoalkicker/assets/badges/' ~ badge.badges.imageUrl ~ '.png') }}">
-        </div>
-        <div class="badge-name">
-
-            <p>{{ badge.badges.name }}</p>
-        </div>
-        <div class="badge-date">
-            <p>{{ badge.date|date('Y-m-d') }}</p>
-        </div>
+<div class="col-xs-12 col-sm-6 col-lg-4 my-badge">
+    <div class="badge-img">
+        <img src="{{ asset('bundles/infogoalkicker/assets/badges/' ~ badge.badges.imageUrl ~ '.png') }}">
     </div>
+    <div class="badge-info">
+        <p class="badge-name">{{ badge.badges.name }}</p>
 
-    {% if loop.index%3 == 0 %}
-        </div>
-    {% endif %}
+        <p class="badge-date">{{ badge.date|date('Y-m-d') }}</p>
+    </div>
+</div>
+
 {% endfor %}
