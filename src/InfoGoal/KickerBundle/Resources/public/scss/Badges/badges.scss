@@ -2,4 +2,40 @@
 
 body {
   background-color: $color-light-grey;
+
+  .block {
+    background-color: $color-white;
+    color: $color-black;
+    padding: 20px;
+  }
+  .my-badge {
+    margin-bottom: 15px;
+    p {
+      margin-bottom: 5px;
+    }
+    .badge-info {
+      margin-left: 100px;
+    }
+
+    .badge-name {
+      font-size: 14px;
+    }
+    .badge-date {
+      font-size: 11px;
+      color: $color-dark-gray;
+    }
+    .badge-img {
+      float: left;
+
+      img {
+        min-width: 64px;
+        max-width: 84px;
+        margin-bottom: 10px;
+      }
+    }
+    .badge-howto {
+      font-size: 12px;
+      color: $color-dark-gray;
+    }
+  }
 }
