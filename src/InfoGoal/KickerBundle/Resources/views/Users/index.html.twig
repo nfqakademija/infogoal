@@ -45,35 +45,55 @@
         <div class="row hidden-xs">
         <div id="sort-menu" class="btn-group" role="group">
 
-                <button type="button" class="btn btn-default col-sm-4">
+                <button type="button" class="btn btn-default col-sm-4" onclick="location.href='{{ path('info_goal_kicker_users_index', {'order' : 'name', 'how' : (orderHow == 'asc' and orderBy == 'name') ? 'desc' : 'asc'}) }}'">
                     <div>
                         <p>Vardas</p>
-                        <span class="caret"></span>
+                        {% set rotate='' %}
+                        {% if orderHow == 'asc' and orderBy == 'name' %}
+                            {% set rotate='rotate' %}
+                        {% endif %}
+                        <span class="caret {{ rotate }}"></span>
                     </div>
                 </button><!--
                 solution for extra space http://stackoverflow.com/questions/20547819/vertical-align-with-bootstrap-3
-            --><button type="button" class="btn btn-default col-sm-2">
+            --><button type="button" class="btn btn-default col-sm-2" onclick="location.href='{{ path('info_goal_kicker_users_index', {'order' : 'level', 'how' : (orderHow == 'asc' and orderBy == 'level') ? 'desc' : 'asc'}) }}'">
                     <div>
                         <p>Lygis</p>
-                        <span class="caret"></span>
+                        {% set rotate='' %}
+                        {% if orderHow == 'asc' and orderBy == 'level' %}
+                            {% set rotate='rotate' %}
+                        {% endif %}
+                        <span class="caret {{ rotate }}"></span>
                     </div>
                 </button><!--
-            --><button type="button" class="btn btn-default col-sm-2">
+            --><button type="button" class="btn btn-default col-sm-2" onclick="location.href='{{ path('info_goal_kicker_users_index', {'order' : 'played', 'how' : (orderHow == 'asc' and orderBy == 'played') ? 'desc' : 'asc'}) }}'">
                     <div>
                         <p>Žaista</p>
-                        <span class="caret"></span>
+                        {% set rotate='' %}
+                        {% if orderHow == 'asc' and orderBy == 'played' %}
+                            {% set rotate='rotate' %}
+                        {% endif %}
+                        <span class="caret {{ rotate }}"></span>
                     </div>
                 </button><!--
-            --><button type="button" class="btn btn-default col-sm-2">
+            --><button type="button" class="btn btn-default col-sm-2" onclick="location.href='{{ path('info_goal_kicker_users_index', {'order' : 'won', 'how' : (orderHow == 'asc' and orderBy == 'won') ? 'desc' : 'asc'}) }}'">
                     <div>
                         <p>Laimėta</p>
-                        <span class="caret"></span>
+                        {% set rotate='' %}
+                        {% if orderHow == 'asc' and orderBy == 'won' %}
+                            {% set rotate='rotate' %}
+                        {% endif %}
+                        <span class="caret {{ rotate }}"></span>
                     </div>
                 </button><!--
-            --><button type="button" class="btn btn-default col-sm-2">
+            --><button type="button" class="btn btn-default col-sm-2" onclick="location.href='{{ path('info_goal_kicker_users_index', {'order' : 'lastGame', 'how' : (orderHow == 'asc' and orderBy == 'lastGame') ? 'desc' : 'asc'}) }}'">
                     <div>
-                        <p >Pask. žaidimas</p>
-                        <span class="caret"></span>
+                        <p>Pask. žaidimas</p>
+                        {% set rotate='' %}
+                        {% if orderHow == 'asc' and orderBy == 'lastGame' %}
+                            {% set rotate='rotate' %}
+                        {% endif %}
+                        <span class="caret {{ rotate }}"></span>
                     </div>
                 </button>
             </div>
