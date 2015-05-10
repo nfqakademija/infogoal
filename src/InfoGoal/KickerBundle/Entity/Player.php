@@ -80,6 +80,22 @@ class Player
     }
 
     /**
+     * @return ArrayCollection
+     */
+    public function getPB()
+    {
+        return $this->PB;
+    }
+
+    /**
+     * @param ArrayCollection $PB
+     */
+    public function setPB($PB)
+    {
+        $this->PB = $PB;
+    }
+
+    /**
      * @param ArrayCollection $games1
      */
     public function setGames1($games1)
