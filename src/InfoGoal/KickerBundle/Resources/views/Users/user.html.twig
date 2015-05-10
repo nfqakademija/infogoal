@@ -8,9 +8,9 @@
             {% endif %}<!--
         --><p class="col-xs-8 col-sm-8 vcenter"><a href="{{ path('profile_page', {'id': user.id}) }}">{{ user.name }}</a></p><!--
     --></div><!--
-    --><div class="level col-xs-3 col-sm-2 vcenter">{{ user.level }}</div><!--
-    --><div class="col-xs-3 col-sm-2 vcenter">{{ user.played }}</div><!--
-    --><div class="col-xs-3 col-sm-2 vcenter">{{ user.won }}</div><!--
-    --><div class="col-xs-3 col-sm-2 vcenter">36</div>
+    --><div class="level col-xs-3 col-sm-2 vcenter"><span class="fa fa-level-up fa-lg"> </span> {{ user.level }}</div><!--
+    --><div class="col-xs-3 col-sm-2 vcenter"><span class="fa fa-gamepad fa-lg"> </span> {{ user.played }}</div><!--
+    --><div class="col-xs-3 col-sm-2 vcenter"><span class="fa fa-trophy fa-lg"> </span> {{ user.won }}</div><!--
+    --><div class="col-xs-3 col-sm-2 vcenter"><span class="fa fa-clock-o fa-lg"> </span> {{ user.lastGame|date('Y-m-d h:m:s') }}</div>
     </div>
 </div>
