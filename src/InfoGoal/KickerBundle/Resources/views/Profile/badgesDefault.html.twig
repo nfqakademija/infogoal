@@ -1,22 +1,12 @@
 {% for badge in badges %}
-    {% if loop.index%3 == 1 %}
-        <div class="row">
-    {% endif %}
-    <div class="col-sm-4 my-badge">
+    <div class="col-xs-12 col-sm-6 my-badge">
         <div class="badge-img">
                 <img src="{{ asset('bundles/infogoalkicker/assets/badges/' ~ badge.imageUrl ~ '.png') }}">
         </div>
-        <div class="badge-name">
+        <div class="badge-info">
+            <p class="badge-name">{{ badge.name }}</p>
 
-                <p>{{ badge.name }}</p>
-        </div>
-        <div class="badge-howto">
-
-                <p>{{ badge.howToGetBadge }}</p>
+            <p class="badge-howto">{{ badge.howToGetBadge }}</p>
         </div>
     </div>
-
-    {% if loop.index%3 == 0 or loop.last %}
-        </div>
-    {% endif %}
 {% endfor %}
