@@ -25,19 +25,20 @@
                         </span>
                 </div>
             </div>
+            {% set selected = {'name':'Vardą', 'level':'Lygį', 'played':'Žaidimų sk.', 'won':'Pergalių sk.', 'lastGame':'Pask. žaidimą'} %}
 
             <div class="btn-group dropdown visible-xs col-xs-6">
                 <div class="pull-right"><!--
-            --><button type="button" class="btn btn-default" disabled>Rikiuoti pagal</button><!--
+            --><button type="button" class="btn btn-default" disabled>{{ selected[app.request.query.get("order")]|default('Rikiuoti pagal:') }}</button><!--
             --><button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
                     <span class="caret"></span>
                 </button>
                     <ul class="dropdown-menu">
-                        <li><a role="menuitem" tabindex="-1" href="#">Vardą</a></li>
-                        <li><a role="menuitem" tabindex="-1" href="#">Lygį</a></li>
-                        <li><a role="menuitem" tabindex="-1" href="#">Žaidimų skaičių</a></li>
-                        <li><a role="menuitem" tabindex="-1" href="#">Pergalių skaičių</a></li>
-                        <li><a role="menuitem" tabindex="-1" href="#">Paskutinį žaidimą</a></li>
+                        <li><a role="menuitem" tabindex="-1" href="{{ path('info_goal_kicker_users_index', {'order' : 'name', 'how' : (orderHow == 'asc' and orderBy == 'name') ? 'desc' : 'asc'}) }}">Vardą</a></li>
+                        <li><a role="menuitem" tabindex="-1" href="{{ path('info_goal_kicker_users_index', {'order' : 'level', 'how' : (orderHow == 'asc' and orderBy == 'level') ? 'desc' : 'asc'}) }}">Lygį</a></li>
+                        <li><a role="menuitem" tabindex="-1" href="{{ path('info_goal_kicker_users_index', {'order' : 'played', 'how' : (orderHow == 'asc' and orderBy == 'played') ? 'desc' : 'asc'}) }}">Žaidimų skaičių</a></li>
+                        <li><a role="menuitem" tabindex="-1" href="{{ path('info_goal_kicker_users_index', {'order' : 'won', 'how' : (orderHow == 'asc' and orderBy == 'won') ? 'desc' : 'asc'}) }}">Pergalių skaičių</a></li>
+                        <li><a role="menuitem" tabindex="-1" href="{{ path('info_goal_kicker_users_index', {'order' : 'lastGame', 'how' : (orderHow == 'asc' and orderBy == 'lastGame') ? 'desc' : 'asc'}) }}">Paskutinį žaidimą</a></li>
                     </ul>
                 </div>
             </div>
