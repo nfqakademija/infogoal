@@ -2,16 +2,35 @@
 
 .badges-cnt {
   background-color: $color-white;
-  padding: 20px 20px 20px 0;
+  padding: 20px;
   color: $color-black;
-  margin: 20px 30px;
+  margin: 20px 0;
+  text-align: center;
 
-}
+  .my-badge {
+    margin-bottom: 15px;
+    p {
+      margin-bottom: 5px;
+    }
 
-.my-badge {
-  img {
-    max-width: 90px;
-    margin: 10px 10px;
-
+    .badge-name {
+      font-size: 14px;
+    }
+    .badge-date {
+      font-size: 11px;
+      color: $color-dark-gray;
+    }
+    .badge-img {
+      img {
+        max-width: 64px;
+        margin-bottom: 10px;
+      }
+    }
+    .badge-howto {
+      font-size: 12px;
+      color: $color-dark-gray;
+    }
   }
+
 }
+

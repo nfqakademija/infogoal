@@ -8,15 +8,22 @@ class ProfileController extends Controller
 {
     public function indexAction($id)
     {
-
+        $limit = 6;
         $player = $this->getDoctrine()->getRepository('InfoGoalKickerBundle:Player')->findOneBy(array("id" => $id));
-        $badgesId = $this->getDoctrine()->getRepository('InfoGoalKickerBundle:PlayersBadges')->findBy(array("playerId" => $id));
-        $badges = $this->getDoctrine()->getRepository('InfoGoalKickerBundle:Badge')->findBy(array("id" => $badgesId));
-        $badgesCount = count($badges);
+        $badges = $this->getDoctrine()->getRepository('InfoGoalKickerBundle:Badge')->findBy(array(), null, $limit);
+        $playersBadges = $player->getPB();
+
+//        foreach ($playersBadges as $playerBadge) {
+//            var_dump($playerBadge->getBadges()->getName());
+//        }
+
+        $badgesCount = count($playersBadges);
+
         return $this->render('InfoGoalKickerBundle:Profile:index.html.twig', array(
             'player' => $player,
-            'badges' => $badges,
-            'badgesCount' => $badgesCount
+            'playersBadges' => $playersBadges,
+            'badgesCount' => $badgesCount,
+            'badges' => $badges
         ));
     }
 

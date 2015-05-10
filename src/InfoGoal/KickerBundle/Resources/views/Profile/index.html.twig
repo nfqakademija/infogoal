@@ -6,31 +6,31 @@
     {% stylesheets filter='compass' output='bundles/infogoalkicker/css/*.css'
     '@InfoGoalKickerBundle/Resources/public/scss/Profile/profile.scss'
     '@InfoGoalKickerBundle/Resources/public/scss/Profile/player.scss'
-    '@InfoGoalKickerBundle/Resources/public/scss/Profile/badges.scss'
-    %}
-    <link rel="stylesheet" href="{{ asset_url }}" />
+    '@InfoGoalKickerBundle/Resources/public/scss/Profile/badges.scss' %}
+    <link rel="stylesheet" href="{{ asset_url }}"/>
     {% endstylesheets %}
 {% endblock %}
 
 {% block body %}
 
     <main class="container">
-        <div class="player block col-md-6">
-            {% include '@InfoGoalKicker/Profile/player.html.twig' %}
-            <div class="clearfix"></div>
-
-            {% if badgesCount == 0 %}
-            <div class="row">
-                {% include '@InfoGoalKicker/Profile/badgesDefault.html.twig' %}
+        <div class="row">
+            <div class="player block col-md-6">
+                {% include '@InfoGoalKicker/Profile/player.html.twig' %}
+                <div class="clearfix"></div>
             </div>
-            {% else %}
-                {{ include('@InfoGoalKicker/Profile/badges.html.twig', { 'badges': badges }) }}
-            {% endif %}
-        </div><!--end player block-->
-
-
-
+            <!--end player block-->
+        </div>
+        <div class="row">
+            <div class="block badges-cnt col-sm-6">
+                    {% if badgesCount != 0 %}
+                        {{ include('@InfoGoalKicker/Profile/badges.html.twig', { 'badges': playersBadges }) }}
+                    {% else %}
+                        {{ include('@InfoGoalKicker/Profile/badgesDefault.html.twig', { 'badges': badges }) }}
+                    {% endif %}
+                <div class="clearfix"></div>
+            </div>
+        </div>
     </main><!-- end container -->
-
 
 {% endblock %}

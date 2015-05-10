@@ -1,27 +1,22 @@
-<div class="block badges-cnt">
-    <div class="col-md-3 my-badge">
-        <img src="{{ asset('bundles/infogoalkicker/assets/badges/1.png') }}">
+{% for badge in badges %}
+    {% if loop.index%3 == 1 %}
+        <div class="row">
+    {% endif %}
+    <div class="col-sm-4 my-badge">
+        <div class="badge-img">
+                <img src="{{ asset('bundles/infogoalkicker/assets/badges/' ~ badge.imageUrl ~ '.png') }}">
+        </div>
+        <div class="badge-name">
+
+                <p>{{ badge.name }}</p>
+        </div>
+        <div class="badge-howto">
+
+                <p>{{ badge.howToGetBadge }}</p>
+        </div>
     </div>
-    <div class="col-md-3 my-badge">
-        <img src="{{ asset('bundles/infogoalkicker/assets/badges/2.png') }}">
-    </div>
-    <div class="col-md-3 my-badge">
-        <img src="{{ asset('bundles/infogoalkicker/assets/badges/3.png') }}">
-    </div>
-    <div class="col-md-3 my-badge">
-        <img src="{{ asset('bundles/infogoalkicker/assets/badges/4.png') }}">
-    </div>
-    <div class="col-md-3 my-badge">
-        <img src="{{ asset('bundles/infogoalkicker/assets/badges/1.png') }}">
-    </div>
-    <div class="col-md-3 my-badge">
-        <img src="{{ asset('bundles/infogoalkicker/assets/badges/2.png') }}">
-    </div>
-    <div class="col-md-3 my-badge">
-        <img src="{{ asset('bundles/infogoalkicker/assets/badges/3.png') }}">
-    </div>
-    <div class="col-md-3 my-badge">
-        <img src="{{ asset('bundles/infogoalkicker/assets/badges/4.png') }}">
-    </div>
-    <div class="clearfix"></div>
-</div>
+
+    {% if loop.index%3 == 0 or loop.last %}
+        </div>
+    {% endif %}
+{% endfor %}
