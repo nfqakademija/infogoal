@@ -15,12 +15,12 @@ class BadgesController  extends Controller{
     {
         $limit = 10;
         $offset = ($page - 1) * $limit;
-        $games = $this->getDoctrine()->getRepository('InfoGoalKickerBundle:Badge')
+        $badges = $this->getDoctrine()->getRepository('InfoGoalKickerBundle:Badge')
             ->createQueryBuilder('u')
             ->setMaxResults($limit)
             ->setFirstResult($offset)
             ->getQuery()
             ->getResult();
-        return $this->render('InfoGoalKickerBundle:Badges:index.html.twig', array( 'games' => $games ));
+        return $this->render('InfoGoalKickerBundle:Badges:index.html.twig', array( 'badges' => $badges ));
     }
 }
