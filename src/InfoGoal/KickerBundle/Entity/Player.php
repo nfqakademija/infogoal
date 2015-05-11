@@ -381,7 +381,7 @@ class Player
         }
         Carbon::setLocale('lt');
         $cDate = Carbon::instance($lastGame);
-        $diff = $cDate->diffForHumans(Carbon::now());
+        $diff = $cDate->diffForHumans(Carbon::now(), true);
         $diff = str_replace(array('metai'), 'm.', $diff);
         $diff = str_replace(array('mėnuo', 'mėnesiai'), 'mėn.', $diff);
         $diff = str_replace(array('savaitė', 'savaitės'), 'sav.', $diff);
