@@ -33,3 +33,7 @@ info_goal_kicker_timeline:
 info_goal_kicker_badges_index:
     path:     /badges
     defaults: { _controller: InfoGoalKickerBundle:Badges:index }
+
+reservation_action:
+    path: /reservation
+    defaults: { _controller: InfoGoalKickerBundle:Reservation:index }

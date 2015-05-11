@@ -179,6 +179,12 @@ body {
   }
 }
 
+.close-link,
+.close-link:hover {
+  color: $color-black;
+  font-weight: bold;
+}
+
 a:hover {
   text-decoration: none !important;
   color: $color-white;
