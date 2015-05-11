@@ -91,9 +91,11 @@ class ExpCalculator
 
             $player->setLevel($player->getLevel() + 1);
 
-            $player->setLevelXp($player->getLevelXp() * 1.5);
+            $player->setLevelXp(($player->getLevel()^2)/0.04);
 
             $this->em->persist($player);
+
+//            echo get_object_vars($player);
         }
         $this->em->flush();
     }
