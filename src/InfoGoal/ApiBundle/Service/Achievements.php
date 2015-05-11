@@ -25,22 +25,25 @@ class Achievements
     public function checkBadges($game)
     {
         $players = array();
-        array_push($players, $game->getPlayer1(), $game->getPlayer2(),
-            $game->getPlayer3(), $game->getPlayer4());
+
+        array_push($players, $game->getPlayer1(), $game->getPlayer2());
+        array_push($players, $game->getPlayer3(), $game->getPlayer4());
 
         $badges = $this->em->getRepository('InfoGoalKickerBundle:Badge')->findAll();
         foreach ($players as $player) {
-            if ($player != null) {
-                $playerInfo = array();
+            foreach ($badges as $badge) {
+                if ($player != null) {
+                    $playerInfo = array();
 
-                $playerInfo['win'] = $player->getWon();
+                    $playerInfo['win'] = $player->getWon();
 
-                $playerInfo['played'] = $player->getPlayed();
+                    $playerInfo['played'] = $player->getPlayed();
 
-                foreach ($badges as $badge) {
-                    $rule = explode('::', $badge->getRulesToGetBadge());
-                    if ($playerInfo[$rule[0]] >= $rule[1]) {
-                        $this->getBadge($player, $badge);
+                    $playerInfo['goals'] = $this->countGoals($player);
+
+                        $rule = explode('::', $badge->getRulesToGetBadge());
+                        if ($playerInfo[$rule[0]] >= $rule[1]) {
+                            $this->getBadge($player, $badge);
                     }
                 }
             }
@@ -65,5 +68,35 @@ class Achievements
             $this->em->persist($playerBadge);
             $this->em->flush();
         }
+    }
+
+
+    public function countGoals($player){
+        $goals = 0;
+        $games1 = $this->em->getRepository('InfoGoalKickerBundle:Game')
+            ->createQueryBuilder('p')
+            ->where('p.player1 = :player')
+            ->orWhere('p.player2 = :player')
+            ->setParameter('player', $player)
+            ->orderBy('p.dateEnd', 'DESC')
+            ->getQuery()->getResult();
+
+        $games2 = $this->em->getRepository('InfoGoalKickerBundle:Game')
+            ->createQueryBuilder('p')
+            ->where('p.player3 = :player')
+            ->orWhere('p.player4 = :player')
+            ->setParameter('player', $player)
+            ->orderBy('p.dateEnd', 'DESC')
+            ->getQuery()->getResult();
+
+        foreach ($games1 as $game1){
+            $goals += $game1->getGoal1();
+        }
+
+        foreach ($games2 as $game2){
+            $goals += $game2->getGoal2();
+        }
+
+        return $goals;
     }
 } 
