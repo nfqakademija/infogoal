@@ -1,63 +1,128 @@
 @import "../vars";
 
-.player-name {
-  font-size: 18px;
+.block {
+  padding: 20px 0 10px;
 }
 
-#team-0, #team-1 {
+.player-name {
+  font-size: 18px;
+  height: 55px;
+  word-wrap: break-word;
+  @media (min-width: 768px) and (max-width: 991px) {
+    font-size: 14px;
+    height: 49px;
+  }
+}
 
+.team-0, .team-1 {
   margin-bottom: 10px;
-  
+
   .row {
     float: none;
     margin: 0 auto;
     &:first-child {
       margin-bottom: 20px;
+      @media (min-width: 768px) and (max-width: 991px) {
+        margin-bottom: 74px;
+      }
     }
   }
-
+  .player-info {
+    padding-left: 10px;
+    padding-right: 10px;
+    p {
+      margin-bottom: 0;
+    }
+    @media (min-width: 768px) and (max-width: 991px) {
+      font-size: 12px;
+    }
+  }
 }
 
-#team-0 {
-  margin-left: 10px;
-  float: left;
+.team-0 {
+  margin-left: 0;
+  float:left;
+  .player-icon {
+    float: left;
+    padding-right: 15px;
+    padding-left: 0;
 
+  }
+  .player-game-info {
+    text-align: left;
+  }
 }
 
-#team-1 {
-  margin-right: 10px;
-  float: right;
-
+.team-1 {
+  margin-right: 0;
+  float:right;
+  .player-icon{
+    float: right;
+    padding-left: 15px;
+    padding-right: 0;
+    .level-icon {
+      right: -9px;
+    }
+  }
+  .player-info {
+    text-align: right;
+  }
 }
 
 .result {
   margin: auto 0;
   position: relative;
+  @media (max-width: 767px) {
+    margin-top: 143px;
+  }
   .result-line {
     position: absolute;
     top: -20px;
     left: 50%;
     width: 2px;
-    height: 224px;
+    height: 234px;
     background-color: $color-white;
     @media (max-width: 767px) {
-      height: 220px;
+      height: 244px;
+      top: -163px;
+    }
+    @media (min-width: 768px) and (max-width: 991px) {
+      height: 248px;
+    }
+    @media (min-width: 992px) and (max-width: 1199px) {
+      height: 224px;
+    }
+    @media (min-width: 1200px) {
+      height: 278px;
     }
   }
 
   .score {
     border: 2px solid $color-white;
     text-align: center;
-    width: 100px;
+    width: 140px;
     padding: 10px 15px;
-    font-size: 18px;
+    font-size: 34px;
     margin: 0 auto;
     background-color: rgba(97, 196, 131, 1);
     position: absolute;
-    top: 65px;
+    top: 47px;
     left: 0;
     right: 0;
-
+    @media (max-width: 767px) {
+      top: 80px;
+    }
+    @media (min-width: 768px) and (max-width: 991px) {
+      top: 72px;
+      font-size: 28px;
+      width: 120px;
+    }
+    @media (min-width: 992px) and (max-width: 1199px) {
+      top: 56px;
+    }
+    @media (min-width: 1200px) {
+      top: 80px;
+    }
   }
 }
 

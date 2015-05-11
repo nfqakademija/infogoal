@@ -7,7 +7,7 @@
 
         <div class="timeline-label game block">
 
-            <div id="team-0" >
+            <div class="team-0 col-xs-6 col-md-5">
                 <div class="player-0 row">
                     {% if game.player1 is null %}
                         {{ include('@InfoGoalKicker/Timeline/playerDefault.html.twig') }}
@@ -29,7 +29,7 @@
                 </div><!--end player-1 -->
             </div><!--end team-0 -->
 
-            <div id="team-1" >
+            <div class="team-1 col-xs-6  col-md-5">
                 <div class="player-0 row">
                     {% if game.player3 is null %}
                         {{ include('@InfoGoalKicker/Timeline/playerDefault.html.twig') }}
@@ -52,7 +52,15 @@
             <div class="result">
                 <div class="result-line"></div>
                 <div class="score">
-                    {{ game.goal1 }} : {{ game.goal2 }}
+                    {% if game.goal1 != 10 and game.goal2 != 10 %}
+                        0{{ game.goal1 }} : 0{{ game.goal2 }}
+                    {% elseif game.goal1 != 10 %}
+                        0{{ game.goal1 }} : {{ game.goal2 }}
+                    {% elseif game.goal2 != 10 %}
+                        {{ game.goal1 }} : 0{{ game.goal2 }}
+                    {% else %}
+                        {{ game.goal1 }} : {{ game.goal2 }}
+                    {% endif %}
                 </div>
 
             </div>

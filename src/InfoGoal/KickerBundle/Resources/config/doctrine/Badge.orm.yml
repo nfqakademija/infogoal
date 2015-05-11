@@ -18,4 +18,13 @@ InfoGoal\KickerBundle\Entity\Badge:
         imageUrl:
             type: string
             length: 255
+        howToGetBadge:
+            type: string
+            lenght: 255
+
+    oneToMany:
+        BP:
+            targetEntity: PlayersBadges
+            mappedBy: badges
+
     lifecycleCallbacks: {  }

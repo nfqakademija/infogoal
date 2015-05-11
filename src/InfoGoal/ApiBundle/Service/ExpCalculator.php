@@ -19,19 +19,16 @@ class ExpCalculator
         $this->em = $em;
     }
 
-    public function CalculateGoal($cardIds)
+    public function CalculateGoal($players)
     {
-        foreach ($cardIds as $cardId) {
-            if ($cardId != null) {
-                $player = $this->em->getRepository('InfoGoalKickerBundle:Player')->findOneBy(
-                    array('cardId' => $cardId));
-                if ($player != null) {
-                    $player->setXp($player->getXp() + 10);
+        foreach ($players as $player) {
+            if ($player != null) {
 
-                    $this->levelUp($player);
+                $player->setXp($player->getXp() + 301);
 
-                    $this->em->persist($player);
-                }
+                $this->levelUp($player);
+
+                $this->em->persist($player);
             }
         }
         $this->em->flush();
@@ -41,50 +38,44 @@ class ExpCalculator
     {
         $timeEnd = $game->getDateEnd()->getTimestamp();
         $timeStart = $game->getDateStart()->getTimestamp();
-        $exp = ceil(($timeEnd - $timeStart)/60) * 5 + 50;
-        $cardIds = [];
+        $exp = ceil(($timeEnd - $timeStart) / 60) * 5 + 50;
+        $players = [];
         if ($game->getGoal1() > $game->getGoal2()) {
-            array_push($cardIds, $game->getPlayer1(), $game->getPlayer2(), $game->getPlayer3(), $game->getPlayer4());
+            array_push($players, $game->getPlayer1(), $game->getPlayer2(),
+                $game->getPlayer3(), $game->getPlayer4());
+        } else {
+            array_push($players, $game->getPlayer4(), $game->getPlayer3(),
+                $game->getPlayer2(), $game->getPlayer1());
         }
-        else{
-            array_push($cardIds, $game->getPlayer4(), $game->getPlayer3(), $game->getPlayer2(), $game->getPlayer1());
-        }
-        for ($i = 0; $i < 2; $i++){
-            if($cardIds[$i] != null) {
-                $player = $this->em->getRepository('InfoGoalKickerBundle:Player')->findOneBy(
-                    array ('cardId' => $cardIds[$i]));
-                if ($player != null) {
-                    $player->setXp($player->getXp() + $exp + 50);
+        for ($i = 0; $i < 2; $i++) {
+            if ($players[$i] != null) {
 
-                    $player->setPlayed($player->getPlayed() + 1);
+                $players[$i]->setXp($players[$i]->getXp() + $exp + 50);
 
-                    $player->setWon($player->getWon() + 1);
+                $players[$i]->setPlayed($players[$i]->getPlayed() + 1);
 
-                    $player->setLastGame($game->getDateEnd());
+                $players[$i]->setWon($players[$i]->getWon() + 1);
 
-                    $this->levelUp($player);
+                $players[$i]->setLastGame($game->getDateEnd());
 
-                    $this->em->persist($player);
-            }
+                $this->levelUp($players[$i]);
 
+                $this->em->persist($players[$i]);
             }
         }
 
         for ($i = 2; $i < 4; $i++) {
-            if ($cardIds[$i] != null) {
-                $player = $this->em->getRepository('InfoGoalKickerBundle:Player')->findOneBy(
-                    array ('cardId' => $cardIds[$i]));
-                if ($player != null) {
-                    $player->setXp($player->getXp() + $exp);
+            if ($players[$i] != null) {
 
-                    $player->setPlayed($player->getPlayed() + 1);
+                $players[$i]->setXp($players[$i]->getXp() + $exp);
 
-                    $player->setLastGame($game->getDateEnd());
+                $players[$i]->setPlayed($players[$i]->getPlayed() + 1);
 
-                    $this->levelUp($player);
+                $players[$i]->setLastGame($game->getDateEnd());
 
-                    $this->em->persist($player);
-                }
+                $this->levelUp($players[$i]);
+
+                $this->em->persist($players[$i]);
             }
         }
 
@@ -94,16 +85,17 @@ class ExpCalculator
 
     private function levelUp($player)
     {
-            while ($player->getXp() >= $player->getLevelXp()) {
+        while ($player->getXp() >= $player->getLevelXp()) {
 
-                $player->setXp($player->getXp() - $player->getLevelXp());
+            $player->setXp($player->getXp() - $player->getLevelXp());
 
-                $player->setLevel($player->getLevel() + 1);
+            $player->setLevel($player->getLevel() + 1);
 
-                $player->setLevelXp($player->getLevelXp() * 1.5);
+            $player->setLevelXp(ceil(pow($player->getLevel(),(3/2)))/0.02);
 
-                $this->em->persist($player);
-            }
+            $this->em->persist($player);
+
+        }
         $this->em->flush();
     }
 } 

@@ -15,6 +15,9 @@ InfoGoal\KickerBundle\Entity\Player:
             games4:
                 targetEntity: Game
                 mappedBy: player4
+            PB:
+                targetEntity: PlayersBadges
+                mappedBy: players
     id:
         id:
             type: integer

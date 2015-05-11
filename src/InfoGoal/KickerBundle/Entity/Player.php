@@ -33,7 +33,7 @@ class Player
     /**
      * @var integer
      */
-    private $levelXp = 1000;
+    private $levelXp = 50;
 
     /**
      * @var integer
@@ -70,11 +70,29 @@ class Player
     protected $games2;
 
     /**
-     * @return ArrayCollection
+     * @var ArrayCollection
      */
+    protected $PB;
+
     public function getGames1()
     {
         return $this->games1;
+    }
+
+    /**
+     * @return ArrayCollection
+     */
+    public function getPB()
+    {
+        return $this->PB;
+    }
+
+    /**
+     * @param ArrayCollection $PB
+     */
+    public function setPB($PB)
+    {
+        $this->PB = $PB;
     }
 
     /**

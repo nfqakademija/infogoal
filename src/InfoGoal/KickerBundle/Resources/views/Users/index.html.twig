@@ -7,6 +7,7 @@
     '@InfoGoalKickerBundle/Resources/public/scss/Users/user.scss' %}
     <link href="{{ asset_url }}" rel="stylesheet"/>
     {% endstylesheets %}
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
 {% endblock %}
 
 {% block title %}Users{% endblock %}
@@ -25,19 +26,20 @@
                         </span>
                 </div>
             </div>
+            {% set selected = {'name':'Vardą', 'level':'Lygį', 'played':'Žaidimų sk.', 'won':'Pergalių sk.', 'lastGame':'Pask. žaidimą'} %}
 
             <div class="btn-group dropdown visible-xs col-xs-6">
                 <div class="pull-right"><!--
-            --><button type="button" class="btn btn-default" disabled>Rikiuoti pagal</button><!--
+            --><button type="button" class="btn btn-default" disabled>{{ selected[app.request.query.get("order")]|default('Rikiuoti pagal:') }}</button><!--
             --><button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
                     <span class="caret"></span>
                 </button>
                     <ul class="dropdown-menu">
-                        <li><a role="menuitem" tabindex="-1" href="#">Vardą</a></li>
-                        <li><a role="menuitem" tabindex="-1" href="#">Lygį</a></li>
-                        <li><a role="menuitem" tabindex="-1" href="#">Žaidimų skaičių</a></li>
-                        <li><a role="menuitem" tabindex="-1" href="#">Pergalių skaičių</a></li>
-                        <li><a role="menuitem" tabindex="-1" href="#">Paskutinį žaidimą</a></li>
+                        <li><a role="menuitem" tabindex="-1" href="{{ path('info_goal_kicker_users_index', {'order' : 'name', 'how' : (orderHow == 'asc' and orderBy == 'name') ? 'desc' : 'asc'}) }}">Vardą</a></li>
+                        <li><a role="menuitem" tabindex="-1" href="{{ path('info_goal_kicker_users_index', {'order' : 'level', 'how' : (orderHow == 'asc' and orderBy == 'level') ? 'desc' : 'asc'}) }}">Lygį</a></li>
+                        <li><a role="menuitem" tabindex="-1" href="{{ path('info_goal_kicker_users_index', {'order' : 'played', 'how' : (orderHow == 'asc' and orderBy == 'played') ? 'desc' : 'asc'}) }}">Žaidimų skaičių</a></li>
+                        <li><a role="menuitem" tabindex="-1" href="{{ path('info_goal_kicker_users_index', {'order' : 'won', 'how' : (orderHow == 'asc' and orderBy == 'won') ? 'desc' : 'asc'}) }}">Pergalių skaičių</a></li>
+                        <li><a role="menuitem" tabindex="-1" href="{{ path('info_goal_kicker_users_index', {'order' : 'lastGame', 'how' : (orderHow == 'asc' and orderBy == 'lastGame') ? 'desc' : 'asc'}) }}">Paskutinį žaidimą</a></li>
                     </ul>
                 </div>
             </div>
@@ -45,35 +47,55 @@
         <div class="row hidden-xs">
         <div id="sort-menu" class="btn-group" role="group">
 
-                <button type="button" class="btn btn-default col-sm-4">
+                <button type="button" class="btn btn-default col-sm-4" onclick="location.href='{{ path('info_goal_kicker_users_index', {'order' : 'name', 'how' : (orderHow == 'asc' and orderBy == 'name') ? 'desc' : 'asc'}) }}'">
                     <div>
                         <p>Vardas</p>
-                        <span class="caret"></span>
+                        {% set rotate='' %}
+                        {% if orderHow == 'asc' and orderBy == 'name' %}
+                            {% set rotate='rotate' %}
+                        {% endif %}
+                        <span class="caret {{ rotate }}"></span>
                     </div>
                 </button><!--
                 solution for extra space http://stackoverflow.com/questions/20547819/vertical-align-with-bootstrap-3
-            --><button type="button" class="btn btn-default col-sm-2">
+            --><button type="button" class="btn btn-default col-sm-2" onclick="location.href='{{ path('info_goal_kicker_users_index', {'order' : 'level', 'how' : (orderHow == 'asc' and orderBy == 'level') ? 'desc' : 'asc'}) }}'">
                     <div>
                         <p>Lygis</p>
-                        <span class="caret"></span>
+                        {% set rotate='' %}
+                        {% if orderHow == 'asc' and orderBy == 'level' %}
+                            {% set rotate='rotate' %}
+                        {% endif %}
+                        <span class="caret {{ rotate }}"></span>
                     </div>
                 </button><!--
-            --><button type="button" class="btn btn-default col-sm-2">
+            --><button type="button" class="btn btn-default col-sm-2" onclick="location.href='{{ path('info_goal_kicker_users_index', {'order' : 'played', 'how' : (orderHow == 'asc' and orderBy == 'played') ? 'desc' : 'asc'}) }}'">
                     <div>
                         <p>Žaista</p>
-                        <span class="caret"></span>
+                        {% set rotate='' %}
+                        {% if orderHow == 'asc' and orderBy == 'played' %}
+                            {% set rotate='rotate' %}
+                        {% endif %}
+                        <span class="caret {{ rotate }}"></span>
                     </div>
                 </button><!--
-            --><button type="button" class="btn btn-default col-sm-2">
+            --><button type="button" class="btn btn-default col-sm-2" onclick="location.href='{{ path('info_goal_kicker_users_index', {'order' : 'won', 'how' : (orderHow == 'asc' and orderBy == 'won') ? 'desc' : 'asc'}) }}'">
                     <div>
                         <p>Laimėta</p>
-                        <span class="caret"></span>
+                        {% set rotate='' %}
+                        {% if orderHow == 'asc' and orderBy == 'won' %}
+                            {% set rotate='rotate' %}
+                        {% endif %}
+                        <span class="caret {{ rotate }}"></span>
                     </div>
                 </button><!--
-            --><button type="button" class="btn btn-default col-sm-2">
+            --><button type="button" class="btn btn-default col-sm-2" onclick="location.href='{{ path('info_goal_kicker_users_index', {'order' : 'lastGame', 'how' : (orderHow == 'asc' and orderBy == 'lastGame') ? 'desc' : 'asc'}) }}'">
                     <div>
-                        <p >Pask. žaidimas</p>
-                        <span class="caret"></span>
+                        <p>Pask. žaidimas</p>
+                        {% set rotate='' %}
+                        {% if orderHow == 'asc' and orderBy == 'lastGame' %}
+                            {% set rotate='rotate' %}
+                        {% endif %}
+                        <span class="caret {{ rotate }}"></span>
                     </div>
                 </button>
             </div>

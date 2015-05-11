@@ -2,7 +2,7 @@ services:
 
     kicker.analyzer:
         class: InfoGoal\ApiBundle\Service\DataAnalyzer
-        arguments: [@doctrine.orm.entity_manager, @kicker.calculator]
+        arguments: [@doctrine.orm.entity_manager, @kicker.calculator, @kicker.achievements]
 
     kicker.api:
         class: InfoGoal\ApiBundle\Service\Api
@@ -10,4 +10,8 @@ services:
 
     kicker.calculator:
         class: InfoGoal\ApiBundle\Service\ExpCalculator
+        arguments: [@doctrine.orm.entity_manager]
+
+    kicker.achievements:
+        class: InfoGoal\ApiBundle\Service\Achievements
         arguments: [@doctrine.orm.entity_manager]
