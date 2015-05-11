@@ -2,17 +2,23 @@
 
 {% block stylesheets %}
     {{ parent() }}
-    {% stylesheets filter='compass' output='bundles/infogoalkicker/css/*.css'
-        '@InfoGoalKickerBundle/Resources/public/scss/Table/table-free.scss'
+    {% stylesheets filter='compass' output='bundles/infogoalkicker/css/*.css'    '@InfoGoalKickerBundle/Resources/public/scss/Table/table.scss'
+
     %}
     <link href="{{ asset_url }}" rel="stylesheet">
     {% endstylesheets %}
+{% endblock %}
+{% block javascripts %}
+    {{ parent() }}
+    {% javascripts '@InfoGoalKickerBundle/Resources/public/js/reload.js' %}
+    <script src="{{ asset_url }}"></script>
+    {% endjavascripts %}
 {% endblock %}
 
 {% block title %}Table{% endblock %}
 
 {% block body %}
-    <main class="container"></main>
+    <main class="container">
         <div id="table" class=" col-lg-12 col-md-12 col-sm-12 col-xs-12 ">
             <img id="field-free" src="{{ asset('/bundles/infogoalkicker/assets/soccer-field2.png') }}" alt="Soccer field" class="img-responsive">
             <div class="table-free">
