@@ -24,7 +24,7 @@ class ExpCalculator
         foreach ($players as $player) {
             if ($player != null) {
 
-                $player->setXp($player->getXp() + 10);
+                $player->setXp($player->getXp() + 301);
 
                 $this->levelUp($player);
 
@@ -91,11 +91,10 @@ class ExpCalculator
 
             $player->setLevel($player->getLevel() + 1);
 
-            $player->setLevelXp(($player->getLevel()^2)/0.04);
+            $player->setLevelXp(ceil(pow($player->getLevel(),(3/2)))/0.02);
 
             $this->em->persist($player);
 
-//            echo get_object_vars($player);
         }
         $this->em->flush();
     }
