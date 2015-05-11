@@ -1,1 +1,5 @@
 services:
+
+    kicker.reservation:
+        class: InfoGoal\KickerBundle\Service\Reservation
+        arguments: [@doctrine.orm.entity_manager]
