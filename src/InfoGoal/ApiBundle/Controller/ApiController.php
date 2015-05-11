@@ -4,7 +4,7 @@ namespace InfoGoal\ApiBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use InfoGoal\ApiBundle\Service\Api;
-use InfoGoal\ApiBundle\Service\Achievements;
+use Symfony\Component\BrowserKit\Response;
 
 
 class ApiController extends Controller
