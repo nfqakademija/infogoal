@@ -3,19 +3,19 @@
  */
 
 $(document).ready(function () {
+    var tableReload;
     function load() {
-        var tableReload = setInterval(function () {
-            $("#table").load(location.href + " #table");
-            console.log('refreshed');
-        }, 2000);
+        $("#table").load(location.href + " #table");
         if ($("#table-game").hasClass("match-results")) {
-            clearInterval(tableReload);
-            setTimeout(function (){
-                console.log('10');
-                $("#table").load(location.href + " #table");
+            tableReload = setTimeout(function () {
                 load();
-            }, 10000)
-
+            }, 10000);
+            console.log(10);
+        } else {
+            tableReload = setTimeout(function () {
+                load();
+            }, 1000);
+            console.log(1);
         }
     }
 

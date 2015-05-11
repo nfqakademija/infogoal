@@ -11,7 +11,7 @@ class TableController extends Controller
         $state = $this->getDoctrine()->getRepository('InfoGoalKickerBundle:TableOption')->findOneBy(array("optionKey" => "table_state"));
         $stateValue = $state->getOptionValue();
         if($stateValue == 0){
-            return $this->render('InfoGoalKickerBundle:Table:index.html.twig', array( ));
+            return $this->render('InfoGoalKickerBundle:Table:index.html.twig', array());
         } elseif($stateValue == 1) {
             $gameId = $this->getDoctrine()->getRepository('InfoGoalKickerBundle:TableOption')->findOneBy(array("optionKey" => "active_game_id"));
             $game = $this->getDoctrine()->getRepository('InfoGoalKickerBundle:Game')->findOneBy(array("id" => $gameId->getOptionValue()));

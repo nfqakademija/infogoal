@@ -262,6 +262,7 @@ class DataAnalyzer
      */
     public function markGameEnd($time)
     {
+        sleep(3);
         $this->gameIsStarted = false;
         $this->markTableState(0);
 

@@ -8,19 +8,18 @@
     <link href="{{ asset_url }}" rel="stylesheet">
     {% endstylesheets %}
 {% endblock %}
-{#{% block javascripts %}#}
-    {#{{ parent() }}#}
-    {#{% javascripts '@InfoGoalKickerBundle/Resources/public/js/reload.js' %}#}
-    {#<script src="{{ asset_url }}"></script>#}
-    {#{% endjavascripts %}#}
-{#{% endblock %}#}
+{% block javascripts %}
+    {{ parent() }}
+    {% javascripts '@InfoGoalKickerBundle/Resources/public/js/reload.js' %}
+    <script src="{{ asset_url }}"></script>
+    {% endjavascripts %}
+{% endblock %}
 
 {% block body %}
     <div class="container">
 
         <div id="table" class="col-xs-12">
-            <img id="field-game" src="{{ asset('/bundles/infogoalkicker/assets/soccer-field.png') }}" alt="Soccer field"
-                 class="img-responsive">
+            <img id="field-game" src="{{ asset('/bundles/infogoalkicker/assets/soccer-field.png') }}" alt="Soccer field" class="img-responsive">
 
             <div id="table-game" class="match-results">
                 <h1>Laimėtojai</h1>
@@ -36,7 +35,7 @@
                             </div>
 
                             <div class="col-sm-6">
-                                {% if player1 is null %}
+                                {% if player2 is null %}
                                     {{ include('@InfoGoalKicker/Table/playerDefault.html.twig') }}
                                 {% else %}
                                     {{ include('@InfoGoalKicker/Table/player.html.twig', { 'player': player2 }) }}
