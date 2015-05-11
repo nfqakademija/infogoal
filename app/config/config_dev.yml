@@ -42,7 +42,14 @@ monolog:
         #    level:  info
 
 assetic:
+    debug:          "%kernel.debug%"
     use_controller: true
+    bundles:        [ InfoGoalKickerBundle ]
+    #java: /usr/bin/java
+    filters:
+        cssrewrite: ~
+        sass: ~
+        compass: ~
 
 #swiftmailer:
 #    delivery_address: me@example.com
