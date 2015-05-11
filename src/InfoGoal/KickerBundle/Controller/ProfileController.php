@@ -17,6 +17,7 @@ class ProfileController extends Controller
             ->orWhere('p.player3 = :player')
             ->orWhere('p.player4 = :player')
             ->setParameter('player', $player)
+            ->setMaxResults($limit-1)
             ->orderBy('p.dateEnd', 'DESC')
             ->getQuery()->getResult();
         $badges = $this->getDoctrine()->getRepository('InfoGoalKickerBundle:Badge')->findBy(array(), null, $limit);
