@@ -17,11 +17,13 @@
     <body>
         {% include 'nav.html.twig' %}
         {% block body %}{% endblock %}
+        {% include 'reservation.html.twig' %}
         {% block javascripts %}
             {% javascripts
                 '@InfoGoalKickerBundle/Resources/public/js/jquery-2.1.3.min.js'
+                '@InfoGoalKickerBundle/Resources/public/js/jquery-ui.js'
                 '@InfoGoalKickerBundle/Resources/public/js/bootstrap.min.js'
-
+                '@InfoGoalKickerBundle/Resources/public/js/reservation.js'
             %}
                 <script src="{{ asset_url }}"></script>
             {% endjavascripts %}
