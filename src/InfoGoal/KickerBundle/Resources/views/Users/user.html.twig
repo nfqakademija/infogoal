@@ -1,13 +1,14 @@
 <div class="block">
     <div class="user row">
+        <a href="{{ path('profile_page', {'id': user.id}) }}">
         <div class="col-xs-12 col-sm-4 vcenter" style="float: none;"><!--
         -->{% if user.photo is not empty %}
             <img src="{{ asset('bundles/infogoalkicker/assets/uifaces/' ~ user.photo ~ '.jpg') }}" alt="player" class="img-thumbnail">
             {% else %}
             <img src="{{ asset('bundles/infogoalkicker/assets/uifaces/default.png') }}" alt="player" class="img-thumbnail">
             {% endif %}<!--
-        --><p class="col-xs-8 col-sm-8 vcenter"><a href="{{ path('profile_page', {'id': user.id}) }}">{{ user.name }}</a></p><!--
-    --></div><!--
+        --><p class="col-xs-8 col-sm-8 vcenter">{{ user.name }}</p><!--
+    --></div></a><!--
     --><div class="level col-xs-3 col-sm-2 vcenter"><span class="fa fa-level-up fa-lg"> </span> {{ user.level }}</div><!--
     --><div class="col-xs-3 col-sm-2 vcenter"><span class="fa fa-gamepad fa-lg"> </span> {{ user.played }}</div><!--
     --><div class="col-xs-3 col-sm-2 vcenter"><span class="fa fa-trophy fa-lg"> </span> {{ user.won }}</div><!--

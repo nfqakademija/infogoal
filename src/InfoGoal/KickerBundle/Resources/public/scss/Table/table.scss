@@ -1,0 +1,184 @@
+@import "../vars";
+
+.player-name {
+  font-size: 22px;
+  color: $color-white;
+  height: 61px;
+  word-wrap: break-word;
+}
+
+.level-icon {
+  width: $level-icon-dim;
+  height: $level-icon-dim;
+  border-radius: 90px;
+  background-color: $color-white;
+  color: $color-green;
+  font-weight: bold;
+  font-size: 16px;
+  text-align: center;
+  display: table;
+  position: absolute;
+  top: -8px;
+  right: 4px;
+}
+
+.level-number {
+  display: table-cell;
+  vertical-align: middle;
+}
+
+.team-0 {
+  .player-info {
+    text-align: $left;
+  }
+  .progress {
+    @media (max-width: 991px) and (min-width: 768px) {
+      margin-top: 10px;
+      width: 250px;
+      right: 120px;
+    }
+    @media (max-width: 1199px) and (min-width: 992px) {
+      right: 124px;
+      margin-top: 14px;
+      width: 254px;
+    }
+    @media (min-width: 1200px) {
+      right: 0;
+      width: 200px;
+    }
+  }
+}
+
+.team-1 {
+  .player-info {
+    text-align: $right;
+  }
+  .progress {
+    @media (max-width: 991px) and (min-width: 768px) {
+      margin-top: 10px;
+      width: 250px;
+      left: 7px;
+    }
+    @media (max-width: 1199px) and (min-width: 992px) {
+      margin-top: 14px;
+      width: 254px;
+      left: 91px;
+    }
+    @media (min-width: 1200px) {
+      left: 77px;
+      width: 200px;
+    }
+  }
+  .player-icon {
+    float: $right;
+  }
+}
+
+#field-free {
+  vertical-align: middle;
+  margin: 0 auto;
+  display: block;
+}
+.table-free {
+  position: absolute;
+  top: 120px;
+  left: 0;
+  right: 0;
+
+  @media (max-width: 768px) {
+    top: 45px;
+  }
+
+  p {
+    font-size: 36px;
+    font-weight: bold;
+    margin-bottom: 250px;
+    @media (max-width: 768px) {
+      font-size: 18px;
+      margin-bottom: 150px;
+    }
+  }
+}
+
+
+#field-game {
+  vertical-align: middle;
+  margin: 0 auto;
+  display: block;
+  position: relative;
+}
+
+.team-0, .team-1 {
+  position: absolute;
+  width: 40%;
+  .row {
+    float: none;
+    margin: 0 auto;
+    &:first-child {
+      margin-bottom: 35%;
+    }
+  }
+  @media (max-width: 768px) {
+    top: 0;
+  }
+  @media (max-width: 992px) and (min-width: 768px) {
+    .player-name {
+      font-size: 20px;
+    }
+    top: 15%;
+  }
+  @media (min-width: 992px) {
+    top: 15%;
+  }
+}
+
+.team-0 {
+  left: 0;
+  @media (max-width: 992px) and (min-width: 768px) {
+    .col-sm-6 {
+      float: left;
+    }
+  }
+}
+
+.team-1 {
+  right: 0;
+  @media (max-width: 992px) and (min-width: 768px) {
+    .col-sm-6 {
+      float: right;
+    }
+  }
+}
+
+.result {
+  margin: auto;
+  position: absolute;
+  left: 0;
+  right: 0;
+  @media (max-width: 768px) {
+    top: 32%;
+  }
+  @media (max-width: 992px) and (min-width: 768px) {
+    top: 40%;
+  }
+  @media (min-width: 993px) {
+    top: 38%;
+  }
+
+  div {
+    padding: 10px 15px;
+    font-size: 84px;
+    margin: 0 auto;
+    @media (max-width: 768px) {
+      font-size: 32px;
+    }
+    @media (max-width: 992px) and (min-width: 767px) {
+      font-size: 51px;
+    }
+  }
+}
+
+.winners {
+  position: absolute;
+  top: 40%;
+}

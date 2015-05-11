@@ -4,11 +4,16 @@
 {% block stylesheets %}
     {{ parent() }}
     {% stylesheets filter='compass' output='bundles/infogoalkicker/css/*.css'
-    '@InfoGoalKickerBundle/Resources/public/scss/Table/table-game.scss'
-    '@InfoGoalKickerBundle/Resources/public/scss/Table/player.scss'
+    '@InfoGoalKickerBundle/Resources/public/scss/Table/table.scss'
     %}
     <link href="{{ asset_url }}" rel="stylesheet">
     {% endstylesheets %}
+{% endblock %}
+{% block javascripts %}
+    {{ parent() }}
+    {% javascripts '@InfoGoalKickerBundle/Resources/public/js/reload.js' %}
+    <script src="{{ asset_url }}"></script>
+    {% endjavascripts %}
 {% endblock %}
 
 {% block body %}
