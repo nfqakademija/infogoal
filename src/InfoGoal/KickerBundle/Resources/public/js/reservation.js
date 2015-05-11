@@ -1,5 +1,4 @@
-jQuery("#makeReservation").click(function () {
-
+jQuery(document).on("click", "#makeReservation", function () {
     var reservationDialog = jQuery("#reservationDialog");
     var backOverlay = jQuery("#backgroundOverlay");
 
