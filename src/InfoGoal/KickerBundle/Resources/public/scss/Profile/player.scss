@@ -10,6 +10,9 @@
 
   .progress {
     margin-top: 20px;
+    @media (min-width: 992px) and (max-width: 1199px) {
+      margin-top: 12px;
+    }
   }
 
   .player-img {
