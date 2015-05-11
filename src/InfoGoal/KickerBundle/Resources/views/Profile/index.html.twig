@@ -8,7 +8,8 @@
     '@InfoGoalKickerBundle/Resources/public/scss/Profile/player.scss'
     '@InfoGoalKickerBundle/Resources/public/scss/Badges/badges.scss'
     '@InfoGoalKickerBundle/Resources/public/scss/Profile/badges.scss'
-    %}
+    '@InfoGoalKickerBundle/Resources/public/scss/Timeline/game.scss'
+    '@InfoGoalKickerBundle/Resources/public/scss/Timeline/timeline.scss' %}
     <link rel="stylesheet" href="{{ asset_url }}"/>
     {% endstylesheets %}
 {% endblock %}
@@ -16,26 +17,42 @@
 {% block body %}
 
     <main class="container">
-        <div class="row">
-            <div class="player block col-xs-12 col-md-6">
-                {% include '@InfoGoalKicker/Profile/player.html.twig' %}
-                <div class="clearfix"></div>
-            </div>
-            <!--end player block-->
-        </div>
-        <div class="row">
-            <div class="block badges-cnt col-xs-12 col-md-6">
-                <div class="row row-eq-height">
+        <div class="row ">
+            <div class="col-xs-12 my-cnt">
+                <div class="row">
+                    <div class="col-xs-12 col-md-6 my-cnt">
 
-                    {% if badgesCount != 0 %}
-                        {{ include('@InfoGoalKicker/Profile/badges.html.twig', { 'badges': playersBadges }) }}
-                    {% else %}
-                        {{ include('@InfoGoalKicker/Profile/badgesDefault.html.twig', { 'badges': badges }) }}
-                    {% endif %}
+                        <div class="player block row">
+                            {% include '@InfoGoalKicker/Profile/player.html.twig' %}
+                            <div class="clearfix"></div>
+                        </div>
+                        <!--end player block-->
 
+                        <div class="block badges-cnt row">
+                            <div class="row row-eq-height">
+
+                                {% if badgesCount != 0 %}
+                                    {{ include('@InfoGoalKicker/Profile/badges.html.twig', { 'badges': playersBadges }) }}
+                                {% else %}
+                                    {{ include('@InfoGoalKicker/Profile/badgesDefault.html.twig', { 'badges': badges }) }}
+                                {% endif %}
+
+                            </div>
+
+                            <div class="clearfix"></div>
+
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-md-6 timeline">
+
+                        <div class="timeline-centered">
+                            {% for game in games %}
+                                {{ include('@InfoGoalKicker/Timeline/game.html.twig', { 'game': game }) }}
+                            {% endfor %}
+                        </div>
+                    </div>
                 </div>
 
-                <div class="clearfix"></div>
 
             </div>
         </div>

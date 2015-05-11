@@ -10,6 +10,15 @@ class ProfileController extends Controller
     {
         $limit = 6;
         $player = $this->getDoctrine()->getRepository('InfoGoalKickerBundle:Player')->findOneBy(array("id" => $id));
+        $games = $this->getDoctrine()->getRepository('InfoGoalKickerBundle:Game')
+            ->createQueryBuilder('p')
+            ->where('p.player1 = :player')
+            ->orWhere('p.player2 = :player')
+            ->orWhere('p.player3 = :player')
+            ->orWhere('p.player4 = :player')
+            ->setParameter('player', $player)
+            ->orderBy('p.dateEnd', 'DESC')
+            ->getQuery()->getResult();
         $badges = $this->getDoctrine()->getRepository('InfoGoalKickerBundle:Badge')->findBy(array(), null, $limit);
         $playersBadges = $player->getPB();
         $badgesCount = count($playersBadges);
@@ -18,7 +27,8 @@ class ProfileController extends Controller
             'player' => $player,
             'playersBadges' => $playersBadges,
             'badgesCount' => $badgesCount,
-            'badges' => $badges
+            'badges' => $badges,
+            'games' => $games
         ));
     }
 
