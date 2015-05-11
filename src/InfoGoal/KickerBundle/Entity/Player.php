@@ -33,7 +33,7 @@ class Player
     /**
      * @var integer
      */
-    private $levelXp = 1000;
+    private $levelXp = 50;
 
     /**
      * @var integer
