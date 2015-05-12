@@ -281,7 +281,7 @@ class Game
         $diff = str_replace(array('savaitė', 'savaitės', 'savaičių'), 'sav.', $diff);
         $diff = str_replace(array('diena', 'dienos', 'dienų'), 'd.', $diff);
         $diff = str_replace(array('valanda', 'valandos', 'valandų'), 'val.', $diff);
-        $diff = str_replace(array('minutė', 'minutės', 'minučių'), 'min.', $diff);
+        $diff = str_replace(array('minutės', 'minutė', 'minučių'), 'min.', $diff);
         $diff = str_replace(array('sekundė', 'sekundės', 'sekundžių'), 's.', $diff);
         return $diff;
     }
