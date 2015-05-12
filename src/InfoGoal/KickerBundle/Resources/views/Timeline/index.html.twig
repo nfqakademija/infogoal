@@ -15,6 +15,7 @@
     {{ parent() }}
     {% javascripts '@InfoGoalKickerBundle/Resources/public/js/jquery-ias.min.js'
                     '@InfoGoalKickerBundle/Resources/public/js/scroll.js'
+        '@InfoGoalKickerBundle/Resources/public/js/backToTop.js'
     %}
     <script src="{{ asset_url }}"></script>
     {% endjavascripts %}
@@ -40,4 +41,5 @@
 
 
     </main><!-- end container -->
+    <a href="javascript:;" id="scrollToTop">Scroll to top</a>
 {% endblock %}

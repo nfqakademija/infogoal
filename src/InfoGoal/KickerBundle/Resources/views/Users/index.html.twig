@@ -13,6 +13,7 @@
     {{ parent() }}
     {% javascripts '@InfoGoalKickerBundle/Resources/public/js/jquery-ias.min.js'
     '@InfoGoalKickerBundle/Resources/public/js/scrollUsers.js'
+        '@InfoGoalKickerBundle/Resources/public/js/backToTop.js'
     %}
     <script src="{{ asset_url }}"></script>
     {% endjavascripts %}
@@ -119,4 +120,5 @@
         <a href="{{ url('info_goal_kicker_users', {'page' : nextPage, 'order' : orderBy , 'how' : orderHow}) }}" class="next"></a>
     {% endif %}
 </div><!-- end container -->
+    <a href="javascript:;" id="scrollToTop">Scroll to top</a>
 {% endblock %}

@@ -16,6 +16,45 @@ body {
   bottom: 0;
   left: 57%;
 }
+.next {
+  display: none;
+}
+
+#scrollToTop {
+  cursor: pointer;
+  position: fixed;
+  background-color: #EEE;
+  z-index: 300;
+  display: block;
+  color: #222;
+  text-align: center;
+  font-size: 13px;
+  border: 1px solid #BBB;
+  box-shadow: 0 0 0 1px #fff inset, 0 1px 4px rgba(0,0,0,.2);
+  -moz-box-shadow: 0 0 0 1px #fff inset, 0 1px 4px rgba(0,0,0,.2);
+  -webkit-box-shadow: 0 0 0 1px #fff inset, 0 1px 4px rgba(0,0,0,.2);
+  right: 15px;
+  bottom: -6px;
+  width: 70px;
+  padding: 10px;
+  -moz-transition: bottom 250ms ease-in-out;
+  -webkit-transition: bottom 250ms ease-in-out;
+  border-radius: 5px 5px 0 0;
+  text-shadow: 0 1px white;
+  &.offscreen {
+    bottom: -100px;
+    -moz-transition-duration: 250ms;
+    -webkit-transition-duration: 250ms;
+  }
+  &:hover {
+    background-color: #f4f4f4;
+    color: #000;
+  }
+  &:active {
+    padding: 10px 10px 11px;
+  }
+
+}
 
 .timeline-centered {
   position: relative;
