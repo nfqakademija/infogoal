@@ -39,7 +39,7 @@ class UsersController extends Controller
             $users->where($users->expr()->like('u.name', ':search'))
                 ->setParameter('search', '%' . $search . '%');
         }
-        $users->add('orderBy', 'u.' . $orderBy . ' ' . $orderHow)
+        $users = $users->add('orderBy', 'u.' . $orderBy . ' ' . $orderHow)
             ->setMaxResults($limit)
             ->setFirstResult($offset);
 
