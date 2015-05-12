@@ -18,12 +18,14 @@
         <div class="row">
             <div class="col-xs-6 col-sm-offset-3">
                 <div class="input-group stylish-input-group">
-                    <input type="text" class="form-control" placeholder="Paieška">
+                    <form action="{{ path('info_goal_kicker_users_index') }}">
+                    <input type="text" class="form-control" placeholder="Paieška" name="search" {% if searchPhrase %} value = {{searchPhrase}} {% endif %}>
                         <span class="input-group-addon">
                             <button type="submit">
                                 <span class="glyphicon glyphicon-search"></span>
                             </button>
                         </span>
+                    </form>
                 </div>
             </div>
             {% set selected = {'name':'Vardą', 'level':'Lygį', 'played':'Žaidimų sk.', 'won':'Pergalių sk.', 'lastGame':'Pask. žaidimą'} %}
@@ -35,11 +37,11 @@
                     <span class="caret"></span>
                 </button>
                     <ul class="dropdown-menu">
-                        <li><a role="menuitem" tabindex="-1" href="{{ path('info_goal_kicker_users_index', {'order' : 'name', 'how' : (orderHow == 'asc' and orderBy == 'name') ? 'desc' : 'asc'}) }}">Vardą</a></li>
-                        <li><a role="menuitem" tabindex="-1" href="{{ path('info_goal_kicker_users_index', {'order' : 'level', 'how' : (orderHow == 'asc' and orderBy == 'level') ? 'desc' : 'asc'}) }}">Lygį</a></li>
-                        <li><a role="menuitem" tabindex="-1" href="{{ path('info_goal_kicker_users_index', {'order' : 'played', 'how' : (orderHow == 'asc' and orderBy == 'played') ? 'desc' : 'asc'}) }}">Žaidimų skaičių</a></li>
-                        <li><a role="menuitem" tabindex="-1" href="{{ path('info_goal_kicker_users_index', {'order' : 'won', 'how' : (orderHow == 'asc' and orderBy == 'won') ? 'desc' : 'asc'}) }}">Pergalių skaičių</a></li>
-                        <li><a role="menuitem" tabindex="-1" href="{{ path('info_goal_kicker_users_index', {'order' : 'lastGame', 'how' : (orderHow == 'asc' and orderBy == 'lastGame') ? 'desc' : 'asc'}) }}">Paskutinį žaidimą</a></li>
+                        <li><a role="menuitem" tabindex="-1" href="{{ path('info_goal_kicker_users_index', {'search' : searchPhrase, 'order' : 'name', 'how' : (orderHow == 'asc' and orderBy == 'name') ? 'desc' : 'asc'}) }}">Vardą</a></li>
+                        <li><a role="menuitem" tabindex="-1" href="{{ path('info_goal_kicker_users_index', {'search' : searchPhrase,'order' : 'level', 'how' : (orderHow == 'asc' and orderBy == 'level') ? 'desc' : 'asc'}) }}">Lygį</a></li>
+                        <li><a role="menuitem" tabindex="-1" href="{{ path('info_goal_kicker_users_index', {'search' : searchPhrase,'order' : 'played', 'how' : (orderHow == 'asc' and orderBy == 'played') ? 'desc' : 'asc'}) }}">Žaidimų skaičių</a></li>
+                        <li><a role="menuitem" tabindex="-1" href="{{ path('info_goal_kicker_users_index', {'search' : searchPhrase,'order' : 'won', 'how' : (orderHow == 'asc' and orderBy == 'won') ? 'desc' : 'asc'}) }}">Pergalių skaičių</a></li>
+                        <li><a role="menuitem" tabindex="-1" href="{{ path('info_goal_kicker_users_index', {'search' : searchPhrase,'order' : 'lastGame', 'how' : (orderHow == 'asc' and orderBy == 'lastGame') ? 'desc' : 'asc'}) }}">Paskutinį žaidimą</a></li>
                     </ul>
                 </div>
             </div>
@@ -47,7 +49,7 @@
         <div class="row hidden-xs">
         <div id="sort-menu" class="btn-group" role="group">
 
-                <button type="button" class="btn btn-default col-sm-4" onclick="location.href='{{ path('info_goal_kicker_users_index', {'order' : 'name', 'how' : (orderHow == 'asc' and orderBy == 'name') ? 'desc' : 'asc'}) }}'">
+                <button type="button" class="btn btn-default col-sm-4" onclick="location.href='{{ path('info_goal_kicker_users_index', {'search' : searchPhrase, 'order' : 'name', 'how' : (orderHow == 'asc' and orderBy == 'name') ? 'desc' : 'asc'}) }}'">
                     <div>
                         <p>Vardas</p>
                         {% set rotate='' %}
@@ -58,7 +60,7 @@
                     </div>
                 </button><!--
                 solution for extra space http://stackoverflow.com/questions/20547819/vertical-align-with-bootstrap-3
-            --><button type="button" class="btn btn-default col-sm-2" onclick="location.href='{{ path('info_goal_kicker_users_index', {'order' : 'level', 'how' : (orderHow == 'asc' and orderBy == 'level') ? 'desc' : 'asc'}) }}'">
+            --><button type="button" class="btn btn-default col-sm-2" onclick="location.href='{{ path('info_goal_kicker_users_index', {'search' : searchPhrase,'order' : 'level', 'how' : (orderHow == 'asc' and orderBy == 'level') ? 'desc' : 'asc'}) }}'">
                     <div>
                         <p>Lygis</p>
                         {% set rotate='' %}
@@ -68,7 +70,7 @@
                         <span class="caret {{ rotate }}"></span>
                     </div>
                 </button><!--
-            --><button type="button" class="btn btn-default col-sm-2" onclick="location.href='{{ path('info_goal_kicker_users_index', {'order' : 'played', 'how' : (orderHow == 'asc' and orderBy == 'played') ? 'desc' : 'asc'}) }}'">
+            --><button type="button" class="btn btn-default col-sm-2" onclick="location.href='{{ path('info_goal_kicker_users_index', {'search' : searchPhrase,'order' : 'played', 'how' : (orderHow == 'asc' and orderBy == 'played') ? 'desc' : 'asc'}) }}'">
                     <div>
                         <p>Žaista</p>
                         {% set rotate='' %}
@@ -78,7 +80,7 @@
                         <span class="caret {{ rotate }}"></span>
                     </div>
                 </button><!--
-            --><button type="button" class="btn btn-default col-sm-2" onclick="location.href='{{ path('info_goal_kicker_users_index', {'order' : 'won', 'how' : (orderHow == 'asc' and orderBy == 'won') ? 'desc' : 'asc'}) }}'">
+            --><button type="button" class="btn btn-default col-sm-2" onclick="location.href='{{ path('info_goal_kicker_users_index', {'search' : searchPhrase,'order' : 'won', 'how' : (orderHow == 'asc' and orderBy == 'won') ? 'desc' : 'asc'}) }}'">
                     <div>
                         <p>Laimėta</p>
                         {% set rotate='' %}
@@ -88,7 +90,7 @@
                         <span class="caret {{ rotate }}"></span>
                     </div>
                 </button><!--
-            --><button type="button" class="btn btn-default col-sm-2" onclick="location.href='{{ path('info_goal_kicker_users_index', {'order' : 'lastGame', 'how' : (orderHow == 'asc' and orderBy == 'lastGame') ? 'desc' : 'asc'}) }}'">
+            --><button type="button" class="btn btn-default col-sm-2" onclick="location.href='{{ path('info_goal_kicker_users_index', {'search' : searchPhrase,'order' : 'lastGame', 'how' : (orderHow == 'asc' and orderBy == 'lastGame') ? 'desc' : 'asc'}) }}'">
                     <div>
                         <p>Pask. žaidimas</p>
                         {% set rotate='' %}
