@@ -6,7 +6,8 @@ use Doctrine\ORM\EntityManager;
 use Symfony\Component\HttpFoundation\Response;
 use InfoGoal\KickerBundle\Entity\TableOption;
 
-class Reservation {
+class Reservation
+{
 
     /**
      * @var EntityManager
