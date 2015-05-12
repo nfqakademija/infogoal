@@ -46,7 +46,7 @@ class Api
      */
     public function readApi($options)
     {
-        $fromID = 1;
+        $fromID = 0;
         foreach ($options as $option) {
             if ($option->getOptionKey() == "last_event_id") {
                 $fromID = $option->getOptionValue();
@@ -70,10 +70,16 @@ class Api
             'base_url' => $this->baseUrl
         ]);
 
-        $query = array(
-            'rows' => $rows,
-            'from-id' => $fromID
-        );
+        if ($fromID !== 0) {
+            $query = array(
+                'rows' => $rows,
+                'from-id' => $fromID
+            );
+        } else {
+            $query = array(
+                'rows' => 1
+            );
+        }
 
         $response = $client->get('?' . http_build_query($query), ['auth' => [$this->loginName, $this->loginPass]]);
 
