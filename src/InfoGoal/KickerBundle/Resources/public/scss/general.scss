@@ -1,5 +1,10 @@
 @import "vars";
 
+html, body {
+  width: 100%;
+  height: 100%;
+}
+
 body {
     background-color: rgba(97, 196, 131, 1);
     font-family: $font-stack;

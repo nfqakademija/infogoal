@@ -8,6 +8,10 @@
             "SymfonyStandard": "app/"
         }
     },
+    "repositories": [{
+      "type": "vcs",
+      "url": "http://github.com/Aurelija/Carbon"
+    }],
     "require": {
         "php": ">=5.3.3",
         "symfony/symfony": "2.6.*",
@@ -22,7 +26,8 @@
         "sensio/framework-extra-bundle": "~3.0,>=3.0.2",
         "incenteev/composer-parameter-handler": "~2.0",
         "guzzlehttp/guzzle": "~5.0",
-        "phpunit/phpunit": "~4.1"
+        "phpunit/phpunit": "~4.1",
+        "nesbot/carbon": "dev-master"
     },
     "require-dev": {
         "sensio/generator-bundle": "~2.3"

@@ -262,6 +262,7 @@ class DataAnalyzer
      */
     public function markGameEnd($time)
     {
+        sleep(3);
         $this->gameIsStarted = false;
         $this->markTableState(0);
 
@@ -275,6 +276,7 @@ class DataAnalyzer
         $this->em->flush();
 
         $this->calculator->CalculateGame($this->activeGame);
+        $this->achievements->checkBadges($this->activeGame);
 
     }
 

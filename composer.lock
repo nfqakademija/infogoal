@@ -4,7 +4,7 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "bccf8107999b529f74bf157261ce8fc7",
+    "hash": "82eaaf0fc006d50c815e2cab4ef30c0e",
     "packages": [
         {
             "name": "doctrine/annotations",
@@ -1162,6 +1162,55 @@
                 "psr-3"
             ],
             "time": "2015-03-09 09:58:04"
+        },
+        {
+            "name": "nesbot/carbon",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Aurelija/Carbon.git",
+                "reference": "b637d8e9a6e0ff2411535697cb5726c14151191b"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Aurelija/Carbon/zipball/b637d8e9a6e0ff2411535697cb5726c14151191b",
+                "reference": "b637d8e9a6e0ff2411535697cb5726c14151191b",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.0",
+                "symfony/translation": "~2.6"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "~4.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "Carbon": "src"
+                }
+            },
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Brian Nesbitt",
+                    "email": "brian@nesbot.com",
+                    "homepage": "http://nesbot.com"
+                }
+            ],
+            "description": "A simple API extension for DateTime.",
+            "homepage": "http://carbon.nesbot.com",
+            "keywords": [
+                "DateTime",
+                "date",
+                "time"
+            ],
+            "support": {
+                "source": "https://github.com/Aurelija/Carbon/tree/master"
+            },
+            "time": "2015-05-11 23:20:25"
         },
         {
             "name": "phpdocumentor/reflection-docblock",
@@ -2770,7 +2819,9 @@
     ],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": [],
+    "stability-flags": {
+        "nesbot/carbon": 20
+    },
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {

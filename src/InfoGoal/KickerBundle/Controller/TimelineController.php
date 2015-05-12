@@ -16,7 +16,7 @@ class TimelineController extends Controller {
 
     public function indexAction($page = 1)
     {
-        $limit = 10;
+        $limit = 5;
         $offset = ($page - 1) * $limit;
         $games = $this->getDoctrine()->getRepository('InfoGoalKickerBundle:Game')
             ->createQueryBuilder('u')
@@ -26,7 +26,16 @@ class TimelineController extends Controller {
             ->setFirstResult($offset)
             ->getQuery()
             ->getResult();
-        return $this->render('InfoGoalKickerBundle:Timeline:index.html.twig', array( 'games' => $games ));
+        $total = $this->getDoctrine()->getRepository('InfoGoalKickerBundle:Game')->createQueryBuilder('u')
+            ->select('count(u.id)')->where('u.dateEnd IS NOT NULL')->getQuery()->getSingleScalarResult();
+
+        $shown = $page * $limit;
+        $nextPage = null;
+        if ($shown < $total) {
+            $nextPage = $page + 1;
+        }
+
+        return $this->render('InfoGoalKickerBundle:Timeline:index.html.twig', array( 'games' => $games, 'nextPage' => $nextPage ));
     }
 
 }

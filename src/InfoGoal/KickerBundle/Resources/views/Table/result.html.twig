@@ -8,38 +8,71 @@
     <link href="{{ asset_url }}" rel="stylesheet">
     {% endstylesheets %}
 {% endblock %}
-{#{% block javascripts %}#}
-    {#{{ parent() }}#}
-    {#{% javascripts '@InfoGoalKickerBundle/Resources/public/js/reload.js' %}#}
-    {#<script src="{{ asset_url }}"></script>#}
-    {#{% endjavascripts %}#}
-{#{% endblock %}#}
+{% block javascripts %}
+    {{ parent() }}
+    {% javascripts '@InfoGoalKickerBundle/Resources/public/js/reload.js' %}
+    <script src="{{ asset_url }}"></script>
+    {% endjavascripts %}
+{% endblock %}
 
 {% block body %}
     <div class="container">
 
-        <div id="table" class="col-xs-12">
-            <img id="field-game" src="{{ asset('/bundles/infogoalkicker/assets/soccer-field.png') }}" alt="Soccer field"
-                 class="img-responsive">
-
+    <div id="table" class="col-xs-12">
+        <img id="field-game" src="{{ asset('/bundles/infogoalkicker/assets/soccer-field.png') }}" alt="Soccer field" class="img-responsive">
             <div id="table-game" class="match-results">
                 <h1>Laimėtojai</h1>
+
                 <div class="row">
-                    <div class="col-sm-12 winners">
+                    <div class="col-sm-4 col-sm-offset-4 winners">
                         <div class="row">
                             <div class="col-sm-6">
                                 {% if player1 is null %}
-                                    {{ include('@InfoGoalKicker/Table/playerDefault.html.twig') }}
+                                    <img src="{{ asset('bundles/infogoalkicker/assets/uifaces/default.png') }}"
+                                         alt="player" class="img-thumbnail">
+                                    <p class="player-name">Anonimas</p>
+
                                 {% else %}
-                                    {{ include('@InfoGoalKicker/Table/player.html.twig', { 'player': player1 }) }}
+                                    {% if player1.photo is not empty %}
+                                        <img src="{{ asset('bundles/infogoalkicker/assets/uifaces/' ~ player1.photo ~ '.jpg') }}"
+                                             alt="player" class="img-thumbnail">
+                                    {% else %}
+                                        <img src="{{ asset('bundles/infogoalkicker/assets/uifaces/default.png') }}"
+                                             alt="player" class="img-thumbnail">
+                                    {% endif %}
+                                    <div class="level-icon">
+                                        <div class="level-number">{{ player1.level }}</div>
+                                    </div>
+                                    <p class="player-name">
+                                        {% autoescape %}
+                                        {{ player1.name|replace({ (' '): '<br>' })|raw }}
+                                        {% endautoescape %}
+                                    </p>
                                 {% endif %}
                             </div>
 
                             <div class="col-sm-6">
-                                {% if player1 is null %}
-                                    {{ include('@InfoGoalKicker/Table/playerDefault.html.twig') }}
+                                {% if player2 is null %}
+                                    <img src="{{ asset('bundles/infogoalkicker/assets/uifaces/default.png') }}"
+                                         alt="player" class="img-thumbnail">
+                                    <p class="player-name">Anonimas</p>
+
                                 {% else %}
-                                    {{ include('@InfoGoalKicker/Table/player.html.twig', { 'player': player2 }) }}
+                                    {% if player2.photo is not empty %}
+                                        <img src="{{ asset('bundles/infogoalkicker/assets/uifaces/' ~ player2.photo ~ '.jpg') }}"
+                                             alt="player" class="img-thumbnail">
+                                    {% else %}
+                                        <img src="{{ asset('bundles/infogoalkicker/assets/uifaces/default.png') }}"
+                                             alt="player" class="img-thumbnail">
+                                    {% endif %}
+                                    <div class="level-icon">
+                                        <div class="level-number">{{ player2.level }}</div>
+                                    </div>
+                                    <p class="player-name">
+                                        {% autoescape %}
+                                        {{ player2.name|replace({ (' '): '<br>' })|raw }}
+                                        {% endautoescape %}
+                                    </p>
                                 {% endif %}
                             </div>
                         </div>
@@ -52,7 +85,8 @@
         </div>
         <!-- end table -->
 
-    </div><!-- end container -->
+    </div>
+    <!-- end container -->
 
 
 {% endblock %}

@@ -2,6 +2,7 @@
 
 namespace InfoGoal\KickerBundle\Entity;
 
+use Carbon\Carbon;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -265,5 +266,23 @@ class Game
             array_push($players, $this->player4->getId());
         }
         return $players;
+    }
+
+    public function getDateDiff() {
+        $dateEnd = $this->getDateEnd();
+        if (is_null($dateEnd)) {
+            return 'NaN';
+        }
+        Carbon::setLocale('lt');
+        $cDate = Carbon::instance($dateEnd);
+        $diff = $cDate->diffForHumans(Carbon::now());
+        $diff = str_replace(array('metai', 'metų'), 'm.', $diff);
+        $diff = str_replace(array('mėnuo', 'mėnesiai', 'mėnesių'), 'mėn.', $diff);
+        $diff = str_replace(array('savaitė', 'savaitės', 'savaičių'), 'sav.', $diff);
+        $diff = str_replace(array('diena', 'dienos', 'dienų'), 'd.', $diff);
+        $diff = str_replace(array('valanda', 'valandos', 'valandų'), 'val.', $diff);
+        $diff = str_replace(array('minutės', 'minutė', 'minučių'), 'min.', $diff);
+        $diff = str_replace(array('sekundė', 'sekundės', 'sekundžių'), 's.', $diff);
+        return $diff;
     }
 }

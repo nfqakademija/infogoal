@@ -178,7 +178,15 @@
   }
 }
 
+.match-results {
+  h1 {
+    position: absolute;
+    top: 10%;
+    left: 0;
+    right: 0;
+  }
+}
 .winners {
   position: absolute;
-  top: 40%;
+  top: 38%;
 }
