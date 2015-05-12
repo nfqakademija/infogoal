@@ -119,7 +119,7 @@
     </main>
     <div id="pagination">
     {% if nextPage is not null %}
-        <a href="{{ url('info_goal_kicker_users', {'page' : nextPage, 'order' : orderBy , 'how' : orderHow}) }}" class="next"></a>
+        <a href="{{ url('info_goal_kicker_users', {'page' : nextPage, 'order' : orderBy , 'how' : orderHow, 'search' : searchPhrase}) }}" class="next"></a>
     {% endif %}
 </div><!-- end container -->
     <a href="javascript:;" id="scrollToTop">Scroll to top</a>
