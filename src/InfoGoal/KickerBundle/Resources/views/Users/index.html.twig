@@ -9,6 +9,14 @@
     {% endstylesheets %}
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
 {% endblock %}
+{% block javascripts %}
+    {{ parent() }}
+    {% javascripts '@InfoGoalKickerBundle/Resources/public/js/jquery-ias.min.js'
+    '@InfoGoalKickerBundle/Resources/public/js/scrollUsers.js'
+    %}
+    <script src="{{ asset_url }}"></script>
+    {% endjavascripts %}
+{% endblock %}
 
 {% block title %}Users{% endblock %}
 
@@ -104,5 +112,11 @@
             {{ include('@InfoGoalKicker/Users/user.html.twig', { 'user': user }) }}
         {% endfor %}
 
-    </main><!-- end container -->
+
+    </main>
+    <div id="pagination">
+    {% if nextPage is not null %}
+        <a href="{{ url('info_goal_kicker_users', {'page' : nextPage, 'order' : orderBy , 'how' : orderHow}) }}" class="next"></a>
+    {% endif %}
+</div><!-- end container -->
 {% endblock %}
