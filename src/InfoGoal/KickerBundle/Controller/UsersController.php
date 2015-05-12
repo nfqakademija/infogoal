@@ -28,7 +28,7 @@ class UsersController extends Controller {
             $orderHow = 'desc';
         }
 
-        $limit = 10;
+        $limit = 5;
         $offset = ($page - 1) * $limit;
         $users = $this->getDoctrine()->getRepository('InfoGoalKickerBundle:Player')
             ->createQueryBuilder('u')
@@ -37,6 +37,16 @@ class UsersController extends Controller {
             ->setFirstResult($offset)
             ->getQuery()
             ->getResult();
-        return $this->render('InfoGoalKickerBundle:Users:index.html.twig', array( 'users' => $users, 'orderHow' => $orderHow, 'orderBy' => $orderBy ));
+        $total = $this->getDoctrine()->getRepository('InfoGoalKickerBundle:Player')->createQueryBuilder('u')
+            ->select('count(u.id)')->getQuery()->getSingleScalarResult();
+
+        $shown = $page * $limit;
+        $nextPage = null;
+        if ($shown < $total) {
+            $nextPage = $page + 1;
+        }
+
+
+        return $this->render('InfoGoalKickerBundle:Users:index.html.twig', array( 'users' => $users, 'orderHow' => $orderHow, 'orderBy' => $orderBy, 'nextPage' => $nextPage ));
     }
 }

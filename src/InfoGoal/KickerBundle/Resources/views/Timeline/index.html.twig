@@ -11,6 +11,16 @@
     {% endstylesheets %}
 {% endblock %}
 
+{% block javascripts %}
+    {{ parent() }}
+    {% javascripts '@InfoGoalKickerBundle/Resources/public/js/jquery-ias.min.js'
+                    '@InfoGoalKickerBundle/Resources/public/js/scroll.js'
+        '@InfoGoalKickerBundle/Resources/public/js/backToTop.js'
+    %}
+    <script src="{{ asset_url }}"></script>
+    {% endjavascripts %}
+{% endblock %}
+
 {% block title %}Users{% endblock %}
 
 {% block body %}
@@ -22,8 +32,14 @@
                     {{ include('@InfoGoalKicker/Timeline/game.html.twig', { 'game': game }) }}
                 {% endfor %}
             </div>
+            <div id="pagination">
+                {% if nextPage is not null %}
+                    <a href="{{ url('info_goal_kicker_timeline', {'page' : nextPage}) }}" class="next" style="color: #080808">next</a>
+                {% endif %}
+            </div>
         </div>
 
 
     </main><!-- end container -->
+    <a href="javascript:;" id="scrollToTop">Scroll to top</a>
 {% endblock %}
