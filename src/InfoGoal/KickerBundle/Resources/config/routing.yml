@@ -37,3 +37,7 @@ info_goal_kicker_badges_index:
 reservation_action:
     path: /reservation
     defaults: { _controller: InfoGoalKickerBundle:Reservation:index }
+
+reservation_button:
+    path: /reservation_button
+    defaults: { _controller: InfoGoalKickerBundle:Button:index }

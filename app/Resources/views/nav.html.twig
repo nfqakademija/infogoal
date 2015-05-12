@@ -10,11 +10,7 @@
 
         <!-- Non-collapsing right-side icons -->
         {% if  app.request.attributes.get('_route') != 'info_goal_kicker_homepage' %}
-            <ul class="nav navbar-nav navbar-right">
-                <li class="li-button">
-                    <button id="makeReservation" type="button" class="table-rez-btn display-block">Rezervuoti</button>
-                </li>
-            </ul>
+            {% include 'button.html.twig' %}
         {% endif %}
 
         <!-- the collapsing menu -->

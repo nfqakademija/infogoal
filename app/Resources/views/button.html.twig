@@ -1,0 +1,11 @@
+<ul class="nav navbar-nav navbar-right" id="reservation-button">
+    <li class="li-button">
+        {% if reservation() == 0 %}
+            <button id="makeReservation" type="button" class="table-rez-btn display-block">Rezervuoti</button>
+        {% elseif reservation() == 1 %}
+            <button id="makeReservation" type="button" class="table-rez-btn game display-block" disabled>Vyksta žaidimas</button>
+        {% else %}
+            <button id="makeReservation" type="button" class="table-rez-btn reserved display-block" disabled>Rezervuotas</button>
+        {% endif %}
+    </li>
+</ul>
