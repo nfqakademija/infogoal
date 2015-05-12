@@ -11,7 +11,8 @@ namespace InfoGoal\KickerBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 
-class UsersController extends Controller {
+class UsersController extends Controller
+{
 
     public function indexAction($page = 1, Request $request)
     {
@@ -36,22 +37,26 @@ class UsersController extends Controller {
             ->createQueryBuilder('u');
         if (!empty($search)) {
             $users->where($users->expr()->like('u.name', ':search'))
-                ->setParameter('search', '%'.$search.'%');
+                ->setParameter('search', '%' . $search . '%');
         }
-            $users->add('orderBy', 'u.'.$orderBy.' '.$orderHow)
+        $users->add('orderBy', 'u.' . $orderBy . ' ' . $orderHow)
             ->setMaxResults($limit)
             ->setFirstResult($offset);
 
         $searchResult = $users->getQuery()->getResult();
-        $total = $this->getDoctrine()->getRepository('InfoGoalKickerBundle:Player')->createQueryBuilder('u')
-                        ->select('count(u.id)')->getQuery()->getSingleScalarResult();
+        $total = $this->getDoctrine()->getRepository('InfoGoalKickerBundle:Player')->createQueryBuilder('u')->select('count(u.id)');
+        if (!empty($search)) {
+            $total->where($total->expr()->like('u.name', ':search'))
+                ->setParameter('search', '%' . $search . '%');
+        }
+        $total = $total->getQuery()->getSingleScalarResult();
 
         $shown = $page * $limit;
         $nextPage = null;
         if ($shown < $total) {
-                    $nextPage = $page + 1;
-               }
-        return $this->render('InfoGoalKickerBundle:Users:index.html.twig', array( 'users' => $searchResult,
-            'orderHow' => $orderHow, 'orderBy' => $orderBy, 'searchPhrase' => $search, 'nextPage' => $nextPage  ));
+            $nextPage = $page + 1;
+        }
+        return $this->render('InfoGoalKickerBundle:Users:index.html.twig', array('users' => $searchResult,
+            'orderHow' => $orderHow, 'orderBy' => $orderBy, 'searchPhrase' => $search, 'nextPage' => $nextPage));
     }
 }
