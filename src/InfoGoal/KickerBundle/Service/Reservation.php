@@ -48,6 +48,8 @@ class Reservation
         $optionRepository = $this->em->getRepository("InfoGoalKickerBundle:TableOption");
         $until = $optionRepository->findOneByOptionKey("reservation_until");
         $state = $optionRepository->findOneByOptionKey("table_state");
+        $this->em->refresh($until);
+        $this->em->refresh($state);
 
         if ($until && $state && $state->getOptionValue() == 2) {
             $timeUntilWait = $until->getOptionValue();
