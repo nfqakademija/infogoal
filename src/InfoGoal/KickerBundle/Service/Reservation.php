@@ -6,7 +6,8 @@ use Doctrine\ORM\EntityManager;
 use Symfony\Component\HttpFoundation\Response;
 use InfoGoal\KickerBundle\Entity\TableOption;
 
-class Reservation {
+class Reservation
+{
 
     /**
      * @var EntityManager
@@ -47,9 +48,6 @@ class Reservation {
         $optionRepository = $this->em->getRepository("InfoGoalKickerBundle:TableOption");
         $until = $optionRepository->findOneByOptionKey("reservation_until");
         $state = $optionRepository->findOneByOptionKey("table_state");
-
-        //$state->setOptionValue(0);
-        //$this->em->flush();
 
         if ($until && $state && $state->getOptionValue() == 2) {
             $timeUntilWait = $until->getOptionValue();
