@@ -3,9 +3,7 @@
 namespace InfoGoal\ApiBundle\Command;
 
 use Symfony\Bundle\FrameworkBundle\Command\ContainerAwareCommand;
-use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
-use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
 
 class ApiUpdateCommand extends ContainerAwareCommand
@@ -22,13 +20,11 @@ class ApiUpdateCommand extends ContainerAwareCommand
         $api = $this->getContainer()->get('kicker.api');
         $em = $this->getContainer()->get('doctrine')->getManager();
         $optionsRepo = $em->getRepository('InfoGoalKickerBundle:TableOption');
-        //$options = $optionsRepo->findAll();
+        $options = $optionsRepo->findAll();
 
-        //while (true) {
-            //$api->readApi($options);
-            //sleep(2);
-        //}
-
-        $output->writeln("Data updated.");
+        while (true) {
+            $api->readApi($options);
+            sleep(2);
+        }
     }
 }
