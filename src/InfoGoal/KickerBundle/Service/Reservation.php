@@ -48,9 +48,6 @@ class Reservation {
         $until = $optionRepository->findOneByOptionKey("reservation_until");
         $state = $optionRepository->findOneByOptionKey("table_state");
 
-        //$state->setOptionValue(0);
-        //$this->em->flush();
-
         if ($until && $state && $state->getOptionValue() == 2) {
             $timeUntilWait = $until->getOptionValue();
             if (strtotime("now") > $timeUntilWait) {

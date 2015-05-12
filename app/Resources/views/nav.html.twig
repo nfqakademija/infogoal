@@ -12,7 +12,7 @@
         {% if  app.request.attributes.get('_route') != 'info_goal_kicker_homepage' %}
             <ul class="nav navbar-nav navbar-right">
                 <li class="li-button">
-                    <button data-url="{{ url('reservation_action') }}" id="makeReservation" type="button" class="table-rez-btn display-block fa fa-cog">Rezervuoti</button>
+                    <button data-url="{{ url('reservation_action') }}" data-redirect="{{ app.request.getBaseURL() }}" id="makeReservation" type="button" class="table-rez-btn display-block fa fa-cog">Rezervuoti</button>
                 </li>
             </ul>
         {% endif %}
