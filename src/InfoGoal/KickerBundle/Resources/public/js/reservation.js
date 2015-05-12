@@ -20,14 +20,12 @@ jQuery(document).on("click", "#makeReservation", function () {
                     url: reservationBtn.data("url"),
                     type: "POST",
                     success: function (data, textStatus, jqXHR) {
-                        if (parseInt(data) == 1) {
-                            reservationDialog.text("Rezervacija sėkminga! Nedelskite - rezervacija galioja tik vieną minutę!");
-                        } else {
-                            reservationDialog.text("Stalas jau rezervuotas!");
-                        }
-                        reservationDialog.append("<p class=\"text-right\"><a class=\"close-link\" href=\"#\">Uždaryti</a></p>");
-                        reservationBtn.hide();
+                        if (parseInt(data) == 1)
+                            window.location.href = reservationBtn.data("redirect");
+                        else
+                            window.location.href = "";
                     },
+
                     error: function (jqXHR, textStatus, errorThrown) {
                     }
                 });

@@ -23,7 +23,7 @@
             <img id="field-free" src="{{ asset('/bundles/infogoalkicker/assets/soccer-field2.png') }}" alt="Soccer field" class="img-responsive">
             <div class="table-free">
                 <p>Stalas laisvas!</p>
-                <button id="makeReservation" class="table-rez-btn">Rezervuoti</button>
+                <button id="makeReservation" data-url="{{ url('reservation_action') }}" data-redirect="{{ app.request.getBaseURL() }}" class="table-rez-btn">Rezervuoti</button>
             </div>
         </div><!-- end table -->
     </main><!-- end container -->
