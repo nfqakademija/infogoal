@@ -196,7 +196,7 @@ class DataAnalyzer
         if (!$player) {
             $player = new Player();
             $player->setCardId($cardSwipe->card_id);
-            $player->setName("Guest" . time());
+            $player->setName("Guest" . $cardSwipe->card_id);
             $player->setPhoto("");
             $this->em->persist($player);
         }
