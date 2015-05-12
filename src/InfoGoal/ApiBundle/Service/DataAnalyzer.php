@@ -269,6 +269,10 @@ class DataAnalyzer
         $date = new DateTime();
         $date->setTimestamp($time);
         $this->activeGame->setDateEnd($date);
+
+        if ($this->activeGame->getGoal1() + $this->activeGame->getGoal2() < 1)
+            $this->em->remove($this->activeGame);
+
         $this->em->flush();
 
         $this->calculator->CalculateGame($this->activeGame);

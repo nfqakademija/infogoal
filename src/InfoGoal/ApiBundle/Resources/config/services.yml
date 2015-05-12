@@ -15,3 +15,7 @@ services:
     kicker.achievements:
         class: InfoGoal\ApiBundle\Service\Achievements
         arguments: [@doctrine.orm.entity_manager]
+
+    kicker.rezervation:
+        class: InfoGoal\KickerBundle\Service\Reservation
+        arguments: [@doctrine.orm.entity_manager]

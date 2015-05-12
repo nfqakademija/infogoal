@@ -33,12 +33,30 @@ class Reservation {
                 $reservationUntil->setOptionKey("reservation_until");
                 $this->em->persist($reservationUntil);
             }
-            $reservationUntil->setOptionValue(strtotime('+1 minutes'));
+            $reservationUntil->setOptionValue(strtotime("+1 minutes"));
 
             $this->em->flush();
             $reservationStatus = 1;
         }
 
         return new Response($reservationStatus);
+    }
+
+    public function checkForCancellation()
+    {
+        $optionRepository = $this->em->getRepository("InfoGoalKickerBundle:TableOption");
+        $until = $optionRepository->findOneByOptionKey("reservation_until");
+        $state = $optionRepository->findOneByOptionKey("table_state");
+
+        $state->setOptionValue(0);
+        $this->em->flush();
+
+        //if ($until && $state && $state->getOptionValue() == 2) {
+        //    $timeUntilWait = $until->getOptionValue();
+        //    if (strtotime("now") > $timeUntilWait) {
+        //        $state->setOptionValue(0);
+        //        $this->em->flush();
+        //    }
+        //}
     }
 } 
