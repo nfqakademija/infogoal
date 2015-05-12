@@ -17,6 +17,8 @@ class UsersController extends Controller {
     {
         $orderHow = $request->query->get('how');
         $orderBy = $request->query->get('order');
+        $search = $request->query->get('search');
+
 
         $orderByVariants = array('name', 'level', 'played', 'won', 'lastGame');
 
@@ -28,25 +30,19 @@ class UsersController extends Controller {
             $orderHow = 'desc';
         }
 
-        $limit = 5;
+        $limit = 10;
         $offset = ($page - 1) * $limit;
         $users = $this->getDoctrine()->getRepository('InfoGoalKickerBundle:Player')
-            ->createQueryBuilder('u')
-            ->add('orderBy', 'u.'.$orderBy.' '.$orderHow)
-            ->setMaxResults($limit)
-            ->setFirstResult($offset)
-            ->getQuery()
-            ->getResult();
-        $total = $this->getDoctrine()->getRepository('InfoGoalKickerBundle:Player')->createQueryBuilder('u')
-            ->select('count(u.id)')->getQuery()->getSingleScalarResult();
-
-        $shown = $page * $limit;
-        $nextPage = null;
-        if ($shown < $total) {
-            $nextPage = $page + 1;
+            ->createQueryBuilder('u');
+        if (!empty($search)) {
+            $users->where($users->expr()->like('u.name', ':search'))
+                ->setParameter('search', '%'.$search.'%');
         }
+            $users->add('orderBy', 'u.'.$orderBy.' '.$orderHow)
+            ->setMaxResults($limit)
+            ->setFirstResult($offset);
 
-
-        return $this->render('InfoGoalKickerBundle:Users:index.html.twig', array( 'users' => $users, 'orderHow' => $orderHow, 'orderBy' => $orderBy, 'nextPage' => $nextPage ));
+        $searchResult = $users->getQuery()->getResult();
+        return $this->render('InfoGoalKickerBundle:Users:index.html.twig', array( 'users' => $searchResult, 'orderHow' => $orderHow, 'orderBy' => $orderBy, 'searchPhrase' => $search ));
     }
 }
