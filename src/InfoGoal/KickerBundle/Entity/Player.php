@@ -381,14 +381,14 @@ class Player
         }
         Carbon::setLocale('lt');
         $cDate = Carbon::instance($lastGame);
-        $diff = $cDate->diffForHumans(Carbon::now(), true);
+        $diff = $cDate->diffForHumans(Carbon::now()->addMinutes(2));
         $diff = str_replace(array('metai', 'metų'), 'm.', $diff);
         $diff = str_replace(array('mėnuo', 'mėnesiai', 'mėnesių'), 'mėn.', $diff);
         $diff = str_replace(array('savaitė', 'savaitės', 'savaičių'), 'sav.', $diff);
         $diff = str_replace(array('diena', 'dienos', 'dienų'), 'd.', $diff);
         $diff = str_replace(array('valanda', 'valandos', 'valandų'), 'val.', $diff);
         $diff = str_replace(array('minutės', 'minutė', 'minučių'), 'min.', $diff);
-        $diff = str_replace(array('sekundė', 'sekundės', 'sekundžių'), 's.', $diff);
+        $diff = str_replace(array('sekundės', 'sekundė', 'sekundžių'), 's.', $diff);
         return $diff;
     }
 }
