@@ -272,6 +272,7 @@ class DataAnalyzer
         $this->em->flush();
 
         $this->calculator->CalculateGame($this->activeGame);
+        $this->achievements->checkBadges($this->activeGame);
 
     }
 
