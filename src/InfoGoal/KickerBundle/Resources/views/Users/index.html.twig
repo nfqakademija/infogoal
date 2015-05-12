@@ -26,16 +26,16 @@
 
         <div class="row">
             <div class="col-xs-6 col-sm-offset-3">
-                <div class="input-group stylish-input-group">
-                    <form action="{{ path('info_goal_kicker_users_index') }}">
+                <form action="{{ path('info_goal_kicker_users_index') }}">
+                    <div class="input-group stylish-input-group">
                     <input type="text" class="form-control" placeholder="Paieška" name="search" {% if searchPhrase %} value = {{searchPhrase}} {% endif %}>
                         <span class="input-group-addon">
                             <button type="submit">
                                 <span class="glyphicon glyphicon-search"></span>
                             </button>
                         </span>
-                    </form>
                 </div>
+                </form>
             </div>
             {% set selected = {'name':'Vardą', 'level':'Lygį', 'played':'Žaidimų sk.', 'won':'Pergalių sk.', 'lastGame':'Pask. žaidimą'} %}
 

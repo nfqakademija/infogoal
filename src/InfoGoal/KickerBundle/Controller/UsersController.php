@@ -43,6 +43,15 @@ class UsersController extends Controller {
             ->setFirstResult($offset);
 
         $searchResult = $users->getQuery()->getResult();
-        return $this->render('InfoGoalKickerBundle:Users:index.html.twig', array( 'users' => $searchResult, 'orderHow' => $orderHow, 'orderBy' => $orderBy, 'searchPhrase' => $search ));
+        $total = $this->getDoctrine()->getRepository('InfoGoalKickerBundle:Player')->createQueryBuilder('u')
+                        ->select('count(u.id)')->getQuery()->getSingleScalarResult();
+
+        $shown = $page * $limit;
+        $nextPage = null;
+        if ($shown < $total) {
+                    $nextPage = $page + 1;
+               }
+        return $this->render('InfoGoalKickerBundle:Users:index.html.twig', array( 'users' => $searchResult,
+            'orderHow' => $orderHow, 'orderBy' => $orderBy, 'searchPhrase' => $search, 'nextPage' => $nextPage  ));
     }
 }
