@@ -18,12 +18,14 @@ class ApiUpdateCommand extends ContainerAwareCommand
     protected function execute(InputInterface $input, OutputInterface $output)
     {
         $api = $this->getContainer()->get('kicker.api');
+        $reservation = $this->getContainer()->get('kicker.reservation');
         $em = $this->getContainer()->get('doctrine')->getManager();
         $optionsRepo = $em->getRepository('InfoGoalKickerBundle:TableOption');
 
         while (true) {
             $options = $optionsRepo->findAll();
             $api->readApi($options);
+            $reservation->checkForCancellation();
             sleep(2);
         }
     }
