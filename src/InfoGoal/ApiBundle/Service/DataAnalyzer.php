@@ -117,23 +117,23 @@ class DataAnalyzer
 
         $this->saveOptions();
 
-        return new Response(print_r($this->events, true));
+        return new Response(print_r($this->events, 1));
     }
 
     public function analyzeEvents()
     {
         foreach ($this->events as $event) {
-            // save state before current event
-            if ($this->gameIsStarted) {
-                if ($this->options['last_event_time'] < strtotime('-1 minutes', $event['timeSec'])) {
-                    $this->markGameEnd($this->options['last_event_time']);
+            if ($this->options['last_event_id'] !== 0) {
+                if ($this->gameIsStarted) {
+                    if ($this->options['last_event_time'] < strtotime('-1 minutes', $event['timeSec'])) {
+                        $this->markGameEnd($this->options['last_event_time']);
+                        $this->markGameStart($event['timeSec']);
+                    }
+                } else {
                     $this->markGameStart($event['timeSec']);
                 }
-            } else {
-                $this->markGameStart($event['timeSec']);
+                $this->switchEvent($event);
             }
-            $this->switchEvent($event);
-
             $this->options['last_event_time'] = $event['timeSec'];
             $this->options['last_event_id'] = $event['id'];
         }
