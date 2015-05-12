@@ -4,10 +4,12 @@
 
 $(document).ready(function () {
     var tableReload;
+
     function load() {
         $.ajax({
+            type: "GET",
             url: location.href,
-            success: function(data) {
+            success: function (data) {
                 var response = $('#table', data);
                 $('#table').html(response.html());
             }

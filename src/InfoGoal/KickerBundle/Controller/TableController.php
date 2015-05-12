@@ -25,7 +25,16 @@ class TableController extends Controller
                 }
             }
         } else {
-            return $this->render('@InfoGoalKicker/Table/reservation.html.twig');
+            $reservationTime = $this->getDoctrine()->getRepository('InfoGoalKickerBundle:TableOption')->findOneBy(array("optionKey" => "reservation_until"));
+            $reservationTimeValue = $reservationTime->getOptionValue();
+            $timeNow = time();
+
+            $diff = $reservationTimeValue - $timeNow;
+
+            $secs = $diff%60;
+            $mins = floor($diff/60);
+
+            return $this->render('@InfoGoalKicker/Table/reservation.html.twig', array('mins' => $mins, 'secs' => $secs));
         }
 
     }
