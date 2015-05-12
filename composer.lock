@@ -4,7 +4,7 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "73f410f05865ef10646e5f5efa314057",
+    "hash": "82eaaf0fc006d50c815e2cab4ef30c0e",
     "packages": [
         {
             "name": "doctrine/annotations",
@@ -1165,16 +1165,16 @@
         },
         {
             "name": "nesbot/carbon",
-            "version": "1.19.0",
+            "version": "dev-master",
             "source": {
                 "type": "git",
-                "url": "https://github.com/briannesbitt/Carbon.git",
-                "reference": "68868e0b02d2d803d0052a59d4e5003cccf87320"
+                "url": "https://github.com/Aurelija/Carbon.git",
+                "reference": "b637d8e9a6e0ff2411535697cb5726c14151191b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/briannesbitt/Carbon/zipball/68868e0b02d2d803d0052a59d4e5003cccf87320",
-                "reference": "68868e0b02d2d803d0052a59d4e5003cccf87320",
+                "url": "https://api.github.com/repos/Aurelija/Carbon/zipball/b637d8e9a6e0ff2411535697cb5726c14151191b",
+                "reference": "b637d8e9a6e0ff2411535697cb5726c14151191b",
                 "shasum": ""
             },
             "require": {
@@ -1190,7 +1190,6 @@
                     "Carbon": "src"
                 }
             },
-            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -1204,11 +1203,14 @@
             "description": "A simple API extension for DateTime.",
             "homepage": "http://carbon.nesbot.com",
             "keywords": [
+                "DateTime",
                 "date",
-                "datetime",
                 "time"
             ],
-            "time": "2015-05-09 03:23:44"
+            "support": {
+                "source": "https://github.com/Aurelija/Carbon/tree/master"
+            },
+            "time": "2015-05-11 23:20:25"
         },
         {
             "name": "phpdocumentor/reflection-docblock",
@@ -2540,16 +2542,16 @@
         },
         {
             "name": "symfony/symfony",
-            "version": "v2.6.6",
+            "version": "v2.6.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/symfony.git",
-                "reference": "48c9e835a877adfb023b8b6d033d9dd14f342b4b"
+                "reference": "0449d0e1178bc8e934520b20432d1705c3b25e7e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/symfony/zipball/48c9e835a877adfb023b8b6d033d9dd14f342b4b",
-                "reference": "48c9e835a877adfb023b8b6d033d9dd14f342b4b",
+                "url": "https://api.github.com/repos/symfony/symfony/zipball/0449d0e1178bc8e934520b20432d1705c3b25e7e",
+                "reference": "0449d0e1178bc8e934520b20432d1705c3b25e7e",
                 "shasum": ""
             },
             "require": {
@@ -2653,7 +2655,7 @@
             "keywords": [
                 "framework"
             ],
-            "time": "2015-04-01 16:55:26"
+            "time": "2015-05-11 01:58:49"
         },
         {
             "name": "twig/extensions",
@@ -2817,7 +2819,9 @@
     ],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": [],
+    "stability-flags": {
+        "nesbot/carbon": 20
+    },
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {

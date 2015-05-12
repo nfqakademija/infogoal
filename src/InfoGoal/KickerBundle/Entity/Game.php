@@ -274,15 +274,15 @@ class Game
             return 'NaN';
         }
         Carbon::setLocale('lt');
-        $cDate = Carbon::instance($this->getDateEnd());
+        $cDate = Carbon::instance($dateEnd);
         $diff = $cDate->diffForHumans(Carbon::now());
-        $diff = str_replace(array('metai'), 'm.', $diff);
-        $diff = str_replace(array('mėnuo', 'mėnesiai'), 'mėn.', $diff);
-        $diff = str_replace(array('savaitė', 'savaitės'), 'sav.', $diff);
-        $diff = str_replace(array('diena', 'dienos'), 'd.', $diff);
-        $diff = str_replace(array('valanda', 'valandos'), 'val.', $diff);
-        $diff = str_replace(array('minutė', 'minutės'), 'min.', $diff);
-        $diff = str_replace(array('sekundė', 'sekundės'), 's.', $diff);
+        $diff = str_replace(array('metai', 'metų'), 'm.', $diff);
+        $diff = str_replace(array('mėnuo', 'mėnesiai', 'mėnesių'), 'mėn.', $diff);
+        $diff = str_replace(array('savaitė', 'savaitės', 'savaičių'), 'sav.', $diff);
+        $diff = str_replace(array('diena', 'dienos', 'dienų'), 'd.', $diff);
+        $diff = str_replace(array('valanda', 'valandos', 'valandų'), 'val.', $diff);
+        $diff = str_replace(array('minutė', 'minutės', 'minučių'), 'min.', $diff);
+        $diff = str_replace(array('sekundė', 'sekundės', 'sekundžių'), 's.', $diff);
         return $diff;
     }
 }
