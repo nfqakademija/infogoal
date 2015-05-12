@@ -20,9 +20,9 @@ class ApiUpdateCommand extends ContainerAwareCommand
         $api = $this->getContainer()->get('kicker.api');
         $em = $this->getContainer()->get('doctrine')->getManager();
         $optionsRepo = $em->getRepository('InfoGoalKickerBundle:TableOption');
-        $options = $optionsRepo->findAll();
 
         while (true) {
+            $options = $optionsRepo->findAll();
             $api->readApi($options);
             sleep(2);
         }
