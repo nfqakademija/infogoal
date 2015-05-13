@@ -1,5 +1,13 @@
 @import "../vars";
 
+#timer {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right:0;
+  font-size: 42px;
+}
+
 .player-name {
   font-size: 22px;
   color: $color-white;
