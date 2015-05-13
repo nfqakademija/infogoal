@@ -1,10 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: Ernestas
- * Date: 2015-04-14
- * Time: 11:18
- */
 
 namespace InfoGoal\ApiBundle\Service;
 
@@ -60,6 +54,9 @@ class DataAnalyzer
         $this->achievements = $achievements;
     }
 
+    /**
+     * @param array $options
+     */
     public function setOptions($options)
     {
         foreach ($options as $option) {
@@ -141,7 +138,6 @@ class DataAnalyzer
 
     /**
      * @param array $event
-     * @param boolean $gameStateBeforeEvent
      */
     public function switchEvent($event)
     {
@@ -155,6 +151,10 @@ class DataAnalyzer
         }
     }
 
+    /**
+     * @param json $eventData
+     * @param timestamp $eventTime
+     */
     public function eventAutoGoal($eventData, $eventTime)
     {
         $goal = json_decode($eventData);

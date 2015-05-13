@@ -21,7 +21,15 @@ class DataAnalyzerTest extends PHPUnit_Framework_TestCase {
             ->getMockBuilder('InfoGoal\KickerBundle\Entity\Game')
             ->getMock();
 
-        $this->dataAnalyzer = new DataAnalyzer($this->em);
+        $this->calculator = $this
+            ->getMockBuilder('InfoGoal\ApiBundle\Services\ExpCalculator')
+            ->getMock();
+
+        $this->achievements = $this
+            ->getMockBuilder('InfoGoal\ApiBundle\Services\Achievements')
+            ->getMock();
+
+        $this->dataAnalyzer = new DataAnalyzer($this->em, $this->calculator, $this->achievements);
     }
 
     public function testGameIsStarted()

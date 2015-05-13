@@ -1,10 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: Ernestas
- * Date: 2015-04-14
- * Time: 09:47
- */
 
 namespace InfoGoal\ApiBundle\Service;
 

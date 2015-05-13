@@ -14,11 +14,17 @@ class Reservation
      */
     private $em;
 
+    /**
+     * @param EntityManager $em
+     */
     public function __construct(EntityManager $em)
     {
         $this->em = $em;
     }
 
+    /**
+     * @return Response
+     */
     public function makeReservation()
     {
         $reservationStatus = 0;
