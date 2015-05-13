@@ -61,15 +61,7 @@
 
                 <div class="result col-xs-12">
                     <div>
-                        {% if game.goal1 != 10 and game.goal2 != 10 %}
-                            0{{ game.goal1 }} : 0{{ game.goal2 }}
-                        {% elseif game.goal1 != 10 %}
-                            0{{ game.goal1 }} : {{ game.goal2 }}
-                        {% elseif game.goal2 != 10 %}
-                            {{ game.goal1 }} : 0{{ game.goal2 }}
-                        {% else %}
-                            {{ game.goal1 }} : {{ game.goal2 }}
-                        {% endif %}
+                        {{ game.goal1 }} : {{ game.goal2 }}
                     </div>
                 </div>
 
