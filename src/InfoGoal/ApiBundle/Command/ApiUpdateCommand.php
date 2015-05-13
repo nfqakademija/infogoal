@@ -33,13 +33,6 @@ class ApiUpdateCommand extends ContainerAwareCommand
 
         while (time() - $startTime < $timeout) {
             $options = $optionsRepo->findAll();
-
-            $optionsText = "";
-            foreach ($options as $option) {
-                $optionsText .= $option->getOptionValue() . " ";
-            }
-            $output->writeln($optionsText);
-
             $api->readApi($options);
             $reservation->checkForCancellation();
             sleep(2);
