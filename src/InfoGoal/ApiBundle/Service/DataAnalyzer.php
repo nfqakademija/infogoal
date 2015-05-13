@@ -47,6 +47,11 @@ class DataAnalyzer
      */
     private $achievements;
 
+    /**
+     * @param EntityManager $em
+     * @param ExpCalculator $calculator
+     * @param Achievements $achievements
+     */
     public function __construct(EntityManager $em, ExpCalculator $calculator, Achievements $achievements)
     {
         $this->em = $em;
@@ -189,7 +194,6 @@ class DataAnalyzer
     public function eventCardSwipe($eventData, $eventTime)
     {
         $cardSwipe = json_decode($eventData);
-        $playingPlayersIds = $this->activeGame->getAllPlayersIds();
         $whichPlayer = (string)$cardSwipe->team . $cardSwipe->player;
 
         $player = $this->em->getRepository('InfoGoalKickerBundle:Player')->findOneByCardId($cardSwipe->card_id);
@@ -204,45 +208,54 @@ class DataAnalyzer
         switch ($whichPlayer) {
             case "00":
                 $positionPlayer = $this->activeGame->getPlayer1();
-                $positionOccupied = !is_null($positionPlayer) || in_array($player->getId(), $playingPlayersIds);
-                $positionPlayerId = is_null($positionPlayer) ? 0 : $positionPlayer->getId();
-                $cardSwipeToSamePosition = $positionPlayerId == $player->getId();
-                if ($positionOccupied && !$cardSwipeToSamePosition) {
+                if ($this->needToStartNew($positionPlayer, $player)) {
                     $this->finishOldStartNew($eventTime);
                 }
                 $this->activeGame->setPlayer1($player);
                 break;
             case "01":
                 $positionPlayer = $this->activeGame->getPlayer2();
-                $positionOccupied = !is_null($positionPlayer) || in_array($player->getId(), $playingPlayersIds);
-                $positionPlayerId = is_null($positionPlayer) ? 0 : $positionPlayer->getId();
-                $cardSwipeToSamePosition = $positionPlayerId == $player->getId();
-                if ($positionOccupied && !$cardSwipeToSamePosition) {
+                if ($this->needToStartNew($positionPlayer, $player)) {
                     $this->finishOldStartNew($eventTime);
                 }
                 $this->activeGame->setPlayer2($player);
                 break;
             case "10":
                 $positionPlayer = $this->activeGame->getPlayer3();
-                $positionOccupied = !is_null($positionPlayer) || in_array($player->getId(), $playingPlayersIds);
-                $positionPlayerId = is_null($positionPlayer) ? 0 : $positionPlayer->getId();
-                $cardSwipeToSamePosition = $positionPlayerId == $player->getId();
-                if ($positionOccupied && !$cardSwipeToSamePosition) {
+                if ($this->needToStartNew($positionPlayer, $player)) {
                     $this->finishOldStartNew($eventTime);
                 }
                 $this->activeGame->setPlayer3($player);
                 break;
             case "11":
                 $positionPlayer = $this->activeGame->getPlayer4();
-                $positionOccupied = !is_null($positionPlayer) || in_array($player->getId(), $playingPlayersIds);
-                $positionPlayerId = is_null($positionPlayer) ? 0 : $positionPlayer->getId();
-                $cardSwipeToSamePosition = $positionPlayerId == $player->getId();
-                if ($positionOccupied && !$cardSwipeToSamePosition) {
+                if ($this->needToStartNew($positionPlayer, $player)) {
                     $this->finishOldStartNew($eventTime);
                 }
                 $this->activeGame->setPlayer4($player);
                 break;
         }
+    }
+
+    /**
+     * @param Player $positionPlayer
+     * @param Player $player
+     * @return bool
+     */
+    public function needToStartNew($positionPlayer, $player)
+    {
+        $playingPlayersIds = $this->activeGame->getAllPlayersIds();
+        $positionOccupied = !is_null($positionPlayer) || in_array($player->getId(), $playingPlayersIds);
+        $positionPlayerId = is_null($positionPlayer) ? 0 : $positionPlayer->getId();
+        $cardSwipeToSamePosition = $positionPlayerId == $player->getId();
+
+        $need = false;
+
+        if ($positionOccupied && !$cardSwipeToSamePosition) {
+            return true;
+        }
+
+        return $need;
     }
 
     public function finishOldStartNew($eventTime)
@@ -315,7 +328,7 @@ class DataAnalyzer
     }
 
     /**
-     * @param boolean $isFree
+     * @param int $state
      */
     public function markTableState($state)
     {
