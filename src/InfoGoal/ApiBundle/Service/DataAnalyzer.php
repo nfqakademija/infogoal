@@ -258,6 +258,9 @@ class DataAnalyzer
         return $need;
     }
 
+    /**
+     * @param timestamp $eventTime
+     */
     public function finishOldStartNew($eventTime)
     {
         $this->markGameEnd($this->options['last_event_time']);
@@ -283,7 +286,7 @@ class DataAnalyzer
     }
 
     /**
-     * @param timestamp $time
+     * @param int $time
      */
     public function markGameEnd($time)
     {

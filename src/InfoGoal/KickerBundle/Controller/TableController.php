@@ -15,7 +15,7 @@ class TableController extends Controller
         } elseif($stateValue == 1) {
             $gameId = $this->getDoctrine()->getRepository('InfoGoalKickerBundle:TableOption')->findOneBy(array("optionKey" => "active_game_id"));
             $game = $this->getDoctrine()->getRepository('InfoGoalKickerBundle:Game')->findOneBy(array("id" => $gameId->getOptionValue()));
-            if ($game->getGoal1() != 10 and $game->getGoal2() != 10) {
+            if ($game->getGoal1() != 10 && $game->getGoal2() != 10) {
                 return $this->render('InfoGoalKickerBundle:Table:game.html.twig', array('game' => $game));
             } else {
                 if ($game->getGoal1() == 10) {
