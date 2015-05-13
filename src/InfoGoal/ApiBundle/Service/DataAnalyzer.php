@@ -259,7 +259,7 @@ class DataAnalyzer
     }
 
     /**
-     * @param timestamp $eventTime
+     * @param int $eventTime
      */
     public function finishOldStartNew($eventTime)
     {
@@ -312,7 +312,7 @@ class DataAnalyzer
     }
 
     /**
-     * @param timestamp $time
+     * @param int $time
      */
     public function markGameStart($time)
     {
