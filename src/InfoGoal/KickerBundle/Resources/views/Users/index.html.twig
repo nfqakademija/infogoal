@@ -45,7 +45,7 @@
             --><button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
                     <span class="caret"></span>
                 </button>
-                    <ul class="dropdown-menu">
+                    <ul class="dropdown-menu" role="menu">
                         <li><a role="menuitem" tabindex="-1" href="{{ path('info_goal_kicker_users_index', {'search' : searchPhrase, 'order' : 'name', 'how' : (orderHow == 'asc' and orderBy == 'name') ? 'desc' : 'asc'}) }}">Vardą</a></li>
                         <li><a role="menuitem" tabindex="-1" href="{{ path('info_goal_kicker_users_index', {'search' : searchPhrase,'order' : 'level', 'how' : (orderHow == 'asc' and orderBy == 'level') ? 'desc' : 'asc'}) }}">Lygį</a></li>
                         <li><a role="menuitem" tabindex="-1" href="{{ path('info_goal_kicker_users_index', {'search' : searchPhrase,'order' : 'played', 'how' : (orderHow == 'asc' and orderBy == 'played') ? 'desc' : 'asc'}) }}">Žaidimų skaičių</a></li>
@@ -59,14 +59,14 @@
         <div id="sort-menu" class="btn-group" role="group">
 
                 <button type="button" class="btn btn-default col-sm-4" onclick="location.href='{{ path('info_goal_kicker_users_index', {'search' : searchPhrase, 'order' : 'name', 'how' : (orderHow == 'asc' and orderBy == 'name') ? 'desc' : 'asc'}) }}'">
-                    <div>
+
                         <p>Vardas</p>
                         {% set rotate='' %}
                         {% if orderHow == 'asc' and orderBy == 'name' %}
                             {% set rotate='rotate' %}
                         {% endif %}
                         <span class="caret {{ rotate }}"></span>
-                    </div>
+
                 </button><!--
                 solution for extra space http://stackoverflow.com/questions/20547819/vertical-align-with-bootstrap-3
             --><button type="button" class="btn btn-default col-sm-2" onclick="location.href='{{ path('info_goal_kicker_users_index', {'search' : searchPhrase,'order' : 'level', 'how' : (orderHow == 'asc' and orderBy == 'level') ? 'desc' : 'asc'}) }}'">
