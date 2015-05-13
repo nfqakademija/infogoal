@@ -11,6 +11,7 @@ $(document).ready(function () {
             load();
         }, 1000);
     }
-
-    load();
+    if ($('#reservation-button').length) {
+       load();
+    }
 });
