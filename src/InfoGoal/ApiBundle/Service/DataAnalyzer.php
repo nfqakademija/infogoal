@@ -270,7 +270,10 @@ class DataAnalyzer
         $date->setTimestamp($time);
         $this->activeGame->setDateEnd($date);
 
-        if ($this->activeGame->getGoal1() + $this->activeGame->getGoal2() < 1)
+        $noGoals = $this->activeGame->getGoal1() + $this->activeGame->getGoal2() < 1;
+        $onlyAnonymous = sizeof($this->activeGame->getAllPlayersIds()) == 0;
+
+        if ($noGoals || $onlyAnonymous)
             $this->em->remove($this->activeGame);
 
         $this->em->flush();
