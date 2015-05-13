@@ -1,7 +1,7 @@
 {% for badge in badges %}
 <div class="col-xs-12 col-sm-6 col-lg-4 my-badge">
     <div class="badge-img">
-        <img src="{{ asset('bundles/infogoalkicker/assets/badges/' ~ badge.badges.imageUrl ~ '.png') }}">
+        <img src="{{ asset('bundles/infogoalkicker/assets/badges/' ~ badge.badges.imageUrl ~ '.png') }}" alt="Ženklelis" title="{{ badge.badges.howToGetBadge }}">
     </div>
     <div class="badge-info">
         <p class="badge-name">{{ badge.badges.name }}</p>
