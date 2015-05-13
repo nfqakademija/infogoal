@@ -204,28 +204,40 @@ class DataAnalyzer
         switch ($whichPlayer) {
             case "00":
                 $positionPlayer = $this->activeGame->getPlayer1();
-                if (!is_null($positionPlayer) || in_array($player->getId(), $playingPlayersIds)) {
+                $positionOccupied = !is_null($positionPlayer) || in_array($player->getId(), $playingPlayersIds);
+                $positionPlayerId = is_null($positionPlayer) ? 0 : $positionPlayer->getId();
+                $cardSwipeToSamePosition = $positionPlayerId == $player->getId();
+                if ($positionOccupied && !$cardSwipeToSamePosition) {
                     $this->finishOldStartNew($eventTime);
                 }
                 $this->activeGame->setPlayer1($player);
                 break;
             case "01":
                 $positionPlayer = $this->activeGame->getPlayer2();
-                if (!is_null($positionPlayer) || in_array($player->getId(), $playingPlayersIds)) {
+                $positionOccupied = !is_null($positionPlayer) || in_array($player->getId(), $playingPlayersIds);
+                $positionPlayerId = is_null($positionPlayer) ? 0 : $positionPlayer->getId();
+                $cardSwipeToSamePosition = $positionPlayerId == $player->getId();
+                if ($positionOccupied && !$cardSwipeToSamePosition) {
                     $this->finishOldStartNew($eventTime);
                 }
                 $this->activeGame->setPlayer2($player);
                 break;
             case "10":
                 $positionPlayer = $this->activeGame->getPlayer3();
-                if (!is_null($positionPlayer) || in_array($player->getId(), $playingPlayersIds)) {
+                $positionOccupied = !is_null($positionPlayer) || in_array($player->getId(), $playingPlayersIds);
+                $positionPlayerId = is_null($positionPlayer) ? 0 : $positionPlayer->getId();
+                $cardSwipeToSamePosition = $positionPlayerId == $player->getId();
+                if ($positionOccupied && !$cardSwipeToSamePosition) {
                     $this->finishOldStartNew($eventTime);
                 }
                 $this->activeGame->setPlayer3($player);
                 break;
             case "11":
                 $positionPlayer = $this->activeGame->getPlayer4();
-                if (!is_null($positionPlayer) || in_array($player->getId(), $playingPlayersIds)) {
+                $positionOccupied = !is_null($positionPlayer) || in_array($player->getId(), $playingPlayersIds);
+                $positionPlayerId = is_null($positionPlayer) ? 0 : $positionPlayer->getId();
+                $cardSwipeToSamePosition = $positionPlayerId == $player->getId();
+                if ($positionOccupied && !$cardSwipeToSamePosition) {
                     $this->finishOldStartNew($eventTime);
                 }
                 $this->activeGame->setPlayer4($player);
