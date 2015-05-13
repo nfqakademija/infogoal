@@ -8,6 +8,10 @@ class DataAnalyzerTest extends PHPUnit_Framework_TestCase {
 
     private $game;
 
+    private $calculator;
+
+    private $achievements;
+
     private $dataAnalyzer;
 
     public function setUp()
