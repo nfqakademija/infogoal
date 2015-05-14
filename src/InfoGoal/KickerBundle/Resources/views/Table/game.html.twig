@@ -66,6 +66,9 @@
                 </div>
 
             </div><!-- end table-game -->
+            {% if game.player1 is null and game.player2 is null and game.player3 is null and game.player4 is null %}
+                <p id="def-msg">Jūsų žaidimas nebus išsaugotas. Perbraukite kortelę.</p>
+            {% endif %}
 
         </div><!-- end table -->
 
