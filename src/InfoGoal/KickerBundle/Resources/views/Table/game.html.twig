@@ -20,6 +20,9 @@
     <div class="container">
 
         <div id="table" class="col-xs-12">
+            {% if game.player1 is null and game.player2 is null and game.player3 is null and game.player4 is null %}
+                <p id="def-msg">Jūsų žaidimas nebus išsaugotas. Perbraukite kortelę.</p>
+            {% endif %}
             <img id="field-game" src="{{ asset('/bundles/infogoalkicker/assets/soccer-field.png') }}" alt="Soccer field" class="img-responsive">
             <div id="table-game">
 
@@ -66,9 +69,7 @@
                 </div>
 
             </div><!-- end table-game -->
-            {% if game.player1 is null and game.player2 is null and game.player3 is null and game.player4 is null %}
-                <p id="def-msg">Jūsų žaidimas nebus išsaugotas. Perbraukite kortelę.</p>
-            {% endif %}
+
 
         </div><!-- end table -->
 
